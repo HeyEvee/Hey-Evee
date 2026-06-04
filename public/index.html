@@ -488,42 +488,24 @@ var VIP_POSTS=[
   {id:102,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"3d ago",tag:"Coaching",content:"Hot seat answer for @brookefit: Yes, you can pitch brands at 800 followers. Your engagement rate matters more than your count. Here is exactly what to say in your email...",comments:7,likes:23,isSimone:true},
 ];
 
-// ─── Airtable Member Verification ───
-// Replace these with your actual Airtable credentials
-var AIRTABLE_TOKEN = "YOUR_AIRTABLE_TOKEN";
-var AIRTABLE_BASE  = "appZtgVfaI0Xlkqau";
-var AIRTABLE_TABLE = "tblS1ezJBCcfPOttZ";
-
+// ─── Airtable Member Verification (secure server proxy) ───
 function checkMembership(email, callback){
-  if(AIRTABLE_TOKEN === "YOUR_AIRTABLE_TOKEN"){
-    // Airtable not configured yet - default to starter
-    callback({plan:"starter", name:"", status:"active"});
-    return;
-  }
-  var encoded = encodeURIComponent(email.toLowerCase());
-  var formula = encodeURIComponent('LOWER({email})=LOWER("'+email.toLowerCase()+'")');
-  var url = "https://api.airtable.com/v0/"+AIRTABLE_BASE+"/"+AIRTABLE_TABLE
-    +"?filterByFormula="+formula
-    +"&maxRecords=1";
-  fetch(url, {
-    headers:{"Authorization":"Bearer "+AIRTABLE_TOKEN}
+  fetch("/api/airtable", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({email: email.trim().toLowerCase()})
   })
   .then(function(r){return r.json();})
   .then(function(d){
-    if(d.records && d.records.length > 0){
-      var fields = d.records[0].fields;
-      callback({
-        plan:   fields.plan   || "starter",
-        name:   fields.name   || "",
-        status: fields.status || "active"
-      });
-    } else {
-      // Email not found in member list = free starter
-      callback({plan:"starter", name:"", status:"active"});
-    }
+    callback({
+      plan:   d.plan   || "starter",
+      status: d.status || "active",
+      name:   d.name   || ""
+    });
   })
   .catch(function(){
-    callback({plan:"starter", name:"", status:"active"});
+    // If proxy fails, default to starter so app still works
+    callback({plan:"starter", status:"active", name:""});
   });
 }
 var DAYLETTERS=["S","M","T","W","T","F","S"];
