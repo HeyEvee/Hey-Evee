@@ -26,15 +26,8 @@ input,textarea,select{font-family:'Nunito',sans-serif}
 .slide-action{background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:16px;padding:20px;color:#fff}
 .slide-workshop{background:linear-gradient(145deg,#f9ece6,#fde8f0);border-radius:16px;padding:20px}
 
-@media(min-width:768px){
-  body{background:#e8e0da}
-  #root{max-width:390px;margin:20px auto;min-height:calc(100vh - 40px);border-radius:40px;box-shadow:0 30px 80px rgba(26,13,8,0.25),0 0 0 8px #1a0d08;overflow:hidden;position:relative}
-  #root::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1a0d08;border-radius:0 0 18px 18px;z-index:999}
-}
-@media(min-width:1024px){
-  body{background:linear-gradient(135deg,#f5ede8,#fde8f0,#f0e8fd)}
-  #root{margin:30px auto}
-}
+@keyframes celebPop{from{opacity:0;transform:scale(.8) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes celebBar{from{width:0}to{width:100%}}
 </style>
 </head>
 <body>
@@ -53,9 +46,7 @@ var COURSES=[
     "Faith & Motherhood":["Leading with purpose over platform","When faith meets the creator economy","Releasing comparison to other faith-based creators","Showing up in seasons of doubt and growth","The calling behind the content: your why"],
     "Finance & Business":["The money mindset that unlocks creator income","You are the expert — owning that truth","Overcoming imposter syndrome in finance content","Building authority one post at a time","The business of financial education content"],
     "Travel & Adventure":["The adventure creator CEO","Your travel niche is a business — build it that way","Dealing with 'must be nice' and showing up anyway","Systems that keep you creating while on the road","Turning wanderlust into a brand with staying power"],
-    "DIY & Home":["The home creator who knows her value","Your creativity is your competitive advantage","Building a DIY brand beyond the individual project","Consistency when inspiration runs dry","From hobbyist to home brand CEO"],
-    "Clean & Organize":["The organizing CEO mindset","Systems that keep your home and business running","Building a clean content brand with staying power","From chaos to content empire","Your organizing niche: cleaning, decluttering, or systems?"],
-    "Daily Routines":["The routine creator CEO","Your morning routine is your competitive advantage","Systems that keep you consistent without burnout","Building a daily content brand moms trust","From winging it to running a real content business"]
+    "DIY & Home":["The home creator who knows her value","Your creativity is your competitive advantage","Building a DIY brand beyond the individual project","Consistency when inspiration runs dry","From hobbyist to home brand CEO"]
    }},
   {id:2,num:"02",title:"Find Your Niche and Pillars",sub:"The content lane built around your real life.",locked:false,
    niched:{
@@ -109,7 +100,7 @@ var MODULE_SLIDES={
     {title:"Your First CEO Move",body:"Decide right now: this is a business, not a hobby.\n\nThat shift changes everything — how you plan, how you pitch, how you show up, how you value your work.\n\nYou do not need permission. You just need a decision."}
   ],
   tip:"The moms building real income aren't more talented. They made one firm decision — this is happening — and stopped waiting to feel ready.",
-  workshop:{title:"Your CEO Declaration",prompt:"Complete these 3 sentences out loud or in writing:\n\n1. I am building a business that helps ___ moms do ___.\n2. My time is valuable and I will protect it by ___.\n3. Starting today, I commit to showing up for ___ even when I don't feel like it.\n\nScreenshot it. Post it. That's your first CEO move."}
+  workshop:{title:"Your CEO Declaration",prompt:"Complete these 3 sentences out loud or in writing:\n\n1. I am building a business that helps ___ moms do ___.\n2. My time is valuable and I will protect it by ___.\n3. Starting today, I commit to showing up for ___ even when I don't feel like it.\n\nScreenshot it. Post it. That's your first CEO move.",actionStep:"Write your CEO declaration out loud right now, then post it to your Instagram or TikTok stories today."}
 },
 "c1m1":{
   intro:{headline:"Releasing Perfectionism",sub:"Done and posted beats perfect and unpublished every single time."},
@@ -119,7 +110,7 @@ var MODULE_SLIDES={
     {title:"Your New Standard",body:"Set a timer. When it goes off, the content goes live.\n\nGood enough AND posted wins every time. The audience you are waiting to impress with perfect content? They are scrolling right now. Show up."}
   ],
   tip:"I have never met a mom who regretted posting. I have met hundreds who regret waiting. Ship it, mama.",
-  workshop:{title:"The 30-Minute Post Challenge",prompt:"Right now, set a 30-minute timer.\n\nCreate ONE piece of content — a video, a caption, a reel, a story.\n\nWhen the timer goes off: post it.\n\nThen write:\n- How did it feel?\n- What did you learn?\n- What would you do differently next time?\n\nThat discomfort is growth. Welcome to CEO life."}
+  workshop:{title:"The 30-Minute Post Challenge",prompt:"Right now, set a 30-minute timer.\n\nCreate ONE piece of content — a video, a caption, a reel, a story.\n\nWhen the timer goes off: post it.\n\nThen write:\n- How did it feel?\n- What did you learn?\n- What would you do differently next time?\n\nThat discomfort is growth. Welcome to CEO life.",actionStep:"Set a 30-minute timer and post one piece of content before it goes off — no editing, no second-guessing."}
 },
 "c1m2":{
   intro:{headline:"Building Your Creator Identity",sub:"Before the content, before the followers — you have to know who you are."},
@@ -129,7 +120,7 @@ var MODULE_SLIDES={
     {title:"Who Are You On Camera?",body:"Decide how you want to show up:\n- Funny and relatable?\n- Inspiring and motivating?\n- Practical and no-nonsense?\n- All of the above on different days?\n\nConsistency in your ENERGY builds trust faster than consistency in your posting schedule."}
   ],
   tip:"Your followers do not just follow your content. They follow YOU. The more you, the faster you grow.",
-  workshop:{title:"Define Your Creator Identity",prompt:"Answer these questions:\n\n1. Three words that describe your energy on camera: ___, ___, ___\n2. The thing I want moms to feel when they watch my content is: ___\n3. The creator I am becoming looks like: ___\n\nPost a story or video introducing yourself using these answers. That's your brand introduction."}
+  workshop:{title:"Define Your Creator Identity",prompt:"Answer these questions:\n\n1. Three words that describe your energy on camera: ___, ___, ___\n2. The thing I want moms to feel when they watch my content is: ___\n3. The creator I am becoming looks like: ___\n\nPost a story or video introducing yourself using these answers. That's your brand introduction.",actionStep:"Record a 60-second 'this is who I am' video and post it to your stories today. Introduce yourself as the creator you are becoming."}
 },
 "c1m3":{
   intro:{headline:"Daily Habits That Build Empires",sub:"Success is not an event. It is what you do every single day."},
@@ -139,7 +130,7 @@ var MODULE_SLIDES={
     {title:"Protect Your Energy Like a CEO",body:"Know your high-energy hours. Film then.\n\nKnow your drain triggers. Avoid them on film days.\n\nCreate systems so content does not consume your life. You are building a business — not becoming your phone."}
   ],
   tip:"The creator who shows up for 5 minutes daily will always beat the creator who shows up perfectly once a week.",
-  workshop:{title:"Build Your Weekly Creator System",prompt:"Design your content week:\n\n- My best filming time is: ___\n- I will batch film on: ___ (day) for ___ minutes\n- My daily engagement habit is: ___\n- One thing I will STOP doing that drains my creative energy: ___\n\nPut your filming time in your actual calendar right now. That's your CEO move."}
+  workshop:{title:"Build Your Weekly Creator System",prompt:"Design your content week:\n\n- My best filming time is: ___\n- I will batch film on: ___ (day) for ___ minutes\n- My daily engagement habit is: ___\n- One thing I will STOP doing that drains my creative energy: ___\n\nPut your filming time in your actual calendar right now. That's your CEO move.",actionStep:"Block your filming time in your calendar right now and set a recurring reminder. Non-negotiable."}
 },
 // ── COURSE 2: Find Your Niche ──
 "c2m0":{
@@ -150,7 +141,7 @@ var MODULE_SLIDES={
     {title:"One Person, One Message",body:"Before you post, ask: who is the ONE person this is for?\n\nGive her a name. Know her life. Write to her.\n\nWhen you speak to one person, thousands feel like you are speaking to them. That's the secret."}
   ],
   tip:"Stop trying to reach everyone. The creator who speaks to one person builds a community. The creator who speaks to everyone builds an audience of strangers.",
-  workshop:{title:"Define Your One Person",prompt:"Create your ideal audience member:\n\n- Her name: ___\n- Age and life stage: ___\n- Her biggest daily struggle: ___\n- What she searches for at midnight: ___\n- What she wishes someone would just tell her: ___\n\nNow write ONE post specifically for her. Post it today."}
+  workshop:{title:"Define Your One Person",prompt:"Create your ideal audience member:\n\n- Her name: ___\n- Age and life stage: ___\n- Her biggest daily struggle: ___\n- What she searches for at midnight: ___\n- What she wishes someone would just tell her: ___\n\nNow write ONE post specifically for her. Post it today.",actionStep:"Write a post specifically for your one ideal person today. Name her, know her problem, speak directly to her."}
 },
 "c2m1":{
   intro:{headline:"Your 3 Content Pillars",sub:"Content pillars = the 3 topics you always come back to. They build your brand."},
@@ -160,7 +151,7 @@ var MODULE_SLIDES={
     {title:"The Balance Formula",body:"A healthy pillar mix:\n\n- 40% your signature topic (your niche)\n- 30% relatable lifestyle (the human stuff)\n- 30% motivational/educational (value content)\n\nThis keeps your feed interesting while staying on brand."}
   ],
   tip:"Content pillars are what make people binge your page. When someone finds one video they love and sees 20 more just like it — that's when you get the follow and the loyal fan.",
-  workshop:{title:"Write Your 3 Pillars",prompt:"My 3 content pillars are:\n\n1. ___\n   (5 video ideas for this pillar: ___, ___, ___, ___, ___)\n\n2. ___\n   (5 video ideas: ___, ___, ___, ___, ___)\n\n3. ___\n   (5 video ideas: ___, ___, ___, ___, ___)\n\nYou now have 15 content ideas. Pick one and post it today."}
+  workshop:{title:"Write Your 3 Pillars",prompt:"My 3 content pillars are:\n\n1. ___\n   (5 video ideas for this pillar: ___, ___, ___, ___, ___)\n\n2. ___\n   (5 video ideas: ___, ___, ___, ___, ___)\n\n3. ___\n   (5 video ideas: ___, ___, ___, ___, ___)\n\nYou now have 15 content ideas. Pick one and post it today.",actionStep:"Pick one of your three pillars and post one piece of content for it today. Just one."}
 },
 "c2m2":{
   intro:{headline:"Your Niche Statement Formula",sub:"One sentence that tells anyone who you are, who you help, and why they should follow."},
@@ -170,7 +161,7 @@ var MODULE_SLIDES={
     {title:"Your Bio Is Your Sales Page",body:"You have 3 seconds when someone lands on your profile.\n\nYour bio needs to answer:\n1. Who is this for?\n2. What will I learn/feel/get here?\n3. What should I do next?\n\nStrong bio = more follows from cold traffic."}
   ],
   tip:"Your bio is the only thing standing between someone discovering your content and following you. Make every word earn its spot.",
-  workshop:{title:"Write Your Bio + Niche Statement",prompt:"Fill in the formula:\n'I help [who] do [what] so they can [result].'\n\nYour niche statement: ___\n\nNow write your actual Instagram/TikTok bio (max 150 characters) using this:\n___\n\nUpdate your bio right now. This is one of the highest-ROI things you can do today."}
+  workshop:{title:"Write Your Bio + Niche Statement",prompt:"Fill in the formula:\n'I help [who] do [what] so they can [result].'\n\nYour niche statement: ___\n\nNow write your actual Instagram/TikTok bio (max 150 characters) using this:\n___\n\nUpdate your bio right now. This is one of the highest-ROI things you can do today.",actionStep:"Update your Instagram or TikTok bio right now using your niche statement formula. Do it before you close the app."}
 },
 "c2m3":{
   intro:{headline:"Content That Only YOU Can Create",sub:"Your secret weapon is the story that only you have lived."},
@@ -180,7 +171,7 @@ var MODULE_SLIDES={
     {title:"Mining Your Life for Content",body:"Your daily life is content gold you are walking past every day.\n\nThe moment of frustration in the grocery store. The thing your kid said. The hack that saved dinner.\n\nStart keeping a notes app content diary. Every real moment is a potential post."}
   ],
   tip:"Your audience does not want a perfect creator. They want a real one. Give them real and they will give you loyalty — which converts to income.",
-  workshop:{title:"Your Content Story Bank",prompt:"Right now, write down 10 real moments from your life that could be content:\n\n1-3: Relatable struggles (things that go wrong)\n4-6: Wins or lessons (things you figured out)\n7-9: Daily moments (the funny, the real, the human)\n10: Your biggest transformation (before vs. now)\n\nYou now have 10 content ideas from your real life. Pick one and post it this week."}
+  workshop:{title:"Your Content Story Bank",prompt:"Right now, write down 10 real moments from your life that could be content:\n\n1-3: Relatable struggles (things that go wrong)\n4-6: Wins or lessons (things you figured out)\n7-9: Daily moments (the funny, the real, the human)\n10: Your biggest transformation (before vs. now)\n\nYou now have 10 content ideas from your real life. Pick one and post it this week.",actionStep:"Open your notes app and write down 10 real moments from your life that could be content. Post one of them this week."}
 },
 // ── COURSE 3: Film Like a Pro ──
 "c3m0":{
@@ -191,7 +182,7 @@ var MODULE_SLIDES={
     {title:"Your Free Studio Setup",body:"Find your brightest window. Place phone at eye level (use books if needed). Check audio first — record 10 seconds and play it back.\n\nThat is your studio. Total cost: $0. Time to set up: 3 minutes.\n\nYou are ready to film."}
   ],
   tip:"The creator who posts a slightly blurry video with a powerful message will always out-perform the creator still saving up for a camera.",
-  workshop:{title:"Film Your First Test Video",prompt:"Today, find the best filming spot in your home.\n\nFilm a 30-second test video — it can be anything.\n\nWatch it back and check:\n✓ Can I hear myself clearly?\n✓ Is my face well lit?\n✓ Is the phone stable?\n\nFix one thing and film again.\nWrite: What changed? What still needs work?"}
+  workshop:{title:"Film Your First Test Video",prompt:"Today, find the best filming spot in your home.\n\nFilm a 30-second test video — it can be anything.\n\nWatch it back and check:\n✓ Can I hear myself clearly?\n✓ Is my face well lit?\n✓ Is the phone stable?\n\nFix one thing and film again.\nWrite: What changed? What still needs work?",actionStep:"Film a 30-second video right now in your best available spot and post it. Done is better than perfect."}
 },
 "c3m1":{
   intro:{headline:"Lighting Basics That Cost Nothing",sub:"One window and two minutes will change how your videos look entirely."},
@@ -201,7 +192,7 @@ var MODULE_SLIDES={
     {title:"Time of Day Matters",body:"Best filming times for natural light:\n- Morning: 8am-11am (soft, warm, flattering)\n- Afternoon: 2pm-4pm (bright, clear)\n- Avoid: harsh noon sun or dark evenings without a ring light\n\nBatch film during your best light window."}
   ],
   tip:"Good lighting makes a $200 phone look like a $3,000 camera. Bad lighting makes a $3,000 camera look like a $200 phone. Light first, everything else second.",
-  workshop:{title:"Find Your Best Light",prompt:"Walk through your home and test 3 spots:\n\nSpot 1 — Location: ___ | Time of day: ___ | Result: ___\nSpot 2 — Location: ___ | Time of day: ___ | Result: ___\nSpot 3 — Location: ___ | Time of day: ___ | Result: ___\n\nMy best filming spot is: ___\nMy best filming time is: ___\n\nTake a photo of your setup and post it to the circle!"}
+  workshop:{title:"Find Your Best Light",prompt:"Walk through your home and test 3 spots:\n\nSpot 1 — Location: ___ | Time of day: ___ | Result: ___\nSpot 2 — Location: ___ | Time of day: ___ | Result: ___\nSpot 3 — Location: ___ | Time of day: ___ | Result: ___\n\nMy best filming spot is: ___\nMy best filming time is: ___\n\nTake a photo of your setup and post it to the circle!",actionStep:"Walk through your home and find your best natural light spot. Film a test clip there today."}
 },
 "c3m2":{
   intro:{headline:"Audio Tips That Make You Sound Like a Pro",sub:"Bad audio loses viewers faster than bad video. Here's how to fix it."},
@@ -211,7 +202,7 @@ var MODULE_SLIDES={
     {title:"Budget Upgrade: Clip-On Mic",body:"A clip-on lavalier mic: $15-25 on Amazon.\n\nThis is the single best audio investment for mobile creators. Clips to your shirt, plugs into your phone, sounds like a podcast.\n\nIf you upgrade one thing this month, make it a $20 lav mic."}
   ],
   tip:"Record 10 seconds, put your headphones in, listen back. Do this BEFORE every filming session. Fix it before you film 30 videos in bad audio.",
-  workshop:{title:"Audio Quality Check",prompt:"Film a 30-second clip and listen back with headphones.\n\nRate your audio 1-10: ___\n\nIssues I heard: ___\n\nThree things I will do to improve it:\n1. ___\n2. ___\n3. ___\n\nFilm the same clip again with the fixes. Rate it again: ___\n\nDifference: ___"}
+  workshop:{title:"Audio Quality Check",prompt:"Film a 30-second clip and listen back with headphones.\n\nRate your audio 1-10: ___\n\nIssues I heard: ___\n\nThree things I will do to improve it:\n1. ___\n2. ___\n3. ___\n\nFilm the same clip again with the fixes. Rate it again: ___\n\nDifference: ___",actionStep:"Record a 30-second test clip and listen back with headphones. Fix the biggest audio issue you hear, then record again."}
 },
 "c3m3":{
   intro:{headline:"The Batch Filming System for Moms",sub:"Stop creating content every day. Batch it, and take your weekends back."},
@@ -221,7 +212,7 @@ var MODULE_SLIDES={
     {title:"Batch Filming Tips for Moms",body:"- Film during nap time, after bedtime, or trade off with a partner\n- Have your scripts or bullet points ready before you press record\n- Give yourself permission to re-do takes — batch filming is efficient, not perfect\n- Film in outfits that can be swapped quickly so it looks like different days"}
   ],
   tip:"The moms who stay consistent are not the ones with the most time. They are the ones with the best systems. Build the system.",
-  workshop:{title:"Plan Your First Batch Filming Day",prompt:"Date I will batch film: ___\nTime: ___\nWho is watching the kids: ___\n\nMy filming location: ___\nOutfits planned (2-3): ___\n\n7 video ideas I will film:\n1. ___ 2. ___ 3. ___ 4. ___ 5. ___ 6. ___ 7. ___\n\nPut it in your calendar NOW. Screenshot this and post it to the circle so we can cheer you on!"}
+  workshop:{title:"Plan Your First Batch Filming Day",prompt:"Date I will batch film: ___\nTime: ___\nWho is watching the kids: ___\n\nMy filming location: ___\nOutfits planned (2-3): ___\n\n7 video ideas I will film:\n1. ___ 2. ___ 3. ___ 4. ___ 5. ___ 6. ___ 7. ___\n\nPut it in your calendar NOW. Screenshot this and post it to the circle so we can cheer you on!",actionStep:"Schedule your first batch filming day in your calendar right now. Pick the date, block the time."}
 },
 // ── COURSE 4: Canva / Media Kit ──
 "c4m0":{
@@ -232,7 +223,7 @@ var MODULE_SLIDES={
     {title:"The Canva Advantage",body:"You do not need a designer. Canva has free media kit templates that look professional.\n\nBrands cannot tell the difference between a Canva media kit and one made by a graphic designer — and they don't care.\n\nWhat they care about: does this creator look professional and organized?"}
   ],
   tip:"A media kit is not just a document — it is proof that you take your business seriously. Brands notice that immediately.",
-  workshop:{title:"Media Kit Audit",prompt:"Before building, let's see what you have:\n\nDo you have a media kit? Yes / No\n\nIf yes — rate it 1-10: ___\nWhat is missing: ___\n\nIf no — list what you would put on it:\n- My niche: ___\n- My platforms and current stats: ___\n- My top performing content: ___\n- My rates (estimate): ___\n\nYour homework: open Canva today and start your media kit."}
+  workshop:{title:"Media Kit Audit",prompt:"Before building, let's see what you have:\n\nDo you have a media kit? Yes / No\n\nIf yes — rate it 1-10: ___\nWhat is missing: ___\n\nIf no — list what you would put on it:\n- My niche: ___\n- My platforms and current stats: ___\n- My top performing content: ___\n- My rates (estimate): ___\n\nYour homework: open Canva today and start your media kit.",actionStep:"Open Canva today and search 'media kit'. Pick a template and save it — you are starting today."}
 },
 "c4m1":{
   intro:{headline:"Designing Your Media Kit in Canva",sub:"Step-by-step: from blank canvas to a media kit brands will love."},
@@ -242,7 +233,7 @@ var MODULE_SLIDES={
     {title:"Page 2: Your Stats + Story",body:"Include:\n✓ Follower counts across all platforms\n✓ Average engagement rate (likes + comments ÷ followers × 100)\n✓ Your audience demographics (age, location if you know it)\n✓ A short 3-4 sentence bio that tells your story\n✓ 2-3 screenshots of your best performing content"}
   ],
   tip:"Brands look at engagement rate, not follower count. A creator with 2K followers and 12% engagement is more valuable to most brands than one with 20K and 1%. Know your numbers.",
-  workshop:{title:"Build Page 1 of Your Media Kit",prompt:"Open Canva and choose a media kit template.\n\nPage 1 checklist:\n☐ Great photo of me\n☐ My name and main handle\n☐ My niche tagline: 'I help ___ do ___'\n☐ Brand colors that feel like me\n\nPost a screenshot in the circle when you're done — we want to see it!"}
+  workshop:{title:"Build Page 1 of Your Media Kit",prompt:"Open Canva and choose a media kit template.\n\nPage 1 checklist:\n☐ Great photo of me\n☐ My name and main handle\n☐ My niche tagline: 'I help ___ do ___'\n☐ Brand colors that feel like me\n\nPost a screenshot in the circle when you're done — we want to see it!",actionStep:"Complete page one of your Canva media kit — photo, name, handle, niche tagline. Post a screenshot in the circle."}
 },
 "c4m2":{
   intro:{headline:"Stats, Rates, and Past Work",sub:"The numbers that make brands say yes."},
@@ -252,7 +243,7 @@ var MODULE_SLIDES={
     {title:"What to Include as Past Work",body:"Even if you have not worked with brands yet, include:\n✓ 3 screenshots of your best content\n✓ Any stats on those posts (views, saves, shares)\n✓ Testimonials if you have them\n✓ Niches you have covered\n\nNo brand work yet? Do 2-3 mock brand posts for products you already own. Add those."}
   ],
   tip:"Never apologize for your rates. Never negotiate against yourself before a brand even responds. Send your rates with confidence.",
-  workshop:{title:"Calculate Your Numbers",prompt:"Do this right now:\n\nMy average engagement rate: ___%\nMy strongest platform: ___\nMy best performing post views/saves: ___\n\nMy starter rates:\n- UGC video: $___\n- Story post: $___\n- Feed/TikTok post: $___\n- Full package: $___\n\nAdd these to your media kit. You now have a real rate card."}
+  workshop:{title:"Calculate Your Numbers",prompt:"Do this right now:\n\nMy average engagement rate: ___%\nMy strongest platform: ___\nMy best performing post views/saves: ___\n\nMy starter rates:\n- UGC video: $___\n- Story post: $___\n- Feed/TikTok post: $___\n- Full package: $___\n\nAdd these to your media kit. You now have a real rate card.",actionStep:"Calculate your engagement rate right now and write your starter rate card. Add both to your media kit today."}
 },
 "c4m3":{
   intro:{headline:"Finishing and Sending Your Media Kit",sub:"A media kit that never gets sent is just a pretty document. Let's change that."},
@@ -262,7 +253,7 @@ var MODULE_SLIDES={
     {title:"Where to Find Brands to Pitch",body:"Start with brands you already USE and LOVE:\n\n1. Tag them in organic content first (get on their radar)\n2. Find their email on their website (usually press@ or partnerships@)\n3. DM them on Instagram as a backup\n4. Use platforms like Collabstr or Aspire to be discovered\n\nWarm pitches (brands you already use) have a much higher success rate."}
   ],
   tip:"Send 5 pitches this week. Just 5. Not perfect pitches — real pitches. The first yes changes everything.",
-  workshop:{title:"Send Your First Pitch",prompt:"Choose one brand you genuinely use and love.\n\nBrand: ___\nWhy you love them: ___\nHow your audience aligns with their customer: ___\n\nDraft your 4-sentence pitch email:\n1. Who you are + your niche\n2. Why you love their brand specifically\n3. What you're proposing\n4. Your call to action (media kit attached)\n\nSend it. Screenshot the sent email and post in the circle!"}
+  workshop:{title:"Send Your First Pitch",prompt:"Choose one brand you genuinely use and love.\n\nBrand: ___\nWhy you love them: ___\nHow your audience aligns with their customer: ___\n\nDraft your 4-sentence pitch email:\n1. Who you are + your niche\n2. Why you love their brand specifically\n3. What you're proposing\n4. Your call to action (media kit attached)\n\nSend it. Screenshot the sent email and post in the circle!",actionStep:"Send your media kit to one brand you genuinely use and love. Just one pitch. Do it today."}
 },
 // ── COURSE 5: Content That Converts ──
 "c5m0":{
@@ -273,7 +264,7 @@ var MODULE_SLIDES={
     {title:"The First Line Rule",body:"Your very first line (spoken or on screen) is your hook.\n\nDo NOT start with:\n✗ 'Hey guys, so today I wanted to...'\n✗ 'Okay so this is kind of a random video but...'\n\nStart IN the middle of something interesting.\n✓ 'Nobody talks about how hard it is to...'\n✓ 'I made this mistake for 2 years and it cost me...' "}
   ],
   tip:"Rewatch your last 10 videos. Count how many start with a real hook in the first 3 seconds. Then rewatch someone you admire. See the difference.",
-  workshop:{title:"Write 5 Hooks for Your Next Post",prompt:"Using the 3 hook types, write one of each for your niche:\n\nCuriosity hook: 'Nobody talks about how ___...'\n\nBold claim: 'I ___ and it completely changed my ___'\n\nPain point: 'If you're a mom who ___, this is for you'\n\nPersonal story: 'I used to ___ until I discovered ___'\n\nQuestion: 'Have you ever wondered why ___ ?' \n\nChoose the strongest one for your next video. Post the hook here for feedback!"}
+  workshop:{title:"Write 5 Hooks for Your Next Post",prompt:"Using the 3 hook types, write one of each for your niche:\n\nCuriosity hook: 'Nobody talks about how ___...'\n\nBold claim: 'I ___ and it completely changed my ___'\n\nPain point: 'If you're a mom who ___, this is for you'\n\nPersonal story: 'I used to ___ until I discovered ___'\n\nQuestion: 'Have you ever wondered why ___ ?' \n\nChoose the strongest one for your next video. Post the hook here for feedback!",actionStep:"Rewrite the opening line of your next video as a real hook. Film it and compare it to your last video."}
 },
 "c5m1":{
   intro:{headline:"Script Structure That Keeps People Watching",sub:"Most creators lose 50% of viewers in the first 15 seconds. Here's how not to."},
@@ -283,7 +274,7 @@ var MODULE_SLIDES={
     {title:"The CTA: Every Video Needs One",body:"Do not end a video without telling your viewer what to do next.\n\nChoose ONE of these:\n- 'Follow for more...'\n- 'Comment below if...'\n- 'Save this for later'\n- 'Share this with a mom who needs it'\n\nOne CTA per video. Not five. One. Make it feel natural, not forced."}
   ],
   tip:"Your CTA is not begging. It is direction. Your audience WANTS to know what to do next. Give them clear direction and they will take it.",
-  workshop:{title:"Script Your Next Video",prompt:"Use the 4-part structure:\n\nHOOK (3 seconds): ___\n\nSETUP (10 seconds): ___\n\nVALUE (30-45 seconds — bullet points are fine):\n- ___\n- ___\n- ___\n\nCTA (5 seconds): ___\n\nFilm this video today using your script. Post it and share the link in the circle!"}
+  workshop:{title:"Script Your Next Video",prompt:"Use the 4-part structure:\n\nHOOK (3 seconds): ___\n\nSETUP (10 seconds): ___\n\nVALUE (30-45 seconds — bullet points are fine):\n- ___\n- ___\n- ___\n\nCTA (5 seconds): ___\n\nFilm this video today using your script. Post it and share the link in the circle!",actionStep:"Script your next video using the 4-part structure — hook, setup, value, CTA. Film it before the day is over."}
 },
 "c5m2":{
   intro:{headline:"Captions That Drive Saves and Shares",sub:"Captions are the secret weapon most creators ignore. Do not be most creators."},
@@ -293,7 +284,7 @@ var MODULE_SLIDES={
     {title:"The Save-Worthy Caption",body:"A caption gets saved when it has:\n✓ Practical information people want to reference again\n✓ A list or steps they will use later\n✓ An emotional truth they want to keep\n\nTry ending a caption with: 'Save this for the next time you need a reminder that...'\n\nThat single line increased saves for creators by 30-50%."}
   ],
   tip:"Write captions as if you're texting your best friend — but a best friend who also happens to know everything about your topic. That tone converts.",
-  workshop:{title:"Write 3 Captions",prompt:"Using the formulas, write 3 captions for your next 3 posts:\n\nCaption 1 (Story formula):\n[Hook] + [your story] + [lesson] + [CTA]\n___\n\nCaption 2 (List formula):\n[Hook] + [3-5 tips] + 'Save this!'\n___\n\nCaption 3 (Vulnerability formula):\n'Real talk:...'\n___\n\nShare your favorite one in the circle for feedback!"}
+  workshop:{title:"Write 3 Captions",prompt:"Using the formulas, write 3 captions for your next 3 posts:\n\nCaption 1 (Story formula):\n[Hook] + [your story] + [lesson] + [CTA]\n___\n\nCaption 2 (List formula):\n[Hook] + [3-5 tips] + 'Save this!'\n___\n\nCaption 3 (Vulnerability formula):\n'Real talk:...'\n___\n\nShare your favorite one in the circle for feedback!",actionStep:"Write three captions using the formulas and post the strongest one today with a save prompt at the end."}
 },
 "c5m3":{
   intro:{headline:"Understanding the Algorithm (Simply)",sub:"The algorithm is not your enemy. Here is what it actually rewards."},
@@ -303,7 +294,7 @@ var MODULE_SLIDES={
     {title:"The Consistency Compound",body:"Here is what most creators do not understand: the algorithm rewards CONSISTENT creators.\n\nPosting 1x per day for 60 days > posting 5x per day for 2 weeks then disappearing.\n\nPick a sustainable posting schedule and commit to it. 3-5x per week is plenty if the content is good."}
   ],
   tip:"The algorithm is just a machine trying to show people content they will like. Make content people genuinely like, and the algorithm becomes your biggest distributor.",
-  workshop:{title:"Audit Your Last 10 Posts",prompt:"Look at your last 10 posts and fill in:\n\nAverage watch time or completion rate: ___\nPost with most saves: ___\nPost with most shares: ___\nPost with most comments: ___\n\nWhat did your top posts have in common?\n___\n\nWhat will you do differently based on this?\n___\n\nOne change I'm making starting with my next post: ___"}
+  workshop:{title:"Audit Your Last 10 Posts",prompt:"Look at your last 10 posts and fill in:\n\nAverage watch time or completion rate: ___\nPost with most saves: ___\nPost with most shares: ___\nPost with most comments: ___\n\nWhat did your top posts have in common?\n___\n\nWhat will you do differently based on this?\n___\n\nOne change I'm making starting with my next post: ___",actionStep:"Check your last 10 posts' analytics right now. Write down what your top three had in common."}
 },
 // ── COURSE 6: Land Brand Deals ──
 "c6m0":{
@@ -314,7 +305,7 @@ var MODULE_SLIDES={
     {title:"Finding Brands That Are a Good Fit",body:"Start with brands you already USE. This is non-negotiable.\n\nWhy? Because:\n1. Your pitch will be authentic\n2. Your content will convert\n3. You will be easier to work with\n4. Long-term partnerships are more likely\n\nMake a list of 10 brands you genuinely use and love right now."}
   ],
   tip:"The best brand deal you can land is with a brand you are already recommending for free. You are currently giving them marketing they are not paying for. That ends now.",
-  workshop:{title:"Your Brand Hit List",prompt:"Write your Top 10 brand pitching targets:\n\nBrands I already use and genuinely love:\n1-5: Products I use daily or weekly\n6-8: Services or apps I recommend\n9-10: Dream brands I wish I could partner with\n\nFor each one:\n- Their Instagram handle: @___\n- Their website: ___\n- Contact email if you can find it: ___\n\nYou now have a 10-brand pipeline. This is your pitch roadmap."}
+  workshop:{title:"Your Brand Hit List",prompt:"Write your Top 10 brand pitching targets:\n\nBrands I already use and genuinely love:\n1-5: Products I use daily or weekly\n6-8: Services or apps I recommend\n9-10: Dream brands I wish I could partner with\n\nFor each one:\n- Their Instagram handle: @___\n- Their website: ___\n- Contact email if you can find it: ___\n\nYou now have a 10-brand pipeline. This is your pitch roadmap.",actionStep:"Write your top 10 brand pitch targets right now. Find the contact email for at least three of them."}
 },
 "c6m1":{
   intro:{headline:"The Pitch Email That Gets a Yes",sub:"The exact framework for a pitch that converts."},
@@ -324,7 +315,7 @@ var MODULE_SLIDES={
     {title:"Where to Send It",body:"Finding brand emails:\n1. Go to their website → scroll to footer → look for 'press', 'partners', or 'contact'\n2. Google: '[Brand name] influencer marketing email'\n3. LinkedIn: search the brand and find their marketing manager\n4. Instagram DM: 'Hi! I sent an email to [email] — just wanted to make sure you received it'\n\nMost brands respond to email. DM is a good backup."}
   ],
   tip:"Brands get hundreds of generic 'I love your brand' pitches. Be specific. Name the exact product you use, the exact reason you love it, and the exact audience you will put it in front of. Specific = professional.",
-  workshop:{title:"Write Your First Pitch Email",prompt:"Using the 5-line formula, write your pitch:\n\nSubject: ___\n\nLine 1 (who you are): ___\nLine 2 (why THIS brand): ___\nLine 3 (your audience): ___\nLine 4 (what you're proposing): ___\nLine 5 (next step): ___\n\nDoes it feel confident and specific? Read it out loud.\n\nSend it today. You are ready."}
+  workshop:{title:"Write Your First Pitch Email",prompt:"Using the 5-line formula, write your pitch:\n\nSubject: ___\n\nLine 1 (who you are): ___\nLine 2 (why THIS brand): ___\nLine 3 (your audience): ___\nLine 4 (what you're proposing): ___\nLine 5 (next step): ___\n\nDoes it feel confident and specific? Read it out loud.\n\nSend it today. You are ready.",actionStep:"Write your pitch email using the 5-line formula and send it to one brand today. One real pitch."}
 },
 "c6m2":{
   intro:{headline:"Negotiating Your Rate With Confidence",sub:"You set the rate. You hold the rate. Here is how."},
@@ -334,7 +325,7 @@ var MODULE_SLIDES={
     {title:"The Value of Saying No",body:"Not every brand deal is worth taking.\n\nBefore saying yes, ask:\n✓ Does this brand align with my values?\n✓ Would my audience actually use this?\n✓ Am I being paid fairly for my time?\n✓ Does this help or hurt my brand long-term?\n\nSaying no to a bad deal protects your credibility and makes room for a great one."}
   ],
   tip:"The moment you accept less than you're worth, you train brands to undervalue you. Hold your rate. The right brands will pay it.",
-  workshop:{title:"Build Your Rate Card",prompt:"My current stats:\n- Platform 1: ___ followers, ___% engagement\n- Platform 2: ___ followers, ___% engagement\n\nMy rate card:\n- UGC video (no posting): $___\n- Story post: $___\n- Feed/TikTok post: $___\n- Bundle (2 posts + story): $___\n\nSave this in your notes. When a brand asks 'what are your rates?' — you are ready."}
+  workshop:{title:"Build Your Rate Card",prompt:"My current stats:\n- Platform 1: ___ followers, ___% engagement\n- Platform 2: ___ followers, ___% engagement\n\nMy rate card:\n- UGC video (no posting): $___\n- Story post: $___\n- Feed/TikTok post: $___\n- Bundle (2 posts + story): $___\n\nSave this in your notes. When a brand asks 'what are your rates?' — you are ready.",actionStep:"Build your rate card right now and save it in your notes. Know your numbers before your next brand conversation."}
 },
 "c6m3":{
   intro:{headline:"Contracts, Deliverables, and Getting Paid",sub:"Protect yourself. Every brand deal needs a clear agreement."},
@@ -344,7 +335,7 @@ var MODULE_SLIDES={
     {title:"Getting Paid and Follow-Through",body:"Payment terms to request:\n- 50% upfront, 50% on delivery (for new brands)\n- Net-30 (payment within 30 days of delivery) is industry standard\n\nAfter delivery:\n✓ Send your analytics 72 hours after posting\n✓ Check in with the brand about results\n✓ Ask if they want to continue the partnership\n\nThat follow-through is how you turn one deal into a long-term relationship."}
   ],
   tip:"One brand deal done well is worth ten mediocre ones. Show up, deliver what you promised, and communicate professionally. Repeat clients are the best clients.",
-  workshop:{title:"Your Brand Deal Checklist",prompt:"Before your next brand deal, confirm you have:\n\n☐ Written agreement (email or contract)\n☐ Clear deliverables listed\n☐ Posting date confirmed\n☐ Payment terms agreed\n☐ Approval process understood\n☐ Rate agreed and in writing\n\nAfter delivery:\n☐ Analytics screenshot sent\n☐ Thank you sent\n☐ Follow-up for next collaboration scheduled\n\nSave this checklist and use it for every brand deal."}
+  workshop:{title:"Your Brand Deal Checklist",prompt:"Before your next brand deal, confirm you have:\n\n☐ Written agreement (email or contract)\n☐ Clear deliverables listed\n☐ Posting date confirmed\n☐ Payment terms agreed\n☐ Approval process understood\n☐ Rate agreed and in writing\n\nAfter delivery:\n☐ Analytics screenshot sent\n☐ Thank you sent\n☐ Follow-up for next collaboration scheduled\n\nSave this checklist and use it for every brand deal.",actionStep:"Review your last brand deal or plan your next one using the checklist. Screenshot it and save it."}
 },
 // ── COURSE 7: UGC ──
 "c7m0":{
@@ -355,7 +346,7 @@ var MODULE_SLIDES={
     {title:"What UGC Work Looks Like",body:"Typical UGC jobs:\n- Film a product review in your kitchen\n- Create a 'how I use this' short video\n- Film a testimonial-style clip\n- Make a 'before and after' video\n\nThey send the product (or you buy it and get reimbursed). You film. You send the file. You get paid.\n\nStarting rates: $150-400 per video."}
   ],
   tip:"UGC is the fastest way to make your first money as a creator because you skip the part where you need thousands of followers. Your phone and your face are all you need.",
-  workshop:{title:"Find Your First UGC Opportunity",prompt:"Go to Collabstr.com and create a free profile.\n\nYour UGC creator profile checklist:\n☐ Profile photo (professional-ish, bright, smiling)\n☐ Bio: state that you do UGC + your niche\n☐ Rates listed clearly\n☐ 1-2 sample videos uploaded (film something today if you don't have samples)\n\nPost your Collabstr profile link in the circle!"}
+  workshop:{title:"Find Your First UGC Opportunity",prompt:"Go to Collabstr.com and create a free profile.\n\nYour UGC creator profile checklist:\n☐ Profile photo (professional-ish, bright, smiling)\n☐ Bio: state that you do UGC + your niche\n☐ Rates listed clearly\n☐ 1-2 sample videos uploaded (film something today if you don't have samples)\n\nPost your Collabstr profile link in the circle!",actionStep:"Create your Collabstr profile today and upload at least one sample video. Your first client finds you when you show up."}
 },
 "c7m1":{
   intro:{headline:"Building a UGC Portfolio From Scratch",sub:"No paid work yet? No problem. Here is how to build your portfolio today."},
@@ -365,7 +356,7 @@ var MODULE_SLIDES={
     {title:"Organizing Your Portfolio",body:"Create a simple Google Drive folder with your UGC samples.\n\nLabel them: [Your Name] — [Product Type] — UGC Sample\n\nWhen pitching to brands or applying on platforms, you will share this link.\n\nYou do not need a fancy website. A clean Google Drive is completely professional."}
   ],
   tip:"Your first 3 UGC samples do not have to be perfect. They have to exist. Done beats perfect every single time.",
-  workshop:{title:"Create 3 UGC Samples",prompt:"Choose 3 products you own right now:\n1. ___  2. ___  3. ___\n\nFor each one, plan a 30-60 second UGC video:\n- Opening line (hook): ___\n- What you will show: ___\n- Benefit you will highlight: ___\n\nFilm all 3 this week. Upload them to a Google Drive folder.\nShare the best one in the circle for feedback!"}
+  workshop:{title:"Create 3 UGC Samples",prompt:"Choose 3 products you own right now:\n1. ___  2. ___  3. ___\n\nFor each one, plan a 30-60 second UGC video:\n- Opening line (hook): ___\n- What you will show: ___\n- Benefit you will highlight: ___\n\nFilm all 3 this week. Upload them to a Google Drive folder.\nShare the best one in the circle for feedback!",actionStep:"Film one UGC sample video today for a product you already own. Upload it to your portfolio folder."}
 },
 "c7m2":{
   intro:{headline:"How to Price Your UGC Services",sub:"Know your worth, charge your worth, and never apologize for it."},
@@ -375,7 +366,7 @@ var MODULE_SLIDES={
     {title:"The Confidence Mindset",body:"You are not 'just' making a video. You are saving the brand from:\n- Hiring a production team\n- Studio rental costs\n- Actor fees\n- Multiple hours of editing\n\nA $300 UGC video is a massive deal for the brand. Charge accordingly."}
   ],
   tip:"Price yourself too low and brands assume your work is low quality. Confidence in your rate communicates confidence in your work. Both matter.",
-  workshop:{title:"Set Your UGC Rate Card",prompt:"My UGC Rate Card:\n\n- 1 UGC video (up to 60 sec): $___\n- Bundle: 3 UGC videos: $___\n- Rush delivery (24-48 hrs): +$___\n- Raw files included: +$___\n- Full usage rights (6 months): +$___\n\nWrite your short pricing blurb for your Collabstr profile:\n'UGC packages starting at $___. Specializing in [niche]. Delivery in [X] days.'\n___"}
+  workshop:{title:"Set Your UGC Rate Card",prompt:"My UGC Rate Card:\n\n- 1 UGC video (up to 60 sec): $___\n- Bundle: 3 UGC videos: $___\n- Rush delivery (24-48 hrs): +$___\n- Raw files included: +$___\n- Full usage rights (6 months): +$___\n\nWrite your short pricing blurb for your Collabstr profile:\n'UGC packages starting at $___. Specializing in [niche]. Delivery in [X] days.'\n___",actionStep:"Set your UGC rates right now and write your pricing blurb. Add it to your Collabstr profile today."}
 },
 "c7m3":{
   intro:{headline:"Finding Clients and Landing Your First Deal",sub:"The clients are out there. Here is how to find them and get them to say yes."},
@@ -385,7 +376,7 @@ var MODULE_SLIDES={
     {title:"Getting Rehired",body:"Delivering great UGC once is how you get paid. Making it easy for the brand to rehire you is how you build income.\n\nAfter delivery:\n✓ Deliver on time or early\n✓ Provide 2-3 versions without being asked\n✓ Send a follow-up asking about next steps\n✓ Suggest future content ideas\n\nOne happy brand becomes a monthly retainer. That is real income stability."}
   ],
   tip:"Your first UGC deal will not pay $500. But it will give you a testimonial, a sample, and the confidence to charge $500 for the next one.",
-  workshop:{title:"Send 5 UGC Pitches",prompt:"This week, send 5 pitches. Here is your plan:\n\n1. Apply to 2 campaigns on Collabstr\n2. Apply to 1 campaign on Billd\n3. DM 2 brands you love on Instagram using the cold outreach formula\n\nTrack them:\nBrand 1: ___ | Sent: ___ | Response: ___\nBrand 2: ___ | Sent: ___ | Response: ___\nBrand 3: ___ | Sent: ___ | Response: ___\nBrand 4: ___ | Sent: ___ | Response: ___\nBrand 5: ___ | Sent: ___ | Response: ___\n\nPost your results in the circle after the week is up!"}
+  workshop:{title:"Send 5 UGC Pitches",prompt:"This week, send 5 pitches. Here is your plan:\n\n1. Apply to 2 campaigns on Collabstr\n2. Apply to 1 campaign on Billd\n3. DM 2 brands you love on Instagram using the cold outreach formula\n\nTrack them:\nBrand 1: ___ | Sent: ___ | Response: ___\nBrand 2: ___ | Sent: ___ | Response: ___\nBrand 3: ___ | Sent: ___ | Response: ___\nBrand 4: ___ | Sent: ___ | Response: ___\nBrand 5: ___ | Sent: ___ | Response: ___\n\nPost your results in the circle after the week is up!",actionStep:"Send five UGC pitches this week — two on Collabstr, one on Billd, two brand DMs. Track every one."}
 },
 // ── COURSE 8: You Did It — Celebrate + Recap ──
 "c8m0":{
@@ -396,7 +387,7 @@ var MODULE_SLIDES={
     {title:"Your Growth Is Coming",body:"If you have applied what you have learned in this academy:\n- You are more consistent than 90% of creators\n- You know your niche and your audience\n- You understand what makes content perform\n- You know how to get paid\n\nThe algorithm rewards creators who show up. You are showing up.\n\nTrust the process. The growth is coming."}
   ],
   tip:"The best creators are not the ones who never struggle. They are the ones who decide to keep going no matter what. You are that creator.",
-  workshop:{title:"Your Win List + What's Next",prompt:"This is your graduation activity.\n\nList 5 wins from your time in the academy:\n1. ___  2. ___  3. ___  4. ___  5. ___\n\nList 3 things you will commit to going forward:\n1. ___  2. ___  3. ___\n\nWrite a note to yourself from where you are today to where you will be in 90 days:\n___\n\nPost your win list in the Mama Circle. You earned the celebration."}
+  workshop:{title:"Your Win List + What's Next",prompt:"This is your graduation activity.\n\nList 5 wins from your time in the academy:\n1. ___  2. ___  3. ___  4. ___  5. ___\n\nList 3 things you will commit to going forward:\n1. ___  2. ___  3. ___\n\nWrite a note to yourself from where you are today to where you will be in 90 days:\n___\n\nPost your win list in the Mama Circle. You earned the celebration.",actionStep:"Post your win list to the Mama Circle right now. Five wins minimum. You earned the celebration."}
 },
 "c8m1":{
   intro:{headline:"The Rinse and Repeat Formula",sub:"This is the blueprint. Run it on repeat."},
@@ -406,7 +397,7 @@ var MODULE_SLIDES={
     {title:"When to Level Up",body:"You are ready to scale when:\n- You have been consistent for 60+ days\n- You have a solid media kit\n- You have at least 1 successful brand deal or UGC job\n- You know which content performs best for you\n\nAt that point: raise your rates, pursue bigger brands, consider a course or digital product.\n\nThe foundation you built here is what every next level is built on."}
   ],
   tip:"You do not have to be perfect. You do not have to go viral. You just have to show up, serve your audience, and keep going. The results compound over time.",
-  workshop:{title:"Your 90-Day Creator Plan",prompt:"Map your next 90 days:\n\nMONTH 1: Foundation\n- Post ___ times per week\n- Batch film on: ___\n- Send ___ brand pitches\n\nMONTH 2: Growth\n- New goal: ___\n- Try this new content style: ___\n- Apply to ___ UGC jobs\n\nMONTH 3: Monetize\n- Income goal: $___\n- Affiliate platforms I will join: ___\n- Brand partnership target: ___\n\nDate I am committing to this: ___\nShare your plan in the circle — let us hold each other accountable!"}
+  workshop:{title:"Your 90-Day Creator Plan",prompt:"Map your next 90 days:\n\nMONTH 1: Foundation\n- Post ___ times per week\n- Batch film on: ___\n- Send ___ brand pitches\n\nMONTH 2: Growth\n- New goal: ___\n- Try this new content style: ___\n- Apply to ___ UGC jobs\n\nMONTH 3: Monetize\n- Income goal: $___\n- Affiliate platforms I will join: ___\n- Brand partnership target: ___\n\nDate I am committing to this: ___\nShare your plan in the circle — let us hold each other accountable!",actionStep:"Map your 90-day creator plan today — month by month. Write your income goal, posting schedule, and pitching target."}
 },
 // Default fallback
 "default":{
@@ -418,7 +409,64 @@ var MODULE_SLIDES={
   ],
   tip:"Apply one thing from this lesson today. Not tomorrow. Today. That is the difference between creators who grow and creators who just learn.",
   workshop:{title:"Module Reflection",prompt:"What was the most actionable thing you learned?\n___\n\nHow will you apply it in the next 48 hours?\n___\n\nOne thing I will stop doing: ___\n\nOne thing I will start doing: ___\n\nMy commitment for this week: ___"}
+},
+// ── 5th modules (index 4) for all 9 courses ──
+"c1m4":{
+  intro:{headline:"Protecting Your Energy",sub:"Your consistency is your competitive advantage — protect it."},
+  points:[{title:"Energy Is Your Business Currency",body:"A CEO who burns out cannot build. Energy management is a business strategy. The moms who build lasting businesses learn to protect their creative energy the way they protect their income.\n\nThat means saying no to things that do not align. It means rest without guilt. It means systems that keep you moving on the days you feel like stopping."}],
+  tip:"Schedule a non-negotiable CEO hour every week. This is protected time for creation, strategy, and showing up for your business. Guard it.",
+  workshop:{title:"Energy Audit",prompt:"1. What drains your energy the most as a creator?\n2. What gives you energy and excitement about your content?\n3. What is one thing you will protect or eliminate this week?",actionStep:"Block one hour on your calendar this week labeled CEO Time. No interruptions — just building."}
+},
+"c2m4":{
+  intro:{headline:"Your Unfair Advantage",sub:"Nobody can copy your story — and that is your greatest competitive edge."},
+  points:[{title:"Only You Can Tell This Story",body:"Every piece of content that has ever gone viral came from a place of authentic specificity. Not generic advice — a real human being sharing something true from their own lived experience.\n\nYour niche is not just a category. It is the intersection of your story, your skills, and the audience who needs what only you can give them. That is your unfair advantage and nobody can take it."}],
+  tip:"Write down three experiences only you have had that relate to your niche. Those are your most powerful content ideas.",
+  workshop:{title:"Your Unfair Advantage",prompt:"1. What have you been through that most people in your niche have not?\n2. What perspective do you bring that feels uniquely yours?\n3. What piece of content have you been afraid to make because it feels too personal?",actionStep:"Create the piece of content you have been too afraid to make. Post it this week."}
+},
+"c3m4":{
+  intro:{headline:"Your Signature Style",sub:"The goal is for someone to recognize your content before they even see your face."},
+  points:[{title:"Consistency Creates Recognition",body:"Your filming style is part of your brand identity. The creators who grow fastest are not the ones with the best cameras — they are the ones whose content feels unmistakably theirs.\n\nSignature style includes your editing pace, your on-camera energy, your lighting, and the way you talk to your audience. Pick your signature elements and commit to them."}],
+  tip:"Choose 2-3 signature elements to repeat in every video — a consistent intro line, a color grade, a way you always close. Repetition builds recognition.",
+  workshop:{title:"Define Your Signature Style",prompt:"1. How would you describe your on-camera energy in 3 words?\n2. What 2-3 visual choices will you use in every video going forward?\n3. What is your signature way of starting or ending your content?",actionStep:"Film your next video and deliberately apply your signature elements. Watch it back before posting."}
+},
+"c4m4":{
+  intro:{headline:"Pitching With Your Media Kit",sub:"Your media kit is your business card — make it work for you."},
+  points:[{title:"Your Kit Is Your First Impression",body:"A professional media kit is a statement that says I take my business seriously. Most mom creators undercharge because they do not have their story and numbers organized in one place.\n\nYour Canva media kit gives brands exactly what they need to say yes. Update it every 90 days — even small consistent growth tells a powerful story."}],
+  tip:"Include your engagement rate in your media kit — it is often more impressive than follower count and brands care deeply about it.",
+  workshop:{title:"Media Kit Ready Check",prompt:"1. What is your current follower count and average engagement rate?\n2. What are your top 3 performing content categories?\n3. Which 3 brands would be a perfect fit for your audience right now?",actionStep:"Send your media kit to one brand this week. Practice pitching before you feel ready."}
+},
+"c5m4":{
+  intro:{headline:"Repurposing Content Like a CEO",sub:"One great piece of content should live in at least five places."},
+  points:[{title:"Work Once, Post Everywhere",body:"The creators who look like they are everywhere are not creating more — they are repurposing smarter. One video becomes a caption, a story slide, a short clip, a blog post, and a pin.\n\nRepurposing is not laziness. It is leveraging the work you already did to reach the people who missed it the first time on a different platform."}],
+  tip:"Every time you film a video, immediately pull 3 quotes from it for captions. That single step doubles your content output with zero extra filming.",
+  workshop:{title:"Your Repurposing System",prompt:"1. Pick one recent post — how many ways could you have repurposed it?\n2. What platform are you currently underusing for repurposed content?\n3. What is your plan to repurpose your next piece of content?",actionStep:"Take your best performing post from the last 30 days and repurpose it for one additional platform this week."}
+},
+"c6m4":{
+  intro:{headline:"Building Long-Term Brand Relationships",sub:"One deal is income. Recurring deals are a business."},
+  points:[{title:"From One-Time Deal to Ongoing Partnership",body:"Getting a brand deal is one thing. Building a relationship that pays you repeatedly is the real goal. The creators who build consistent brand income treat every partnership like the beginning of a long-term relationship.\n\nCommunicate. Deliver above expectations. Send results. Follow up. These are the habits that turn a first deal into a recurring monthly income stream."}],
+  tip:"After every collaboration send a results report — reach, engagement, screenshots of top content. This is what turns one deal into an ongoing partnership.",
+  workshop:{title:"Brand Relationship Strategy",prompt:"1. Name one brand you would want to work with repeatedly.\n2. What would make you stand out as a partner worth keeping?\n3. Write a follow-up message you could send to a brand after a collaboration.",actionStep:"Send a follow-up or thank you to one brand contact this week — even months after working together."}
+},
+"c7m4":{
+  intro:{headline:"Scaling Your UGC Income",sub:"From your first deal to a consistent monthly income stream."},
+  points:[{title:"UGC as a Real Business",body:"Landing your first UGC deal proved you can do this. Now the question is how you scale it into consistent monthly income.\n\nCreators who build real UGC businesses standardize their packages, raise rates with experience, and build a client roster they can return to. This is a product business — and you are the product."}],
+  tip:"Create a UGC rate card with three package tiers. Having a clear menu of services makes it easy for brands to say yes and harder to lowball you.",
+  workshop:{title:"UGC Business Plan",prompt:"1. How many UGC pieces do you want to create per month?\n2. What is your target monthly income from UGC?\n3. What would you need to charge per video to hit that number?",actionStep:"Set your UGC rates in writing this week. Knowing your worth in numbers is the first step to charging it."}
+},
+"c8m4":{
+  intro:{headline:"Launching and Marketing Your Product",sub:"Building it was half the work — now you get it in front of the right people."},
+  points:[{title:"Sell the Problem Before the Solution",body:"The biggest mistake digital product creators make is building in silence and launching to crickets. The creators who sell consistently have been warming up their audience for weeks before they reveal the product exists.\n\nContent about the problem your product solves is pre-launch marketing. Do it for at least 3 weeks before you launch. Then your audience will already want what you are about to offer."}],
+  tip:"Start creating content about the problem your product solves 3 weeks before launch. Sell the problem before you sell the solution.",
+  workshop:{title:"Launch Strategy",prompt:"1. What problem does your digital product solve?\n2. Who specifically is it for?\n3. What content could you create this week that speaks to that problem without mentioning your product?",actionStep:"Post one piece of pre-launch content this week that speaks to your product's core problem."}
+},
+"c9m4":{
+  intro:{headline:"Your Creator Legacy",sub:"You built this — and what you built matters."},
+  points:[{title:"This Was Always About More Than Content",body:"You built something from nothing. No team, no budget, no roadmap — just you, your phone, and a decision that your story was worth sharing.\n\nEvery mom who finds your page and feels less alone because of what you created — that is your legacy. The business is the vehicle. The impact is the destination."}],
+  tip:"Write down your creator mission statement today. Not your niche — your WHY. Read it on the hard days. It will keep you going.",
+  workshop:{title:"Your CEO Legacy Statement",prompt:"1. Why did you really start creating content?\n2. What do you want moms to feel when they find your page?\n3. Complete this: I am building this because ___.",actionStep:"Post your creator mission this week — in a caption, a story, or your bio. Let your audience see your why."}
 }
+
+
 };
 // ─── HOOK VAULT ───
 var HOOK_VAULT={
@@ -429,10 +477,6 @@ var HOOK_VAULT={
   "Faith & Motherhood":["The Bible verse that carried me through __","Raising kids in faith when the world says __","POV: Finding peace in the chaos of motherhood","The prayer that changed my mornings as a mom","How I keep my faith when motherhood feels impossible","I used to think God wanted me to be __. I was wrong.","The one thing I teach my kids about faith every day","When God called me to __ I wasn't ready but I went anyway","The scripture I repeat when mom guilt hits hard","How I raise kids who love God in a world that doesn't","Blessed and stressed: the honest truth about faithful motherhood","The moment I surrendered __ to God and my whole life shifted","Why I stopped praying for patience and started praying for __","Raising daughters in faith means teaching them __","The faith practice that grounds me every morning","God did not call me to be a perfect mom, He called me to be __","How I bring faith into our everyday moments","What church didn't prepare me for as a mom","The devotional habit that changed our whole family culture","Raising boys in faith looks like __"],
   "Finance & Business":["I saved __ in 6 months on a single income","The money mistake I made at __ that I would never make again","Hot take: Budgeting doesn't mean you can't have nice things","POV: You finally stopped living paycheck to paycheck","The one financial habit every mom should start today","I made __ from home last month and here is how","Nobody teaches moms about __ and it is costing them thousands","The side hustle that actually fits into mom life","Real talk: Building wealth as a single mom looks like __","I stopped buying __ and saved __ in one month","The app that changed how I track my money","How I am teaching my kids about money from age __","The budget category most moms forget to include","Making money online as a mom — the real numbers","I negotiated __ and saved __ — you can too","Financial freedom for moms starts with __ not __","The emergency fund changed everything for my family","Small business mom: the real numbers behind __","I went from broke to __ by doing one thing differently","The investment every mom should make before anything else"],
   "Travel & Adventure":["We took our kids to __ with $__ and here is what happened","The travel hack that saves us hundreds every trip","POV: Road trip with __ kids and actually surviving it","The destination most families sleep on is __","Hot take: You can travel with a baby","I used to think travel was only for people with __","Our __ trip full breakdown — less than you think","The packing system that saves my sanity every trip","Traveling solo as a mom changed __ about me","Best family-friendly destination nobody talks about: __","We lived in __ for a month — it cost us __","The travel gear I swear by for trips with little kids","Why we prioritize experiences over __ in our budget","I cried at __ and it had nothing to do with being tired","How we afford to travel as a one-income family","The flight hack that saved us __ on our last trip","We skipped the resort and did __ instead — zero regrets","What nobody tells you about traveling with toddlers","The moment I knew we raised world-curious kids","Our family gap year — what we learned and what we spent"],
-  "Clean & Organize":["The cleaning routine that finally stuck for me as a busy mom","POV: Your house is clean and it took less than 30 minutes","The organizing hack that changed how my whole family functions","Hot take: You do not need to declutter everything you need a system","The one thing I do every morning that keeps my house from spiraling","Before and after: the space that was stressing me out every single day","The cleaning schedule that actually works when you have little kids","Stop buying more storage and try this instead","I cleaned my entire house in under an hour and here is how","The organization system my whole family actually uses"],
-  "Daily Routines":["My morning routine as a mom of ___ and how it sets my whole day","The night routine that makes my mornings feel effortless","POV: You finally stopped winging it and built a routine that works","The one thing I added to my routine that changed my energy","Hot take: A perfect routine does not exist but a consistent one does","What my actual morning looks like with kids no filter","The after school routine that keeps our evenings calm","I tried a new morning routine for 30 days and here is what happened","The bedtime routine that gets my kids down in under 30 minutes","How I batch my week so I am never scrambling last minute"],
-  "Clean & Organize":["The cleaning routine that finally stuck for me as a busy mom","POV: Your house is clean and it took less than 30 minutes","The organizing hack that changed how my whole family functions","Hot take: You do not need to declutter everything you need a system","The one thing I do every morning that keeps my house from spiraling","Before and after: the space that was stressing me out every single day","The cleaning schedule that actually works when you have little kids","Stop buying more storage and try this instead","I cleaned my entire house in under an hour and here is how","The organization system my whole family actually uses"],
-  "Daily Routines":["My morning routine as a mom of ___ and how it sets my whole day","The night routine that makes my mornings feel effortless","POV: You finally stopped winging it and built a routine that works","The one thing I added to my routine that changed my energy","Hot take: A perfect routine does not exist but a consistent one does","What my actual morning looks like with kids no filter","The after school routine that keeps our evenings calm","I tried a new morning routine for 30 days and here is what happened","The bedtime routine that gets my kids down in under 30 minutes","How I batch my week so I am never scrambling last minute"],
   "DIY & Home":["I transformed my __ for under $__ and it looks designer","The __ hack that made my small space feel twice as big","POV: Decorating your home when you have toddlers","Hot take: You don't need to spend a lot for a beautiful home","The one paint color that goes with everything","I thrifted my entire __ room for __ and I am obsessed","Organization system that actually stays organized with kids","The DIY project that took 2 hours and looks expensive","Why I stopped buying new and started thrifting __","Real home tour: what I show and what I don't","The room that gets the most compliments costs __","Budget home refresh for under __","The storage solution every small home needs","I made a __ from scratch and it cost me __","The cleaning routine that keeps my house guest-ready in 20 minutes","Rental-friendly upgrades that actually made a difference","The furniture piece I keep seeing and how to DIY it","My __ year old helped with this DIY and we are both proud","One room, $100, massive transformation — watch this","Thrift store flip that actually looked better than the original"]
 };
 
@@ -448,7 +492,7 @@ var AFFILIATE_PLATFORMS=[
   {name:"Billd",icon:"💰",commission:"Per-project UGC ($100–$2,000)",followers:"None required for UGC",desc:"Specialized UGC and micro-influencer platform. Brands pay you to create content — no posting to your feed required. Perfect if you are just starting out.",steps:["Sign up at billd.io as a creator","Complete your profile and niche selection","Browse available brand campaigns","Apply to 5+ campaigns per week for best results","Submit content, get approved, get paid"],url:"billd.io",tip:"Apply to everything relevant when you start. The first 3 deals build your portfolio. Your rates will double after that."},
 ];
 
-var NICHES=["Mom Lifestyle","Fitness & Wellness","Beauty & Fashion","Food & Recipes","Faith & Motherhood","Finance & Business","Travel & Adventure","DIY & Home","Clean & Organize","Daily Routines"];
+var NICHES=["Mom Lifestyle","Fitness & Wellness","Beauty & Fashion","Food & Recipes","Faith & Motherhood","Finance & Business","Travel & Adventure","DIY & Home"];
 var GOALS=["Grow my following","Land brand deals","Create digital products","Build a full-time income","Build community"];
 var STAGES=[{id:"starting",label:"Just Starting",sub:"New to content creation"},{id:"growing",label:"Growing",sub:"Posting, but want more reach"},{id:"monetizing",label:"Ready to Monetize",sub:"Time to turn this into income"}];
 var QUICK=[{text:"Help me find my niche"},{text:"Write me a Reel hook"},{text:"Plan this week's content"},{text:"How do I pitch brands?"},{text:"I am feeling overwhelmed"},{text:"How do I film better videos?"},{text:"What should I post this week?"},{text:"How do I grow faster?"}];
@@ -482,31 +526,20 @@ var AFFIRMATIONS=[
   {text:"She did not ask for permission. She did not wait for validation. She just built it. Be her.",vibe:"sassy",bg:"linear-gradient(145deg,#200818,#380d28)",tc:"#fff",accent:"#d4507a"},
 ];
 
-var COMMUNITY=[];
+var COMMUNITY=[
+  {id:1,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the Mama Circle, mama. \u2665\n\nThis is your space. No perfection required, no follower count needed, no gatekeeping. Whether you just posted your first video or you're working toward your first brand deal — you belong here.\n\nShare your wins (big and small). Ask your questions. Drop your honest thoughts. This community grows when we show up for each other, so don't be a stranger.\n\nI read every single post. I am cheering for every single one of you. Now introduce yourself below — I want to know who is in this room. \uD83C\uDF38",comments:0,likes:0,replies:[]},
+];
 var VIP_POSTS=[
+  {id:100,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the VIP Inner Circle. \u2665\n\nThis is the room inside the room. You made it here because you are serious — and I take that seriously.\n\nThis is where I drop brand opportunities before anywhere else, answer questions directly, host hot seats, and share what is actually working right now in the creator economy.\n\nThe rules are simple: show up, be real, support each other. There is no competition in here — only collaboration.\n\nDrop your intro below. Tell me your niche, where you are right now, and the one thing you most want to build in the next 90 days. Let's get to work. \u2728",comments:0,likes:0,replies:[]},
   {id:101,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"1h ago",tag:"Tip",content:"Brand opportunity this week — Bloom Nutrition is looking for mom wellness creators with 3K+ followers. Send me your media kit and I will connect you directly. VIP mamas first.",comments:4,likes:19,isSimone:true},
   {id:102,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"3d ago",tag:"Coaching",content:"Hot seat answer for @brookefit: Yes, you can pitch brands at 800 followers. Your engagement rate matters more than your count. Here is exactly what to say in your email...",comments:7,likes:23,isSimone:true},
 ];
 
-// ─── Airtable Member Verification (secure server proxy) ───
-function checkMembership(email, callback){
-  fetch("/api/airtable", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({email: email.trim().toLowerCase()})
-  })
+function checkMembership(email,callback){
+  fetch("/api/airtable",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email.trim().toLowerCase()})})
   .then(function(r){return r.json();})
-  .then(function(d){
-    callback({
-      plan:   d.plan   || "starter",
-      status: d.status || "active",
-      name:   d.name   || ""
-    });
-  })
-  .catch(function(){
-    // If proxy fails, default to starter so app still works
-    callback({plan:"starter", status:"active", name:""});
-  });
+  .then(function(d){callback({plan:d.plan||"starter",status:d.status||"active",name:d.name||""}); })
+  .catch(function(){callback({plan:"starter",status:"active",name:""});});
 }
 var DAYLETTERS=["S","M","T","W","T","F","S"];
 
@@ -529,30 +562,27 @@ var state={
   affDismissed:ls("ev_aff_d",""),
   loginName:"",loginEmail:"",loginPass:"",loginPass2:"",loginCode:"",
   loginLoading:false,
-  loginCodeErr:"",
+  loginCodeErr:"",loginCodePlan:null,showCodeInput:false,
   loginMode:"create",loginErr:"",
   onbStep:0,
   circleTab:"mama",
+  replies:ls("ev_replies",{}),
+  replyOpen:{},replyText:{},
   communityPosts:ls("ev_cposts",[]),vipPosts:ls("ev_vposts",[]),newPostText:"",
   createTab:"hooks",copiedIdx:null,
-  aiHooks:[],
-  genHooks:false,
   learnProgress:ls("ev_lp",{}),
   moduleContent:ls("ev_mc",{}),moduleNotes:ls("ev_notes",{}),
   workshopAnswers:ls("ev_ws",{}),
   lessonTab:"lesson",
   slideIdx:0,
   expandedPlatform:null,
-  moneyGoal:ls("ev_money_goal",1000),
-  editingGoal:false,
-  commentOpen:null,
-  showTutorials:false,
 };
 
 function save(){
   ss("ev_screen",state.screen);ss("ev_profile",state.profile);ss("ev_msgs",state.messages);
   ss("ev_likes",state.likes);ss("ev_deals",state.deals);ss("ev_cal",state.calPosts);
   ss("ev_cposts",state.communityPosts);ss("ev_vposts",state.vipPosts);
+  ss("ev_replies",state.replies);
   ss("ev_lp",state.learnProgress);ss("ev_mc",state.moduleContent);
   ss("ev_notes",state.moduleNotes);ss("ev_ws",state.workshopAnswers);
 }
@@ -567,7 +597,8 @@ function btnG(){return "background:rgba(196,97,74,0.06);color:#c4614a;border:1.5
 function sBtn(on){return "background:"+(on?"rgba(196,97,74,0.05)":"#fff")+";border:1.5px solid "+(on?"#c4614a":"rgba(196,97,74,0.15)")+";border-radius:14px;padding:14px 16px;cursor:pointer;text-align:left;width:100%;font-family:'Nunito',sans-serif;";}
 function nBtn(on){return "padding:8px 14px;background:"+(on?"#c4614a":"#fff")+";color:"+(on?"#fff":"#3a1e14")+";border:1.5px solid "+(on?"#c4614a":"rgba(196,97,74,0.18)")+";border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;";}
 function gBtn(on){return "padding:12px 16px;background:"+(on?"linear-gradient(135deg,#c4614a,#d4507a)":"#fff")+";color:"+(on?"#fff":"#1a0d08")+";border:1.5px solid "+(on?"#c4614a":"rgba(196,97,74,0.15)")+";border-radius:14px;cursor:pointer;text-align:left;width:100%;font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;";}
-function avC(size,extra){var fs=Math.round(size*.38);return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;font-size:'+fs+'px;color:#fff;font-family:\'Playfair Display\',serif;font-weight:700;flex-shrink:0;'+(extra||'')+'">E</div>';}
+function avC(size,extra){var fs=Math.round(size*.38);return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;'+(extra||'')+'">'+'<span style="font-size:'+fs+'px;color:#fff;font-family:\'Playfair Display\',serif;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center">E</span>'+'</div>';}
+
 function logo(){return '<span style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:700;color:#1a0d08;letter-spacing:-.5px">Hey Evie</span>';}
 function getAff(){var d=new Date();return AFFIRMATIONS[(d.getDate()+d.getMonth())%AFFIRMATIONS.length];}
 function getMods(c,niche){return (c.niched&&(c.niched[niche]||c.niched["default"]))||[];}
@@ -584,6 +615,7 @@ function buildApp(){
 function buildSplash(){
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column">'
     +(state.showUpsell?buildUpsell():'')
+    +(state.showCelebration?buildCelebration():'')
     +'<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;position:relative;overflow:hidden">'
     +'<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:380px;height:280px;background:radial-gradient(ellipse,rgba(196,97,74,0.1),transparent 70%);pointer-events:none"></div>'
     +'<div style="position:relative;margin-bottom:20px" class="fu">'+avC(120,'box-shadow:0 12px 40px rgba(196,97,74,0.25)')+'<span style="position:absolute;top:-6px;right:-10px;font-size:16px;color:#c4614a">✦</span></div>'
@@ -628,13 +660,26 @@ function buildLogin(){
 
 // ─── Onboard ───
 function buildOnboard(){
-  var p=state.profile;var step=state.onbStep;
+  var p=state.profile;var step=state.onbStep||0;
+  var totalSteps=4;
   var dots='<div style="display:flex;gap:7px;margin-bottom:28px">'
-    +[0,1,2].map(function(i){return '<div style="width:8px;height:8px;border-radius:50%;background:'+(i<=step?"#c4614a":"rgba(196,97,74,0.15)")+';transition:all .3s"></div>';}).join('')+'</div>';
+    +[0,1,2,3].map(function(i){return '<div style="width:8px;height:8px;border-radius:50%;background:'+(i<=step?"#c4614a":"rgba(196,97,74,0.15)")+';transition:all .3s"></div>';}).join('')+'</div>';
   var content="";
-  if(step===0){content='<div class="fu">'+avC(68)+'<p style="font-size:14px;color:#7a4a3a;margin:12px 0 6px;text-align:center">Hey '+esc(p.name)+', so glad you are here.</p><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">Where are you in your creator journey?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+STAGES.map(function(st){return '<button data-stage="'+st.id+'" style="'+sBtn(p.stage===st.id)+'"><div style="font-size:15px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+st.label+'</div><div style="font-size:12px;color:#9a7060">'+st.sub+'</div></button>';}).join('')+'</div></div>';}
-  else if(step===1){content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:6px">What is your content niche?</h2><p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:14px">Pick the one that feels most like you</p><div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;width:100%;margin-bottom:18px">'+NICHES.map(function(n){return '<button data-niche="'+n+'" style="'+nBtn(p.niche===n)+'">'+n+'</button>';}).join('')+'</div>'+(p.niche?'<button id="onb-next1" style="'+btnP()+'">Continue</button>':'')+'</div>';}
-  else{content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">What is your biggest goal?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+GOALS.map(function(g){return '<button data-goal="'+g+'" style="'+gBtn(p.goal===g)+'">'+g+'</button>';}).join('')+'</div>'+(p.goal?'<button id="onb-finish" style="'+btnP()+'margin-top:18px">Enter Hey Evie</button>':'')+'</div>';}
+
+  if(step===0){
+    content='<div class="fu">'+avC(68)+'<p style="font-size:14px;color:#7a4a3a;margin:12px 0 6px;text-align:center">Hey '+esc(p.name)+', so glad you are here.</p><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">Where are you in your creator journey?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+STAGES.map(function(st){return '<button data-stage="'+st.id+'" style="'+sBtn(p.stage===st.id)+'"><div style="font-size:15px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+st.label+'</div><div style="font-size:12px;color:#9a7060">'+st.sub+'</div></button>';}).join('')+'</div></div>';
+  }
+  else if(step===1){
+    content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:6px">What is your content niche?</h2><p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:14px">Pick the one that feels most like you</p><div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;width:100%;margin-bottom:18px">'+NICHES.map(function(n){return '<button data-niche="'+n+'" style="'+nBtn(p.niche===n)+'">'+n+'</button>';}).join('')+'</div>'+(p.niche?'<button id="onb-next1" style="'+btnP()+'">Continue</button>':'')+' </div>';
+  }
+  else if(step===2){
+    var followerOptions=["Just starting out — 0 to 500","Growing — 500 to 5K","Building — 5K to 20K","Established — 20K to 100K","Large — 100K+"];
+    content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:6px">How many followers do you currently have?</h2><p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:18px">Across all platforms combined</p><div style="display:flex;flex-direction:column;gap:8px;width:100%;margin-bottom:18px">'+followerOptions.map(function(f){var sel=p.followers===f;return '<button data-followers="'+f+'" style="'+sBtn(sel)+'"><div style="font-size:14px;font-weight:800;color:#1a0d08">'+f+'</div></button>';}).join('')+'</div>'+(p.followers?'<button id="onb-next2" style="'+btnP()+'">Continue</button>':'')+' </div>';
+  }
+  else{
+    content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">What is your biggest goal?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+GOALS.map(function(g){return '<button data-goal="'+g+'" style="'+gBtn(p.goal===g)+'">'+g+'</button>';}).join('')+'</div>'+(p.goal?'<button id="onb-finish" style="'+btnP()+'margin-top:18px">Enter Hey Evie</button>':'')+' </div>';
+  }
+
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column"><div style="flex:1;padding:50px 20px 40px;display:flex;flex-direction:column;align-items:center">'+dots+content+'</div></div>';
 }
 
@@ -646,6 +691,7 @@ function buildMain(){
   var aff=getAff();
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column">'
     +(state.showUpsell?buildUpsell():'')
+    +(state.showCelebration?buildCelebration():'')
     +(state.showAffirmation?buildAffModal(aff):'')
     +buildNav()
     +(state.tab==="home"?buildHome(p,income,aff):'')
@@ -684,7 +730,7 @@ function buildNav(){
 }
 
 function buildBottomNav(){
-  var tabs=[{id:"home",l:"HOME"},{id:"evie",l:"EVIE"},{id:"learn",l:"LEARN"},{id:"create",l:"CREATE"},{id:"planner",l:"PLAN"},{id:"money",l:"MONEY"},{id:"circle",l:"CIRCLE"},{id:"me",l:"ME"}];
+  var tabs=[{id:"home",l:"HOME"},{id:"evie",l:"EVIE"},{id:"learn",l:"LEARN"},{id:"create",l:"HOOKS"},{id:"planner",l:"PLAN"},{id:"money",l:"MONEY"},{id:"circle",l:"CIRCLE"},{id:"me",l:"ME"}];
   return '<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:'+BG+';border-top:1px solid rgba(196,97,74,0.1);display:flex;z-index:100;padding:2px 0 10px;overflow-x:auto">'
     +tabs.map(function(t){return '<button data-tab="'+t.id+'" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 9px 0;background:none;border:none;cursor:pointer">'
       +'<div style="height:2px;width:18px;border-radius:2px;background:#c4614a;opacity:'+(state.tab===t.id?1:0)+';margin-bottom:3px"></div>'
@@ -715,36 +761,20 @@ function buildHome(p,income,aff){
     +'<div style="flex:1"><p style="font-size:13px;color:#3a1e14;line-height:1.7;margin-bottom:8px">'+tip+'</p>'
     +'<button id="tip-chat-btn" style="font-size:12px;font-weight:800;color:#c4614a;background:rgba(196,97,74,0.07);border:none;border-radius:10px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">Talk to Evie</button>'
     +'</div></div>'
-    
     +'<div style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(196,97,74,.08)">'
     +'<div id="tutorial-toggle" style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer">'
     +'<div style="display:flex;align-items:center;gap:10px">'
     +'<div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0">&#9654;</div>'
-    +'<div><p style="font-size:13px;font-weight:800;color:#1a0d08">How to Use Hey Evie</p>'
-    +'<p style="font-size:11px;color:#9a7060;margin-top:2px">Tutorial videos from Simone</p></div>'
+    +'<div><p style="font-size:13px;font-weight:800;color:#1a0d08;margin:0">How to Navigate Hey Evie</p>'
+    +'<p style="font-size:11px;color:#9a7060;margin:2px 0 0">Tutorial videos from Simone</p></div>'
     +'</div>'
     +'<span style="font-size:12px;color:#b8a090">'+(state.showTutorials?'&#9650;':'&#9660;')+'</span>'
     +'</div>'
     +(state.showTutorials
-      ?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'
-        +[
-          {title:"Welcome to Hey Evie",desc:"Your first 5 minutes in the app",id:"YOUR_WELCOME_ID"},
-          {title:"How to Navigate",desc:"A quick tour of every tab",id:"YOUR_TOUR_ID"},
-          {title:"Using the Academy",desc:"Courses, notes and workshops",id:"YOUR_ACADEMY_ID"},
-          {title:"Chatting with Evie",desc:"Getting the most from AI coaching",id:"YOUR_CHAT_ID"}
-        ].map(function(vid){
-          return '<div style="margin-top:14px">'
-            +'<p style="font-size:12px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+vid.title+'</p>'
-            +'<p style="font-size:11px;color:#9a7060;margin-bottom:8px">'+vid.desc+'</p>'
-            +'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:14px;text-align:center;border:1.5px dashed rgba(196,97,74,.2)">'
-            +'<p style="font-size:18px;margin-bottom:4px">&#127916;</p>'
-            +'<p style="font-size:11px;color:#c4614a;font-weight:700">Video coming soon</p>'
-            +'<p style="font-size:10px;color:#b8a090;margin-top:2px">Replace '+vid.id+' with your YouTube ID</p>'
-            +'</div></div>';
-        }).join('')
-        +'</div>'
+      ?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'+[{title:'Welcome to Hey Evie',desc:'Your first 5 minutes in the app',id:'YOUR_WELCOME_ID'},{title:'How to Navigate',desc:'A quick tour of every tab',id:'YOUR_TOUR_ID'},{title:'Using the Academy',desc:'Courses, notes and workshops',id:'YOUR_ACADEMY_ID'},{title:'Chatting with Evie',desc:'Getting the most from AI coaching',id:'YOUR_CHAT_ID'}].map(function(vid){return '<div style="margin-top:14px">'+'<p style="font-size:12px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+vid.title+'</p>'+'<p style="font-size:11px;color:#9a7060;margin-bottom:8px">'+vid.desc+'</p>'+(vid.id&&vid.id!=='YOUR_WELCOME_ID'&&vid.id!=='YOUR_TOUR_ID'&&vid.id!=='YOUR_ACADEMY_ID'&&vid.id!=='YOUR_CHAT_ID'?'<iframe width="100%" style="border-radius:12px;aspect-ratio:16/9;border:none" src="https://www.youtube.com/embed/'+vid.id+'" allowfullscreen></iframe>':'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:14px;text-align:center;border:1.5px dashed rgba(196,97,74,.2)">'+'<p style="font-size:18px;margin-bottom:4px">&#127916;</p>'+'<p style="font-size:11px;color:#c4614a;font-weight:700">Video coming soon</p>'+'</div>')+'</div>';}).join('')+'</div>'
       :'')
-    +'</div>'+'<div id="daily-aff-card" style="background:'+aff.bg+';border-radius:14px;padding:16px;cursor:pointer">'
+    +'</div>'
+    +'<div id="daily-aff-card" style="background:'+aff.bg+';border-radius:14px;padding:16px;cursor:pointer">'
     +'<p style="font-size:9px;font-weight:900;color:'+aff.accent+';letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;opacity:.8">Today\'s Affirmation ✦</p>'
     +'<p style="font-family:\'Playfair Display\',serif;font-size:14px;color:'+aff.tc+';line-height:1.6;font-style:italic">"'+aff.text.substring(0,70)+'…"</p>'
     +'<p style="font-size:11px;font-weight:700;color:'+aff.accent+';margin-top:8px;opacity:.8">Tap to read in full</p>'
@@ -874,6 +904,15 @@ function buildCourseDetail(p){
     +'<p style="font-size:12px;color:#7a4a3a;margin-bottom:10px">'+c.sub+'</p>'
     +'<div style="height:4px;background:rgba(196,97,74,.1);border-radius:10px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,#c4614a,#d4507a);width:'+pct+'%"></div></div>'
     +'<p style="font-size:11px;color:#c4614a;font-weight:700;margin-top:5px">'+pct+'% complete</p></div>'
+    +(function(){
+        var firstKey='c'+c.id+'m0';
+        var firstSlide=MODULE_SLIDES[firstKey]||MODULE_SLIDES['default'];
+        var ytId=(firstSlide.intro&&firstSlide.intro.youtubeId)||'';
+        var isReal=ytId&&ytId.trim()!==''&&ytId.trim()!=='YOUR_VIDEO_ID_HERE'&&ytId.indexOf('YOUR_')!==0&&ytId.length>=8&&/^[a-zA-Z0-9_\-]+$/.test(ytId.trim());
+        return isReal
+          ?'<div style="margin-bottom:14px"><div style="background:#000;border-radius:14px;overflow:hidden;aspect-ratio:16/9;position:relative"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+ytId.trim()+'?rel=0" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="border:none;position:absolute;inset:0;width:100%;height:100%"></iframe></div><p style="font-size:11px;color:#9a7060;text-align:center;margin-top:6px">Watch Simone introduce this lesson</p></div>'
+          :'<div style="margin-bottom:14px"><div style="background:linear-gradient(145deg,#1a0d08,#2e1208);border-radius:14px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><div style="width:48px;height:48px;border-radius:50%;background:rgba(196,97,74,.25);display:flex;align-items:center;justify-content:center"><span style="font-size:22px;color:#c4614a">&#9654;</span></div><p style="font-size:12px;color:rgba(255,255,255,.5);font-weight:700">Intro video coming soon</p></div><p style="font-size:11px;color:#9a7060;text-align:center;margin-top:6px">Simone\'s lesson intro will appear here</p></div>';
+      })()
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Modules</p>'
     +mods.map(function(m,i){
       var done2=state.learnProgress["c"+c.id+"m"+i];
@@ -900,18 +939,6 @@ function buildModuleSlides(p){
   var noteText=state.moduleNotes[slideKey]||"";
   var wsKey=slideKey;var wsAnswers=state.workshopAnswers[wsKey]||{};
   var tabNames=["Lesson","Notes","Workshop"];
-  var isVipC=p.plan==="vip";
-  if(!isVipC){
-    return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
-      +'<h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08;margin-bottom:6px">Hook Vault</h2>'
-      +'<p style="font-size:12px;color:#9a7060;margin-bottom:16px">Ready-to-use hooks, captions and CTAs for your niche</p>'
-      +'<div style="background:linear-gradient(145deg,#1a0d08,#2e1208);border-radius:20px;padding:28px 22px;text-align:center">'
-      +'<p style="font-size:9px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">VIP Feature</p>'
-      +'<h3 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.4">Hook Vault unlocks with Lifetime VIP</h3>'
-      +'<p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:20px">100+ niche-specific hooks, caption templates, CTAs, and AI-powered fresh hook generation.</p>'
-      +'<button id="create-upsell-btn" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:22px;padding:13px 28px;font-size:14px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif">Upgrade to Lifetime VIP</button>'
-      +'</div></div>';
-  }
   return '<div style="flex:1;overflow-y:auto;padding:0 0 100px">'
     +'<div style="padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(196,97,74,.08);background:'+BG+';position:sticky;top:0;z-index:10">'
     +'<button id="back-module" style="background:none;border:none;font-size:16px;cursor:pointer;color:#c4614a;padding:0">←</button>'
@@ -941,8 +968,9 @@ function buildLessonSlide(slides,si,total,key){
   var s=slides[si];var html="";
   if(s.type==="intro"){
     var ytId = s.data.youtubeId || "";
-    var videoHtml = ytId ? '<div style="margin:14px 14px 0"><div style="background:#000;border-radius:14px;overflow:hidden;aspect-ratio:16/9;position:relative"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+ytId+'?rel=0" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="border:none;position:absolute;inset:0;width:100%;height:100%"></iframe></div><p style="font-size:11px;color:#9a7060;text-align:center;margin-top:6px;margin-bottom:0">Watch Simone walk you through this module</p></div>' : "";
-    html=videoHtml+'<div style="margin:14px;background:linear-gradient(145deg,#1a0d08,#3a1808);border-radius:20px;padding:28px 22px;color:#fff;min-height:260px;display:flex;flex-direction:column;justify-content:center"><div style="margin-bottom:auto"><p style="font-size:10px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Module Lesson</p>'
+    var isRealId = false;
+    var videoHtml = '';
+    html='<div class="slide-intro" style="margin:14px"><div style="margin-bottom:auto"><p style="font-size:10px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Module Lesson</p>'
       +'<h2 style="font-family:\'Playfair Display\',serif;font-size:26px;color:#fff;margin-bottom:12px;line-height:1.3">'+esc(s.data.headline)+'</h2>'
       +'<p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.65">'+esc(s.data.sub)+'</p></div>'
       +'<div style="margin-top:24px"><p style="font-size:11px;color:rgba(255,255,255,.4)">Slide 1 of '+total+' · Tap → to continue</p></div></div>';
@@ -956,7 +984,7 @@ function buildLessonSlide(slides,si,total,key){
       +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Evie\'s Tip ✦</p>'
       +'<p style="font-family:\'Playfair Display\',serif;font-size:17px;color:#1a0d08;line-height:1.7;font-style:italic">"'+esc(s.data.tip)+'"</p></div></div>';
   } else if(s.type==="workshop"){
-    html='<div style="padding:14px"><div style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:16px;padding:20px;color:#fff">'
+    html='<div style="padding:14px"><div class="slide-action">'
       +'<p style="font-size:10px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Module Complete!</p>'
       +'<h3 style="font-family:\'Playfair Display\',serif;font-size:19px;color:#fff;margin-bottom:8px">Up next: Workshop Activity</h3>'
       +'<p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:14px">Head to the Workshop tab to complete your activity and lock in what you learned.</p>'
@@ -981,22 +1009,41 @@ function buildNotesTab(key,noteText,title){
 }
 
 function buildWorkshopTab(data,key,answers){
-  var ws=data.workshop||{title:"Reflection Activity",prompt:"What did you learn from this module?\nHow will you apply it in the next 48 hours?\nWhat is one thing you will stop and one thing you will start?"};
-  var prompts=ws.prompt.split("\n").filter(function(l){return l.trim();});
-  return '<div style="padding:14px"><div class="slide-workshop" style="margin-bottom:14px">'
+  var ws=data.workshop||{title:"Reflection Activity",prompt:"1. What was your biggest takeaway from this module?\n2. How will you apply this in the next 48 hours?\n3. What is one thing you will do differently starting today?"};
+  var allLines=ws.prompt.split("\n").filter(function(l){return l.trim();});
+  // Separate numbered questions from instruction text
+  var questions=allLines.filter(function(l){return /^\d+\./.test(l.trim());});
+  var instructions=allLines.filter(function(l){return !/^\d+\./.test(l.trim());});
+  // actionStep is stored separately or falls back to a default
+  var actionStep=ws.actionStep||"Apply one thing from this module before your next session. Real growth comes from action, not just knowledge.";
+  return '<div style="padding:14px">'
+    +'<div class="slide-workshop" style="margin-bottom:14px">'
     +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Workshop Activity</p>'
     +'<h3 style="font-family:\'Playfair Display\',serif;font-size:18px;color:#1a0d08;margin-bottom:10px">'+esc(ws.title)+'</h3>'
-    +'<div style="background:rgba(255,255,255,.7);border-radius:10px;padding:12px">'
-    +prompts.map(function(l){return '<p style="font-size:13px;color:#1a0d08;line-height:1.6;margin-bottom:6px">'+esc(l)+'</p>';}).join('')
-    +'</div></div>'
-    +prompts.map(function(pr,i){
-      return '<div style="margin-bottom:12px"><p style="font-size:12px;font-weight:700;color:#1a0d08;margin-bottom:6px">'+esc(pr)+'</p>'
-        +'<textarea data-ws="'+i+'" style="'+inp()+'height:80px;resize:none;margin-bottom:0" placeholder="Your answer…">'+esc(answers[i]||"")+'</textarea></div>';
-    }).join('')
+    +(instructions.length?'<div style="background:rgba(196,97,74,.05);border-radius:10px;padding:12px;margin-bottom:12px">'
+      +instructions.map(function(l){return '<p style="font-size:13px;color:#1a0d08;line-height:1.65;margin-bottom:4px">'+esc(l)+'</p>';}).join('')
+      +'</div>':'')
+    +'</div>'
+    +(questions.length
+      ? questions.map(function(q,i){
+          return '<div style="margin-bottom:14px">'
+            +'<p style="font-size:13px;font-weight:800;color:#1a0d08;margin-bottom:6px">'+esc(q)+'</p>'
+            +'<textarea data-ws="'+i+'" style="'+inp()+'height:80px;resize:none;margin-bottom:0" placeholder="Your answer…">'+esc(answers[i]||"")+'</textarea>'
+            +'</div>';
+        }).join('')
+      : '<div style="margin-bottom:14px">'
+        +'<p style="font-size:13px;font-weight:800;color:#1a0d08;margin-bottom:6px">Your reflection:</p>'
+        +'<textarea data-ws="0" style="'+inp()+'height:100px;resize:none;margin-bottom:0" placeholder="What did you learn and how will you apply it?">'+esc(answers[0]||"")+'</textarea>'
+        +'</div>')
+    +'<div style="background:linear-gradient(135deg,rgba(196,97,74,.08),rgba(212,80,122,.06));border-radius:14px;padding:16px;margin-bottom:16px;border-left:4px solid #c4614a">'
+    +'<p style="font-size:10px;font-weight:900;color:#c4614a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Your Action Step</p>'
+    +'<p style="font-size:13px;color:#1a0d08;line-height:1.7;margin:0">'+esc(actionStep)+'</p>'
+    +'</div>'
     +'<button id="save-workshop" style="'+btnP()+'">Save Workshop</button>'
     +'<button id="ws-ask-evie" style="'+btnG()+'margin-top:8px">Ask Evie About This</button>'
     +'</div>';
 }
+
 
 
 // ─── Caption Vault (Beginner-friendly templates) ───
@@ -1028,8 +1075,9 @@ function buildCaptionVault(niche){
 // ─── Create / Hook Vault ───
 function buildCreate(p){
   var niche=p.niche||"Mom Lifestyle";
-  var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];
   var isVipC=p.plan==="vip";
+  var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];
+
   if(!isVipC){
     return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
       +'<h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08;margin-bottom:6px">Hook Vault</h2>'
@@ -1041,73 +1089,97 @@ function buildCreate(p){
       +'<button id="create-upsell-btn" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:22px;padding:13px 28px;font-size:14px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif">Upgrade to Lifetime VIP</button>'
       +'</div></div>';
   }
+
+  var hookCategories=Object.keys(hooks);
+  var activeCat=state.hookCategory||hookCategories[0];
+  var catHooks=hooks[activeCat]||[];
+  var freshHooks=state.freshHooks||[];
+
   return '<div style="flex:1;overflow-y:auto;padding:0 0 100px">'
     +'<div style="padding:14px 14px 0"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08;margin-bottom:2px">Hook Vault</h2>'
-    +'<p style="font-size:12px;color:#9a7060">Ready-to-use hooks + CTAs for your niche</p></div>'
-    +'<div style="display:flex;border-bottom:1px solid rgba(196,97,74,.1);margin:10px 0 0;padding:0 14px">'
-    +'<button data-ctab="hooks" style="padding:9px 12px;font-size:11px;font-weight:800;color:'+(state.createTab==="hooks"?"#c4614a":"#b0a0a0")+';background:none;border:none;border-bottom:2px solid '+(state.createTab==="hooks"?"#c4614a":"transparent")+';cursor:pointer;font-family:\'Nunito\',sans-serif">Hooks ('+hooks.length+')</button>'
-    +'<button data-ctab="captions" style="padding:9px 12px;font-size:11px;font-weight:800;color:'+(state.createTab==="captions"?"#c4614a":"#b0a0a0")+';background:none;border:none;border-bottom:2px solid '+(state.createTab==="captions"?"#c4614a":"transparent")+';cursor:pointer;font-family:\'Nunito\',sans-serif">Captions</button>'
-    +'<button data-ctab="ctas" style="padding:9px 12px;font-size:11px;font-weight:800;color:'+(state.createTab==="ctas"?"#c4614a":"#b0a0a0")+';background:none;border:none;border-bottom:2px solid '+(state.createTab==="ctas"?"#c4614a":"transparent")+';cursor:pointer;font-family:\'Nunito\',sans-serif">CTAs ('+CTA_VAULT.length+')</button>'
+    +'<p style="font-size:12px;color:#9a7060">Ready-to-use hooks for your '+niche+' niche</p></div>'
+    +'<div style="padding:10px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">'
+    +hookCategories.map(function(cat){
+      var active=cat===activeCat;
+      return '<button data-hcat="'+cat+'" style="flex-shrink:0;padding:7px 14px;border-radius:18px;border:1.5px solid '+(active?'#c4614a':'rgba(196,97,74,.2)')+';background:'+(active?'#c4614a':'#fff')+';color:'+(active?'#fff':'#c4614a')+';font-size:11px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">'+cat+'</button>';
+    }).join('')
     +'</div>'
-    +'<div style="padding:10px 14px">'
-    +(state.createTab==="hooks"
-      ?'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
-      +'<p style="font-size:11px;color:#9a7060">Niche: <strong style="color:#c4614a">'+esc(niche)+'</strong></p>'
-      +'<button id="gen-hooks-btn" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:16px;padding:6px 12px;font-size:11px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">'+(state.genHooks?"Generating...":"&#9825; Fresh Hooks")+'</button>'
-      +'</div>'
-      +(state.aiHooks&&state.aiHooks.length
-        ?'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:10px;margin-bottom:10px;border:1px solid rgba(196,97,74,.15)">'
-          +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Fresh from Evie</p>'
-          +state.aiHooks.map(function(h,i){var ai=1000+i;return '<div data-copy="'+esc(h)+'" data-ci="'+ai+'" style="background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:6px;cursor:pointer;border:1px solid rgba(196,97,74,.1)"><p style="font-size:13px;color:#1a0d08;line-height:1.5;margin-bottom:4px">'+esc(h)+'</p><p style="font-size:10px;font-weight:700;color:'+(state.copiedIdx===ai?"#4caf85":"#b8a090")+'">'+(state.copiedIdx===ai?"Copied!":"Tap to copy")+'</p></div>';}).join('')
-          +'</div>'
-        :'')
-        +hooks.map(function(h,i){return '<div data-copy="'+esc(h)+'" data-ci="'+i+'" style="background:#fff;border:1px solid rgba(196,97,74,0.1);border-radius:10px;padding:12px;margin-bottom:7px;cursor:pointer;'+(state.copiedIdx===i?"border-color:#c4614a;background:rgba(196,97,74,.03)":"")+ '"><p style="font-size:14px;color:#1a0d08;line-height:1.55;margin-bottom:5px">'+esc(h)+'</p><p style="font-size:10px;font-weight:700;color:'+(state.copiedIdx===i?"#4caf85":"#b8a090")+'">'+( state.copiedIdx===i?"✓ Copied!":"Tap to copy")+'</p></div>';}).join('')
-      :state.createTab==="captions"
-      ?buildCaptionVault(niche)
-      :CTA_VAULT.map(function(c,i){var idx=500+i;return '<div data-copy="'+esc(c)+'" data-ci="'+idx+'" style="background:#fff;border:1px solid rgba(196,97,74,0.1);border-radius:10px;padding:12px;margin-bottom:7px;cursor:pointer;'+(state.copiedIdx===idx?"border-color:#c4614a":"")+ '"><p style="font-size:14px;color:#1a0d08;line-height:1.55;margin-bottom:5px">'+esc(c)+'</p><p style="font-size:10px;font-weight:700;color:'+(state.copiedIdx===idx?"#4caf85":"#b8a090")+'">'+( state.copiedIdx===idx?"✓ Copied!":"Tap to copy")+'</p></div>';}).join(''))
+    +'<div style="padding:0 14px">'
+    +catHooks.map(function(h,i){
+      return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
+        +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
+        +'<button data-copy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
+        +'</div>';
+    }).join('')
+    +(freshHooks.length?'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px">Fresh Hooks</p>'
+      +freshHooks.map(function(h,i){
+        return '<div style="background:linear-gradient(135deg,rgba(196,97,74,.06),rgba(212,80,122,.04));border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.12);display:flex;align-items:flex-start;gap:10px">'
+          +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
+          +'<button data-fcopy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
+          +'</div>';
+      }).join('')
+    :'')
+    +'<button id="gen-hooks" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#1a0d08,#2e1208);color:#fff;border:none;border-radius:18px;padding:13px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">'
+    +(state.hooksLoading?'Generating…':'&#9825; Fresh Hooks — Generate New Ones')+'</button>'
     +'</div></div>';
 }
 
-// ─── Planner ───
+var PLANNER_IDEAS={"Mom Lifestyle":["Day in my life with my kids","Morning routine that actually works","Nobody warned me about this stage","The thing I stopped doing that changed everything","What I wish I knew before having kids","Real talk: the hardest part of motherhood","How I balance content creation and kids","The 10-minute routine that saves my day","My honest take on mom culture today","Things moms do that nobody talks about"],"Fitness & Wellness":["10-minute workout you can do with kids home","What I eat in a day as a mom","My honest fitness journey no filters","The mindset shift that changed my health","Easy meal prep for busy moms","How I stay consistent when life is chaotic","Real postpartum body talk","Workout modifications for every level","My morning wellness routine","The supplement I cant live without"],"Beauty & Fashion":["Get ready with me school run edition","Affordable Amazon fashion haul","5-minute makeup for busy moms","My everyday mom outfit formula","Honest review of a favorite product","Style tips for real moms","Whats in my makeup bag","Seasonal capsule wardrobe for moms","Drugstore dupes that actually work","Before and after outfit transformation"],"Food & Recipes":["Easy weeknight dinner the whole family loves","5-ingredient meal for busy moms","What I meal prep every Sunday","Kid-approved recipe they will actually eat","Healthy snack ideas for toddlers","The recipe I make on repeat","Crockpot meal for chaotic days","Grocery haul and meal plan this week","Lunch ideas beyond sandwiches","Dessert that takes under 20 minutes"],"Faith & Motherhood":["The verse that got me through this week","Raising kids with faith in todays world","Morning devotional routine as a mom","How faith shapes my parenting","Honest talk when faith feels hard","Bible story activity for little ones","Grateful for the messy middle","What surrender looks like as a mom","Praying over my kids what I say","Faith and self-care go together"],"Finance & Business":["How I make money from home as a mom","Side income streams that actually work","Honest talk about money and motherhood","How I budgeted for a big goal","The business mistake that taught me everything","My first brand deal what I earned","Passive income ideas for stay-at-home moms","How I started with zero experience","Money mindset shift that changed everything","What I would do differently starting over"],"Travel & Adventure":["Traveling with kids honest review","Best family-friendly destinations under $2000","Packing list for a trip with toddlers","How we afford family travel","The trip that almost went wrong","Hidden gem destination you need to visit","What it really costs to travel with kids","Travel hacks for moms","Our favorite road trip snacks","Why we prioritize experiences over things"],"DIY & Home":["Weekend project that transformed my space","Budget room makeover under $100","Amazon home finds I use every day","How I organize a specific room","DIY project for beginners","Before and after home transformation","My favorite cleaning routine","Thrift flip that cost almost nothing","How I keep my home clean with kids","Home decor trend I am loving right now"],"Clean & Organize":["Clean with me whole house reset","My decluttering method that actually sticks","How I keep my home organized with kids","10-minute tidy routine every night","What I got rid of and never missed","Organizing hack that changed my life","Cleaning products I swear by","How I do laundry without it taking all day","The one organizing system that works","Before and after declutter transformation"],"Daily Routines":["My morning routine as a mom","Evening routine that sets up tomorrow","How I structure my week as a creator","The routine that changed everything","Realistic daily routine for stay-at-home moms","What a productive day looks like for me","My Sunday reset routine","How I batch my content in one day","Nighttime routine with small kids","The habit that made me 10x more consistent"]};
 function buildPlanner(p,wStart,today){
   var tKey=today.toISOString().split("T")[0];
   var wEnd=new Date(wStart);wEnd.setDate(wStart.getDate()+6);
-  var range=wStart.toLocaleDateString("en-US",{month:"short",day:"numeric"})+" – "+wEnd.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  var range=wStart.toLocaleDateString("en-US",{month:"short",day:"numeric"})+" \u2013 "+wEnd.toLocaleDateString("en-US",{month:"short",day:"numeric"});
   var cal=DAYLETTERS.map(function(d,i){
     var dt=new Date(wStart);dt.setDate(wStart.getDate()+i);
     var k=dt.toISOString().split("T")[0];var isT=k===tKey;var idea=state.calPosts[k];
-    return '<div style="background:#fff;border-radius:9px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;border:'+(isT?"1.5px solid #c4614a":"1px solid rgba(196,97,74,.08)")+'">'
+    return '<div style="background:#fff;border-radius:9px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;border:'+(isT?"1.5px solid #c4614a":"1px solid rgba(196,97,74,.08")+')\">'
       +'<span style="font-size:8px;font-weight:800;color:#b8a090">'+d+'</span>'
       +'<span style="font-size:12px;font-weight:800;color:#1a0d08">'+dt.getDate()+'</span>'
       +(idea
         ?'<span style="font-size:7px;color:#5a3028;text-align:center;line-height:1.3;padding:0 1px;word-break:break-word">'+esc(idea.substring(0,18))+'</span>'
-          +'<button data-cc="'+k+'" style="font-size:7px;color:#b8a090;background:none;border:none;cursor:pointer;font-family:\'Nunito\',sans-serif;margin-top:1px">✕</button>'
-        :'<button data-oc="'+k+'" style="font-size:10px;color:#c4614a;background:rgba(196,97,74,.08);border:none;border-radius:5px;padding:1px 4px;cursor:pointer;font-family:\'Nunito\',sans-serif">'+(state.genLoad===k?'…':'+')+'</button>')
+          +'<button data-cc="'+k+'" style="font-size:7px;color:#b8a090;background:none;border:none;cursor:pointer;font-family:\'Nunito\',sans-serif;margin-top:1px">\u2715</button>'
+        :'<button data-oc="'+k+'" style="font-size:10px;color:#c4614a;background:rgba(196,97,74,.08);border:none;border-radius:5px;padding:1px 4px;cursor:pointer;font-family:\'Nunito\',sans-serif">'+(state.genLoad===k?'\u2026':'+')+' </button>')
       +'</div>';
   }).join('');
   var editDay=state.calEditDay;
+  var ideas=PLANNER_IDEAS[p.niche||"Mom Lifestyle"]||PLANNER_IDEAS["Mom Lifestyle"];
   return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
     +'<div style="margin-bottom:12px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">Content Planner</h2></div>'
     +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
-    +'<button id="cal-prev" style="background:rgba(196,97,74,.08);border:none;border-radius:8px;width:32px;height:32px;font-size:14px;cursor:pointer">←</button>'
+    +'<button id="cal-prev" style="background:rgba(196,97,74,.08);border:none;border-radius:8px;width:32px;height:32px;font-size:14px;cursor:pointer">\u2190</button>'
     +'<span style="font-size:12px;font-weight:700;color:#1a0d08">'+range+'</span>'
-    +'<button id="cal-next" style="background:rgba(196,97,74,.08);border:none;border-radius:8px;width:32px;height:32px;font-size:14px;cursor:pointer">→</button>'
+    +'<button id="cal-next" style="background:rgba(196,97,74,.08);border:none;border-radius:8px;width:32px;height:32px;font-size:14px;cursor:pointer">\u2192</button>'
+    +'</div>'
+    +'<div style="margin-bottom:12px">'
+    +'<p style="font-size:11px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Quick Fill a Day</p>'
+    +'<select id="day-select" style="width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(196,97,74,.2);background:#fff;font-size:13px;font-weight:700;color:#1a0d08;font-family:\'Nunito\',sans-serif;margin-bottom:8px;cursor:pointer">'
+    +'<option value="">— Select a day —</option>'
+    +['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'].map(function(day,i){var dt=new Date(wStart);dt.setDate(wStart.getDate()+i);var k=dt.toISOString().split('T')[0];var filled=!!state.calPosts[k];return '<option value="'+k+'">'+(filled?'\u2713 ':'')+day+' \u2014 '+dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})+(filled?' (filled)':'')+'</option>';}).join('')
+    +'</select>'
+    +(state.daySelectKey
+      ?'<select id="idea-select" style="width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid #c4614a;background:#fff;font-size:13px;font-weight:600;color:#1a0d08;font-family:\'Nunito\',sans-serif;margin-bottom:8px;cursor:pointer">'+'<option value="">— Pick a content idea —</option>'+(PLANNER_IDEAS[p.niche||'Mom Lifestyle']||PLANNER_IDEAS['Mom Lifestyle']).map(function(idea,ii){var sel=state.calPosts[state.daySelectKey]===idea;return '<option value="'+ii+'"'+(sel?' selected':'')+'>'+idea+'</option>';}).join('')+'</select>'+'<button id="fill-day-btn" style="'+btnP()+'font-size:12px;padding:9px 0;margin-bottom:0">Add to Calendar</button>'
+      :'')
     +'</div>'
     +'<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px">'+cal+'</div>'
     +(editDay
-      ?'<div style="background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;border:1.5px solid #c4614a">'
-        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:7px">Adding entry for '+editDay+'</p>'
-        +'<textarea id="cal-text" style="'+inp()+'height:70px;resize:none;margin-bottom:7px" placeholder="Content idea, hook, caption concept…">'+esc(state.calPosts[editDay]||"")+'</textarea>'
+      ?'<div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1.5px solid #c4614a">'
+        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:10px">'+editDay+'</p>'
+        +'<p style="font-size:11px;font-weight:800;color:#1a0d08;margin-bottom:6px">Pick a content idea:</p>'
+        +'<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px;max-height:200px;overflow-y:auto">'
+        +ideas.map(function(idea,ii){
+          var sel=state.calPosts[editDay]===idea;
+          return '<button data-idea="'+ii+'" style="text-align:left;padding:9px 12px;border-radius:10px;border:1.5px solid '+(sel?'#c4614a':'rgba(196,97,74,.12)')+';background:'+(sel?'rgba(196,97,74,.08)':'#fff')+';cursor:pointer;font-size:12px;color:#1a0d08;font-family:\'Nunito\',sans-serif;font-weight:'+(sel?'800':'600')+'">'+esc(idea)+'</button>';
+        }).join('')
+        +'</div>'
+        +'<p style="font-size:11px;font-weight:800;color:#1a0d08;margin-bottom:6px">Or write your own:</p>'
+        +'<textarea id="cal-text" style="'+inp()+'height:56px;resize:none;margin-bottom:8px" placeholder="Custom content idea, hook, caption...">'+esc(state.calPosts[editDay]||"")+'</textarea>'
         +'<div style="display:flex;gap:7px">'
         +'<button id="save-cal" style="'+btnP()+'flex:1;font-size:12px;padding:9px 0">Save</button>'
         +'<button id="gen-cal" style="background:#fff;border:1.5px solid rgba(196,97,74,.2);color:#c4614a;border-radius:18px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Evie Idea</button>'
         +'<button id="cancel-cal" style="background:none;border:none;color:#b0a0a0;cursor:pointer;font-size:12px;font-family:\'Nunito\',sans-serif">Cancel</button>'
         +'</div></div>'
       :'')
-    +'<div style="display:flex;gap:7px;margin-bottom:14px">'
-    +'<button id="fill-week" style="'+btnP()+'flex:1;font-size:12px;padding:10px 0">Fill Week with Evie</button>'
-    +'<button id="clear-week" style="background:#fff;border:1.5px solid rgba(196,97,74,.2);color:#c4614a;border-radius:18px;padding:10px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Clear</button>'
-    +'</div>'
+    
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Content Pillars</p>'
     +["Education","Inspiration","Behind the Scenes","Personal Story","Promotion"].map(function(pl){return '<div style="display:flex;align-items:center;gap:10px;background:#fff;border-radius:11px;padding:11px 12px;margin-bottom:7px">'
       +'<div style="width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);flex-shrink:0"></div>'
@@ -1116,17 +1188,16 @@ function buildPlanner(p,wStart,today){
       +'</div>';}).join('')+'</div>';
 }
 
-// ─── Money ───
 function buildMoney(p,income){
   var isVip=p.plan==="vip";
   var goal=state.moneyGoal||1000;
-  var pct=Math.min(100,Math.round(income/(goal)*100));
+  var pct=Math.min(100,Math.round(income/goal*100));
   var dealMap={active:{bg:"#edf6f1",c:"#2a7a50"},pitched:{bg:"#fdf1ee",c:"#c4614a"},negotiating:{bg:"#fef9ed",c:"#c9963a"},completed:{bg:"#eef3fe",c:"#2a4a8a"}};
   if(!isVip){
     return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
       +'<div style="background:linear-gradient(145deg,#1a0d08,#2e1208);border-radius:16px;padding:16px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between">'
       +'<div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:3px">Money Dashboard</p>'
-      +'<p style="font-size:11px;color:rgba(255,255,255,.5)">Track income, set goals, manage brand deals</p></div>'
+      +'<p style="font-size:11px;color:rgba(255,255,255,.5)">Track income, goals and brand deals</p></div>'
       +'<button id="money-upsell-btn" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:14px;padding:8px 14px;font-size:11px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif;flex-shrink:0">VIP Only</button>'
       +'</div>'
       +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Affiliate Platforms</p>'
@@ -1137,13 +1208,13 @@ function buildMoney(p,income){
           +'<span style="font-size:20px;flex-shrink:0">'+af.icon+'</span>'
           +'<div style="flex:1"><div style="font-size:13px;font-weight:800;color:#1a0d08">'+af.name+'</div>'
           +'<div style="font-size:11px;color:#9a7060;margin-top:1px">'+af.commission+' · '+af.followers+'</div></div>'
-          +'<span style="font-size:12px;color:#b8a090">'+(open?'&#9650;':'&#9660;')+'</span></div>'
+          +'<span style="font-size:12px;color:#b8a090">'+(open?'▲':'▼')+'</span></div>'
           +(open?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'
             +'<p style="font-size:13px;color:#3a1e14;line-height:1.65;margin:10px 0">'+af.desc+'</p>'
             +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">How to Sign Up</p>'
             +af.steps.map(function(st,si){return '<div style="display:flex;gap:8px;margin-bottom:7px"><div style="width:20px;height:20px;border-radius:50%;background:rgba(196,97,74,.12);color:#c4614a;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+(si+1)+'</div><p style="font-size:13px;color:#3a1e14;line-height:1.55">'+st+'</p></div>';}).join('')
             +'<div style="background:rgba(196,97,74,.06);border-radius:10px;padding:10px 12px;margin:10px 0"><p style="font-size:10px;font-weight:900;color:#c4614a;text-transform:uppercase;margin-bottom:4px">Evie Tip</p><p style="font-size:12px;color:#1a0d08;line-height:1.55">'+af.tip+'</p></div>'
-            +'<a href="https://'+af.url+'" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border-radius:20px;padding:11px;font-size:13px;font-weight:800;text-decoration:none">Sign Up &#8594;</a>'
+            +'<a href="https://'+af.url+'" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border-radius:20px;padding:11px;font-size:13px;font-weight:800;text-decoration:none">Sign Up →</a>'
             +'</div>':'')
           +'</div>';
       }).join('')
@@ -1155,9 +1226,7 @@ function buildMoney(p,income){
     +'<div style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:18px;padding:18px;margin-bottom:12px">'
     +'<p style="font-size:9px;color:rgba(255,255,255,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Active Monthly Income</p>'
     +'<p style="font-family:\'Playfair Display\',serif;font-size:34px;color:#fff;margin:3px 0">$'+income.toLocaleString()+'</p>'
-    +(state.editingGoal
-      ?'<div style="display:flex;align-items:center;gap:6px;margin-bottom:7px"><span style="font-size:11px;color:rgba(255,255,255,.5)">Goal: $</span><input id="goal-input" type="number" value="'+(state.moneyGoal||1000)+'" style="width:90px;padding:4px 8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:8px;color:#fff;font-size:13px;font-family:\'Nunito\',sans-serif;outline:none"/><button id="save-goal" style="background:#c4614a;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Save</button><button id="cancel-goal" style="background:transparent;color:rgba(255,255,255,.5);border:none;font-size:11px;cursor:pointer;font-family:\'Nunito\',sans-serif">Cancel</button></div>'
-      :'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><p style="font-size:11px;color:rgba(255,255,255,.4)">Goal: $'+(state.moneyGoal||1000).toLocaleString()+'/month</p><button id="edit-goal" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:none;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:\'Nunito\',sans-serif">Set Goal</button></div>')
+    +'<p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:7px">Goal: $5,000/month</p>'
     +'<div style="height:4px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;width:130px"><div style="height:100%;background:linear-gradient(90deg,#c4614a,#d4507a);border-radius:10px;width:'+pct+'%"></div></div>'
     +'</div>'
     +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
@@ -1192,68 +1261,81 @@ function buildMoney(p,income){
     }).join('')+'</div>';
 }
 
-// ─── Circle ───
-function buildCircle(p){
-  var isVip=p.plan==="vip";
-  var allM=COMMUNITY.concat(state.communityPosts);
-  var allMEmpty=allM.length===0;
-  var allV=VIP_POSTS.concat(state.vipPosts);
-  var tc={Win:"#2a7a50",Growth:"#c4614a",Support:"#d4507a",Content:"#c9963a",Tip:"#c4614a",Coaching:"#c9963a",Question:"#c4614a"};
-  var bg={Win:"rgba(76,175,133,.1)",Growth:"rgba(196,97,74,.1)",Support:"rgba(212,80,122,.08)",Content:"rgba(201,150,58,.1)",Tip:"rgba(196,97,74,.1)",Coaching:"rgba(201,150,58,.1)",Question:"rgba(196,97,74,.06)"};
-  function rPosts(posts){
+function rPosts(posts){
+  var myEmail=(state.profile&&state.profile.email)||"";
+  var isFounder=myEmail.toLowerCase()==="livingwithsimone@gmail.com";
   return posts.map(function(post){
     var liked=state.likes[post.id];
-    return '<div style="background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:'+(post.isSimone?"0 4px 20px rgba(196,97,74,.15)":"0 2px 8px rgba(196,97,74,.05)")+';border:'+(post.isSimone?"1.5px solid rgba(196,97,74,.25)":"none")+'">'
+    var replyList=state.replies[post.id]||[];
+    var replyOpen=!!(state.replyOpen&&state.replyOpen[post.id]);
+    var replyText=(state.replyText&&state.replyText[post.id])||'';
+    var postIsSimone=post.isSimone||(post.email&&post.email.toLowerCase()==="livingwithsimone@gmail.com");
+    var canDelete=isFounder||(post.email&&myEmail&&post.email.toLowerCase()===myEmail.toLowerCase());
+    return '<div style="background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:'+(postIsSimone?"0 4px 20px rgba(196,97,74,.12)":"0 2px 8px rgba(196,97,74,.05)")+';border:'+(postIsSimone?"1.5px solid rgba(196,97,74,.2)":"none")+'">'
       +'<div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">'
-      +'<div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;background:'+(post.isSimone?"linear-gradient(135deg,#c4614a,#d4507a)":post.color||"#c4a090")+';flex-shrink:0;box-shadow:'+(post.isSimone?"0 3px 10px rgba(196,97,74,.4)":"none")+'">'+post.ini+'</div>'
-      +'<div style="flex:1"><div style="font-size:12px;font-weight:800;color:#1a0d08;display:flex;align-items:center;gap:5px">'+post.name+(post.isSimone?'<span style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;font-size:9px;font-weight:900;border-radius:8px;padding:2px 7px;letter-spacing:.5px">FOUNDER</span>':"")+'</div>'
-      +'<div style="font-size:10px;color:#b09080">'+esc(post.handle||"")+' '+post.time+'</div></div>'
-      +'<div style="font-size:9px;font-weight:800;border-radius:16px;padding:2px 8px;background:'+(bg[post.tag]||"rgba(196,97,74,.1)")+';color:'+(tc[post.tag]||"#c4614a")+'">'+post.tag+'</div>'
+      +'<div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;background:'+(postIsSimone?"#c4614a":post.color||"#c4a090")+';flex-shrink:0">'+post.ini+'</div>'
+      +'<div style="flex:1"><div style="font-size:12px;font-weight:800;color:#1a0d08;display:flex;align-items:center;flex-wrap:wrap;gap:4px">'+post.name
+      +(postIsSimone?'<span style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;font-size:9px;font-weight:900;border-radius:8px;padding:2px 7px">FOUNDER</span>':'')+' </div>'
+      +'<div style="font-size:10px;color:#b09080">'+esc(post.handle||"")+" "+post.time+'</div></div>'
+      +(canDelete?'<button data-del="'+post.id+'" style="background:none;border:none;cursor:pointer;font-size:14px;color:#d4a0a0;padding:4px;flex-shrink:0" title="Delete post">&#128465;</button>':'')+' </div>'
+      +'<p style="font-size:14px;color:#1a0d08;line-height:1.65;margin-bottom:12px">'+esc(post.content)+'</p>'
+      +'<div style="display:flex;align-items:center;gap:14px;margin-bottom:'+(replyList.length||replyOpen?'8':'0')+'px">'
+      +'<button data-like="'+post.id+'" style="background:none;border:none;cursor:pointer;font-size:12px;font-weight:800;color:'+(liked?"#c4614a":"#b09080")+';font-family:\'Nunito\',sans-serif;padding:0;display:flex;align-items:center;gap:4px">'+(liked?"\u2665":"\u2661")+" "+(post.likes+(liked?1:0))+'</button>'
+      +'<button data-reply-toggle="'+post.id+'" style="background:none;border:none;cursor:pointer;font-size:12px;color:#b09080;font-family:\'Nunito\',sans-serif;padding:0;display:flex;align-items:center;gap:3px">&#128172; Reply'+(replyList.length?' ('+replyList.length+')':'')+'</button>'
       +'</div>'
-      +'<p style="font-size:13px;color:#3a1e14;line-height:1.7;margin-bottom:10px">'+esc(post.content)+'</p>'
-      +'<div style="display:flex;gap:8px">'
-      +'<button data-like="'+post.id+'" style="font-size:12px;color:#9a6050;background:rgba(196,97,74,.06);border:1px solid rgba(196,97,74,.12);border-radius:9px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">'+(liked?"&#10084;":"&#9825;")+' '+(post.likes+(liked?1:0))+'</button>'
-      +'<button data-comment="'+post.id+'" style="font-size:12px;color:#9a6050;background:rgba(196,97,74,.06);border:1px solid rgba(196,97,74,.12);border-radius:9px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">&#128172; '+(post.comments||0)+'</button>'
-      +'</div>'
-      +(state.commentOpen===post.id
-        ?'<div style="margin-top:8px;display:flex;gap:6px">'
-          +'<input id="ci-'+post.id+'" style="flex:1;padding:8px 12px;background:#f9f5f2;border:1.5px solid rgba(196,97,74,.15);border-radius:12px;font-size:13px;color:#1a0d08;outline:none;font-family:\'Nunito\',sans-serif" placeholder="Add a comment..."/>'
-          +'<button data-sc="'+post.id+'" style="background:#c4614a;color:#fff;border:none;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Post</button>'
+      +(replyList.length
+        ?'<div style="border-left:2px solid rgba(196,97,74,.15);padding-left:10px;margin-bottom:8px">'
+          +replyList.map(function(r){return '<div style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">'+r.ini+'</div><span style="font-size:11px;font-weight:800;color:#1a0d08">'+esc(r.name)+'</span><span style="font-size:10px;color:#b09080">'+r.time+'</span></div><p style="font-size:13px;color:#3a1e14;line-height:1.55;padding-left:28px">'+esc(r.text)+'</p></div>';}).join('')
+          +'</div>'
+        :'')
+      +(replyOpen
+        ?'<div style="display:flex;gap:6px;align-items:flex-end">'
+          +'<textarea data-reply-text="'+post.id+'" style="flex:1;padding:8px 12px;background:#f9f4f1;border:1.5px solid rgba(196,97,74,.2);border-radius:12px;font-size:13px;color:#1a0d08;outline:none;resize:none;height:56px;font-family:\'Nunito\',sans-serif" placeholder="Write a reply…">'+esc(replyText||'')+'</textarea>'
+          +'<button data-reply-send="'+post.id+'" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;white-space:nowrap;flex-shrink:0">Send</button>'
           +'</div>'
         :'')
       +'</div>';
   }).join('');
 }
+
+// ─── Circle ───
+function buildCircle(p){
+  var isVip=p.plan==="vip";
+  var allM=COMMUNITY.concat(state.communityPosts);
+  var allV=VIP_POSTS.concat(state.vipPosts);
+  var tc={Win:"#2a7a50",Growth:"#c4614a",Support:"#d4507a",Content:"#c9963a",Tip:"#c4614a",Coaching:"#c9963a",Question:"#c4614a"};
+  var bg={Win:"rgba(76,175,133,.1)",Growth:"rgba(196,97,74,.1)",Support:"rgba(212,80,122,.08)",Content:"rgba(201,150,58,.1)",Tip:"rgba(196,97,74,.1)",Coaching:"rgba(201,150,58,.1)",Question:"rgba(196,97,74,.06)"};
+  var tabs=[{id:"mama",label:"Mama Circle"},{id:"vip",label:"VIP Inner Circle"}];
   return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
-    +'<div style="margin-bottom:12px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">Mama Circle</h2>'
-    +'<p style="font-size:12px;color:#9a7060;margin-top:2px">Real mamas. Real wins. Real support.</p></div>'
-    +'<div style="display:flex;border-bottom:1px solid rgba(196,97,74,.1);margin-bottom:12px">'
-    +'<button data-ct="mama" style="padding:9px 14px;font-size:12px;font-weight:800;color:'+(state.circleTab==="mama"?"#c4614a":"#b0a0a0")+';background:none;border:none;border-bottom:2px solid '+(state.circleTab==="mama"?"#c4614a":"transparent")+';cursor:pointer;font-family:\'Nunito\',sans-serif">Community</button>'
-    +'<button data-ct="vip" style="padding:9px 14px;font-size:12px;font-weight:800;color:'+(state.circleTab==="vip"?"#c4614a":"#b0a0a0")+';background:none;border:none;border-bottom:2px solid '+(state.circleTab==="vip"?"#c4614a":"transparent")+';cursor:pointer;font-family:\'Nunito\',sans-serif">VIP Circle ✦</button>'
+    +'<div style="margin-bottom:12px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">The Circle</h2>'
+    +'<p style="font-size:12px;color:#9a7060;margin-top:3px">Your community of moms who mean business</p></div>'
+    +'<div style="display:flex;gap:8px;margin-bottom:14px">'
+    +tabs.map(function(t){var active=state.circleTab===t.id;return '<button data-ct="'+t.id+'" style="flex:1;padding:10px;border-radius:14px;border:1.5px solid '+(active?'#c4614a':'rgba(196,97,74,.15)')+';background:'+(active?'rgba(196,97,74,.08)':'#fff')+';font-size:12px;font-weight:800;color:'+(active?'#c4614a':'#b0a0a0')+';cursor:pointer;font-family:\'Nunito\',sans-serif">'+t.label+'</button>';}).join('')
     +'</div>'
     +(state.circleTab==="mama"
-      ?'<div style="background:#fff;border-radius:14px;padding:12px;margin-bottom:12px">'
-        +'<textarea id="new-post" style="'+inp()+'height:70px;resize:none;margin-bottom:8px" placeholder="Share a win, ask a question, support a mama…">'+esc(state.newPostText)+'</textarea>'
-        +'<button id="post-submit" style="'+btnP()+'">Share with the Circle</button></div>'
-        +(allM.length===0?'<div style="text-align:center;padding:32px 20px"><p style="font-size:36px;margin-bottom:12px">&#129293;</p><p style="font-size:15px;font-weight:800;color:#1a0d08;margin-bottom:6px">Be the first to post, mama</p><p style="font-size:13px;color:#9a7060;line-height:1.65;max-width:260px;margin:0 auto">Share a win, ask a question, or just say hi. This is your circle.</p></div>':rPosts(allM))
+      ?'<div>'
+        +'<textarea id="new-post" style="width:100%;padding:12px 14px;background:#fff;border:1.5px solid rgba(196,97,74,.18);border-radius:14px;font-size:13px;color:#1a0d08;outline:none;resize:none;height:72px;font-family:\'Nunito\',sans-serif;margin-bottom:8px" placeholder="Share a win, ask a question, drop a tip…">'+esc(state.newPostText||'')+'</textarea>'
+        +'<button id="post-submit" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:18px;padding:9px 22px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;margin-bottom:14px">Post to Circle</button>'
+        +rPosts(allM)
+        +'</div>'
       :(isVip
-        ?'<div style="background:linear-gradient(145deg,#100808,#1a0e10);border-radius:16px;padding:14px;margin-bottom:12px;border:1px solid rgba(196,97,74,.2)">'
-          +'<p style="font-size:9px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">VIP Inner Circle</p>'
-          +'<p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:10px;line-height:1.55">Drop your question or win. Simone reads every post here.</p>'
-          +'<textarea id="new-vip-post" style="width:100%;padding:11px 14px;background:rgba(255,255,255,.08);border:1.5px solid rgba(196,97,74,.25);border-radius:12px;font-size:13px;color:#fff;outline:none;margin-bottom:8px;display:block;height:70px;resize:none;font-family:\'Nunito\',sans-serif" placeholder="Ask Simone, share a VIP win, request a brand intro…">'+esc(state.newPostText)+'</textarea>'
-          +'<button id="vip-post-submit" style="'+btnP()+'">Post to VIP Circle</button></div>'
+        ?'<div>'
+          +'<div style="background:linear-gradient(135deg,rgba(196,97,74,.08),rgba(212,80,122,.06));border-radius:14px;padding:12px 14px;margin-bottom:12px;border-left:3px solid #c4614a">'
+          +'<p style="font-size:11px;font-weight:800;color:#c4614a;margin-bottom:3px">VIP Inner Circle</p>'
+          +'<p style="font-size:12px;color:#3a1e14;line-height:1.5">Direct access to Simone — hot seats, brand opportunities, and coaching drops.</p>'
+          +'</div>'
+          +'<textarea id="new-vip-post" style="width:100%;padding:12px 14px;background:#fff;border:1.5px solid rgba(196,97,74,.18);border-radius:14px;font-size:13px;color:#1a0d08;outline:none;resize:none;height:72px;font-family:\'Nunito\',sans-serif;margin-bottom:8px" placeholder="Ask Simone anything, share your wins, request a hot seat…">'+esc(state.newPostText||'')+'</textarea>'
+          +'<button id="vip-post-submit" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:18px;padding:9px 22px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;margin-bottom:14px">Post to VIP Circle</button>'
           +rPosts(allV)
-        :'<div style="background:linear-gradient(145deg,#100808,#1a0e10);border-radius:18px;padding:22px;text-align:center;border:1px solid rgba(196,97,74,.15)">'
-          +'<p style="font-size:9px;font-weight:900;color:rgba(196,97,74,.6);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">VIP Only</p>'
-          +'<h3 style="font-family:\'Playfair Display\',serif;font-size:19px;color:#fff;margin-bottom:8px">VIP Inner Circle</h3>'
-          +'<p style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:16px">Direct access to Simone, brand deal opportunities, and hot seat coaching.</p>'
-          +'<button id="vip-upsell-btn" style="'+btnP()+'max-width:240px;margin:0 auto">Upgrade to VIP — $197</button>'
+          +'</div>'
+        :'<div style="background:linear-gradient(145deg,#1a0d08,#2e1208);border-radius:20px;padding:28px 22px;text-align:center">'
+          +'<p style="font-size:9px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">VIP Exclusive</p>'
+          +'<h3 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.4">VIP Inner Circle unlocks with Lifetime VIP</h3>'
+          +'<p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:20px">Direct coaching from Simone, brand deal drops, and a circle of moms who are serious about building.</p>'
+          +'<button id="vip-upsell-btn" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:22px;padding:13px 28px;font-size:14px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif">Upgrade to Lifetime VIP</button>'
           +'</div>'))
     +'</div>';
 }
-
-// ─── Goals ───
-
 
 // ─── Goals ───
 function buildGoals(p){
@@ -1295,7 +1377,7 @@ function buildMe(p){
     +'<div style="margin-bottom:12px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">My Profile</h2></div>'
     +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">'+avC(52,'flex-shrink:0')
     +'<div><p style="font-size:15px;font-weight:800;color:#1a0d08">'+esc(p.name||"Mama")+'</p>'
-    +(p.name&&p.name.toLowerCase().indexOf("simone")>=0?'<span style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;font-size:10px;font-weight:900;border-radius:10px;padding:3px 10px;display:inline-block;margin-top:5px;letter-spacing:.5px">&#127775; Founder &amp; CEO</span>':'')
+    +((p.email&&p.email.toLowerCase()==="livingwithsimone@gmail.com")?'<span style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;font-size:10px;font-weight:900;border-radius:10px;padding:3px 10px;display:inline-block;margin-top:5px;letter-spacing:.5px">&#127775; Founder &amp; CEO</span>':'')
     +(p.bio?'<p style="font-size:11px;color:#7a4a3a;margin-top:1px;line-height:1.4">'+esc(p.bio.substring(0,60))+'</p>':'')
     +'<span style="display:inline-block;background:'+(isVip?"#c4614a":"rgba(196,97,74,.1)")+';color:'+(isVip?"#fff":"#c4614a")+';border-radius:18px;padding:2px 9px;font-size:10px;font-weight:700;margin-top:3px">'+pl+'</span>'
     +'</div></div>'
@@ -1340,23 +1422,16 @@ function buildUpsell(){
 }
 
 // ─── Bind All ───
-function buildCertificate(){
-  var p=state.profile||{};var c=state.activeCourse;
-  var courseName=c?c.title:"Hey Evie Academy";
-  var today=new Date();
-  var dateStr=today.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
-  return '<div style="position:fixed;inset:0;background:rgba(10,5,2,.85);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px">'
-    +'<div style="background:#fff;border-radius:24px;width:100%;max-width:400px;overflow:hidden">'
-    +'<div style="background:linear-gradient(145deg,#1a0d08,#2e1208);padding:28px 24px;text-align:center">'
-    +'<p style="font-size:10px;font-weight:900;color:rgba(201,150,58,.8);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px">Certificate of Completion</p>'
-    +'<p style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">This certifies that</p>'
-    +'<p style="font-family:\'Playfair Display\',serif;font-size:26px;color:#fff;margin-bottom:6px">'+esc(p.name||"Mama")+'</p>'
-    +'<p style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px">has successfully completed</p>'
-    +'<p style="font-family:\'Playfair Display\',serif;font-size:16px;color:#c9963a;margin-bottom:8px;line-height:1.4">'+esc(courseName)+'</p>'
-    +'<p style="font-size:11px;color:rgba(255,255,255,.35)">'+dateStr+'</p>'
-    +'</div>'
-    +'<div style="padding:16px 20px">'
-    +'<button id="close-cert" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:20px;padding:13px;font-size:14px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;width:100%">Done</button>'
+function buildCelebration(){
+  var msgs=['Look at you, mama! You are actually doing it.', 'Yes! Another module down. Evie is proud of you.', 'You showed up today and that is everything.', 'That is your CEO energy right there.', 'One step closer, mama. Keep going.', 'You are building something real. Do not stop.', 'Progress over perfection — and you just made progress.', 'That just happened! Look at you go.'];
+  var msg=msgs[Math.floor(Math.random()*msgs.length)];
+  return '<div style="position:fixed;inset:0;background:rgba(10,5,2,.6);z-index:600;display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none">'
+    +'<div style="background:#fff;border-radius:24px;padding:28px 24px;max-width:320px;width:100%;text-align:center;pointer-events:auto;animation:celebPop .35s cubic-bezier(.17,.67,.35,1.3)">'
+    +'<div style="font-size:48px;margin-bottom:12px">🎉</div>'
+    +'<p style="font-family:\'Playfair Display\',serif;font-size:20px;color:#1a0d08;margin-bottom:8px;line-height:1.35">'+msg+'</p>'
+    +'<p style="font-size:12px;color:#9a7060;margin-bottom:18px">Module marked complete</p>'
+    +'<div style="width:100%;height:4px;background:rgba(196,97,74,.12);border-radius:4px;overflow:hidden">'
+    +'<div style="height:100%;background:linear-gradient(135deg,#c4614a,#d4507a);border-radius:4px;animation:celebBar 3.5s linear forwards"></div>'
     +'</div></div></div>';
 }
 
@@ -1364,7 +1439,24 @@ function bindAll(){
   // Splash
   q("splash-create",function(){state.loginMode="create";state.screen="login";save();render();});
   q("splash-signin",function(){state.loginMode="signin";state.screen="login";save();render();});
-  
+  q("splash-code",function(){state.loginMode="create";state.showCodeInput=true;state.screen="login";save();render();});
+  // Login — use onchange not oninput to avoid keyboard dismiss on every char
+  var liName=document.getElementById("li-name");if(liName)liName.onchange=function(){state.loginName=this.value;};
+  var liEmail=document.getElementById("li-email");if(liEmail)liEmail.onchange=function(){state.loginEmail=this.value;};
+  var liPass=document.getElementById("li-pass");
+  if(liPass){liPass.onchange=function(){state.loginPass=this.value;};liPass.onblur=function(){state.loginPass=this.value;render();};}
+  var liPass2=document.getElementById("li-pass2");
+  if(liPass2){liPass2.onchange=function(){state.loginPass2=this.value;};liPass2.onblur=function(){state.loginPass2=this.value;render();};}
+  var liCode=document.getElementById("li-code");
+  if(liCode){liCode.onblur=function(){
+    var v=this.value;state.loginCode=v;
+    var u=v.toUpperCase().trim();var m=ACCESS_CODES[u];
+    if(!u){state.loginCodeErr="";state.loginCodePlan=null;}
+    else if(m){state.loginCodeErr="";state.loginCodePlan=m;}
+    else{state.loginCodeErr="That code is not valid";state.loginCodePlan=null;}
+    render();
+  };}
+  q("li-show-code",function(){state.showCodeInput=true;render();});
   q("li-switch",function(){state.loginMode=state.loginMode==="create"?"signin":"create";state.loginErr="";render();});
   q("li-submit",function(){
     // Collect current input values directly from DOM
@@ -1413,6 +1505,8 @@ function bindAll(){
   qa("[data-stage]",function(){state.profile=Object.assign({},state.profile,{stage:this.dataset.stage});state.onbStep=1;save();render();});
   qa("[data-niche]",function(){state.profile=Object.assign({},state.profile,{niche:this.dataset.niche});save();render();});
   q("onb-next1",function(){state.onbStep=2;render();});
+  q("onb-next2",function(){state.onbStep=3;render();});
+  qa("[data-followers]",function(){state.profile=Object.assign({},state.profile,{followers:this.dataset.followers});save();render();});
   qa("[data-goal]",function(){state.profile=Object.assign({},state.profile,{goal:this.dataset.goal});save();render();});
   q("onb-finish",function(){state.screen="main";state.showAffirmation=true;save();render();});
   // Nav
@@ -1476,7 +1570,11 @@ function bindAll(){
   q("slide-next",function(){state.slideIdx++;render();});
   q("mark-done",function(){
     var key="c"+state.activeCourse.id+"m"+state.activeModuleIdx;
-    state.learnProgress[key]=!state.learnProgress[key];ss("ev_lp",state.learnProgress);render();
+    var wasComplete=state.learnProgress[key];
+    state.learnProgress[key]=!wasComplete;
+    ss("ev_lp",state.learnProgress);
+    if(!wasComplete){state.showCelebration=true;render();setTimeout(function(){state.showCelebration=false;render();},3500);}
+    else{render();}
   });
   // Notes
   q("save-notes",function(){
@@ -1501,26 +1599,6 @@ function bindAll(){
   q("discuss-course",function(){var c=state.activeCourse;state.tab="evie";state.activeCourse=null;render();setTimeout(function(){sendMsg("Let us discuss: "+c.title);},100);});
   // Create
   qa("[data-ctab]",function(){state.createTab=this.dataset.ctab;state.copiedIdx=null;render();});
-  q("gen-hooks-btn",function(){
-    if(state.genHooks)return;
-    var niche=state.profile.niche||"Mom Lifestyle";
-    state.genHooks=true;render();
-    fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-haiku-4-5-20251001",max_tokens:300,
-        system:"Return ONLY a JSON array of 5 strings. No markdown, no explanation, just the array.",
-        messages:[{role:"user",content:"5 scroll-stopping video hooks for a "+niche+" creator. Fill-in-the-blank style. JSON array only."}]
-      })
-    }).then(function(r){return r.json();})
-    .then(function(d){
-      try{
-        var txt=d.content&&d.content[0]?d.content[0].text:"";
-        var clean=txt.replace(/```json/g,"").replace(/```/g,"").trim();
-        var m=clean.match(/\[[\s\S]*\]/);
-        state.aiHooks=m?JSON.parse(m[0]).slice(0,5):[];
-      }catch(e){state.aiHooks=[];}
-      state.genHooks=false;render();
-    }).catch(function(){state.genHooks=false;render();});
-  });
   qa("[data-copy]",function(){
     var text=this.dataset.copy;var idx=parseInt(this.dataset.ci);
     if(navigator.clipboard){navigator.clipboard.writeText(text);}
@@ -1533,10 +1611,23 @@ function bindAll(){
   qa("[data-cc]",function(){var k=this.dataset.cc;var cp=Object.assign({},state.calPosts);delete cp[k];state.calPosts=cp;ss("ev_cal",cp);render();});
   q("save-cal",function(){var t=document.getElementById("cal-text");if(!t)return;var cp=Object.assign({},state.calPosts);cp[state.calEditDay]=t.value;state.calPosts=cp;ss("ev_cal",cp);state.calEditDay=null;render();});
   q("gen-cal",function(){genCalIdea(state.calEditDay,true);});
+  qa("[data-idea]",function(){var ideas=PLANNER_IDEAS[state.profile.niche||"Mom Lifestyle"]||PLANNER_IDEAS["Mom Lifestyle"];var idea=ideas[parseInt(this.dataset.idea)];if(idea){var cp=Object.assign({},state.calPosts);cp[state.calEditDay]=idea;state.calPosts=cp;ss("ev_cal",state.calPosts);render();}});
+  var dsEl=document.getElementById("day-select");if(dsEl)dsEl.addEventListener("change",function(){state.daySelectKey=this.value||null;state.ideaSelectIdx=null;render();});
+  var isEl=document.getElementById("idea-select");if(isEl)isEl.addEventListener("change",function(){state.ideaSelectIdx=this.value!==""?parseInt(this.value):null;});
+  q("fill-day-btn",function(){if(state.daySelectKey==null||state.ideaSelectIdx==null)return;var ideas=PLANNER_IDEAS[state.profile.niche||"Mom Lifestyle"]||PLANNER_IDEAS["Mom Lifestyle"];var idea=ideas[state.ideaSelectIdx];if(idea){var cp=Object.assign({},state.calPosts);cp[state.daySelectKey]=idea;state.calPosts=cp;state.daySelectKey=null;state.ideaSelectIdx=null;ss("ev_cal",state.calPosts);render();}});
   q("cancel-cal",function(){state.calEditDay=null;render();});
-  q("fill-week",function(){
-    var t2=new Date();var ws=new Date(t2);ws.setDate(t2.getDate()-t2.getDay()+state.calWeek*7);
-    DAYLETTERS.forEach(function(_,i){var dt=new Date(ws);dt.setDate(ws.getDate()+i);var k=dt.toISOString().split("T")[0];if(!state.calPosts[k])genCalIdea(k,false);});
+  qa("[data-fillday]",function(){
+    var k=this.dataset.fillday;
+    if(state.calPosts[k])return;
+    state.genLoad=k;render();
+    var niche=state.profile.niche||"Mom Lifestyle";
+    var ideas=PLANNER_IDEAS[niche]||PLANNER_IDEAS["Mom Lifestyle"];
+    var dt=new Date(k);var day=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dt.getDay()];
+    callEvie("Give me ONE specific content idea for a "+niche+" creator to post on "+day+". Under 12 words. Just the idea, no explanation.",function(resp){
+      var idea=resp.trim().replace(/^["']/,"").replace(/["']$/,"");
+      var cp=Object.assign({},state.calPosts);cp[k]=idea;
+      state.calPosts=cp;state.genLoad=null;ss("ev_cal",state.calPosts);render();
+    });
   });
   q("clear-week",function(){
     var t2=new Date();var ws=new Date(t2);ws.setDate(t2.getDate()-t2.getDay()+state.calWeek*7);
@@ -1546,12 +1637,9 @@ function bindAll(){
   });
   qa("[data-pillar]",function(){var pl=this.dataset.pillar;state.tab="evie";render();setTimeout(function(){sendMsg('Give me 5 "'+pl+'" content ideas for a '+(state.profile.niche||"mom lifestyle")+' creator');},100);});
   // Money
-  q("money-upsell-btn",function(){state.showUpsell=true;render();});
   q("tutorial-toggle",function(){state.showTutorials=!state.showTutorials;render();});
+  q("money-upsell-btn",function(){window.open("https://buy.stripe.com/test_dRmaEW66g2Lv6ic6Gl5ZC01","_blank");});
   q("toggle-add",function(){state.showAdd=!state.showAdd;render();});
-  q("edit-goal",function(){state.editingGoal=true;render();});
-  q("save-goal",function(){var inp=document.getElementById("goal-input");var val=inp?parseInt(inp.value):0;if(val>0){state.moneyGoal=val;ss("ev_money_goal",val);}state.editingGoal=false;render();});
-  q("cancel-goal",function(){state.editingGoal=false;render();});
   var ab=document.getElementById("add-brand");if(ab)ab.onchange=function(){state.newDeal=Object.assign({},state.newDeal,{brand:this.value});};
   var av2=document.getElementById("add-value");if(av2)av2.onchange=function(){state.newDeal=Object.assign({},state.newDeal,{value:this.value});};
   qa("[data-ds]",function(){state.newDeal=Object.assign({},state.newDeal,{status:this.dataset.ds});render();});
@@ -1564,6 +1652,17 @@ function bindAll(){
   });
   qa("[data-ap]",function(){var i=parseInt(this.dataset.ap);state.expandedPlatform=state.expandedPlatform===i?null:i;render();});
   // Circle
+  qa("[data-hcat]",function(){state.hookCategory=this.dataset.hcat;render();});
+  qa("[data-copy]",function(){var niche=state.profile.niche||"Mom Lifestyle";var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];var cat=state.hookCategory||Object.keys(hooks)[0];var h=(hooks[cat]||[])[parseInt(this.dataset.copy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
+  qa("[data-fcopy]",function(){var h=(state.freshHooks||[])[parseInt(this.dataset.fcopy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
+  q("gen-hooks",function(){if(state.hooksLoading)return;state.hooksLoading=true;render();
+    var niche=state.profile.niche||"Mom Lifestyle";
+    callEvie("Generate 5 fresh scroll-stopping hooks for a "+niche+" content creator. Each under 15 words, conversational. Return ONLY a numbered list 1-5, no intro.",function(resp){
+      var lines=resp.split("\n").filter(function(l){return /^\d+\./.test(l.trim());}).map(function(l){return l.replace(/^\d+\.\s*/,"").trim();});
+      state.freshHooks=lines.length?lines:["Could not generate — try again!"];
+      state.hooksLoading=false;render();
+    });
+  });
   qa("[data-ct]",function(){state.circleTab=this.dataset.ct;render();});
   var np=document.getElementById("new-post");if(np)np.onchange=function(){state.newPostText=this.value;};
   var nvp=document.getElementById("new-vip-post");if(nvp)nvp.onchange=function(){state.newPostText=this.value;};
@@ -1571,7 +1670,7 @@ function bindAll(){
     var t=document.getElementById("new-post");if(t)state.newPostText=t.value;
     if(!state.newPostText.trim())return;
     var p2=state.profile;
-    state.communityPosts=state.communityPosts.concat([{id:Date.now(),ini:(p2.name||"M")[0].toUpperCase(),color:"#c4a090",name:p2.name||"Mama",handle:p2.instagram||"",time:"just now",tag:"Win",content:state.newPostText.trim(),comments:0,likes:0}]);
+    state.communityPosts=state.communityPosts.concat([{id:Date.now(),ini:(p2.name||"M")[0].toUpperCase(),color:"#c4a090",name:p2.name||"Mama",handle:p2.instagram||"",time:"just now",tag:"Win",email:p2.email||"",content:state.newPostText.trim(),comments:0,likes:0}]);
     ss("ev_cposts",state.communityPosts);state.newPostText="";render();
   });
   q("vip-post-submit",function(){
@@ -1582,9 +1681,38 @@ function bindAll(){
     ss("ev_vposts",state.vipPosts);state.newPostText="";render();
   });
   q("vip-upsell-btn",function(){state.showUpsell=true;render();});
+  qa("[data-del]",function(){var id=parseInt(this.dataset.del);var myEmail=(state.profile&&state.profile.email)||"";var isFounder=myEmail.toLowerCase()==="livingwithsimone@gmail.com";state.communityPosts=state.communityPosts.filter(function(p){if(p.id!==id)return true;var isOwn=p.email&&p.email.toLowerCase()===myEmail.toLowerCase();return !(isFounder||isOwn);});ss("ev_circle",state.communityPosts);render();});
   qa("[data-like]",function(){var id=parseInt(this.dataset.like);var l=Object.assign({},state.likes);l[id]=!l[id];state.likes=l;ss("ev_likes",l);render();});
-  qa("[data-comment]",function(){var id=parseInt(this.dataset.comment);state.commentOpen=state.commentOpen===id?null:id;render();});
-  qa("[data-sc]",function(){var id=parseInt(this.dataset.sc);var inp=document.getElementById("ci-"+id);if(!inp||!inp.value.trim())return;state.communityPosts=state.communityPosts.map(function(p){return p.id===id?Object.assign({},p,{comments:(p.comments||0)+1}):p;});state.vipPosts=state.vipPosts.map(function(p){return p.id===id?Object.assign({},p,{comments:(p.comments||0)+1}):p;});ss("ev_cposts",state.communityPosts);ss("ev_vposts",state.vipPosts);state.commentOpen=null;render();});
+  qa("[data-reply-toggle]",function(){
+    var id=parseInt(this.dataset.replyToggle);
+    var ro=Object.assign({},state.replyOpen);
+    ro[id]=!ro[id];
+    state.replyOpen=ro;render();
+  });
+  qa("[data-reply-text]",function(){
+    var id=parseInt(this.dataset.replyText);
+    var rt=Object.assign({},state.replyText);
+    rt[id]=this.value;
+    state.replyText=rt;
+  });
+  qa("[data-reply-send]",function(){
+    var id=parseInt(this.dataset.replySend);
+    var txt=(state.replyText&&state.replyText[id]||'').trim();
+    if(!txt)return;
+    var pr=state.profile;
+    var rep={ini:(pr.name||'M')[0].toUpperCase(),name:pr.name||'Mama',text:txt,time:'just now'};
+    var rv=Object.assign({},state.replies);
+    rv[id]=(rv[id]||[]).concat([rep]);
+    state.replies=rv;
+    var rt=Object.assign({},state.replyText);
+    rt[id]='';
+    state.replyText=rt;
+    var ro=Object.assign({},state.replyOpen);
+    ro[id]=false;
+    state.replyOpen=ro;
+    ss('ev_replies',state.replies);
+    render();
+  });
   // Me
   q("save-profile",function(){
     var n=document.getElementById("me-name");var b=document.getElementById("me-bio");
@@ -1593,11 +1721,11 @@ function bindAll(){
     save();var btn=document.getElementById("save-profile");if(btn){btn.textContent="Saved ✓";setTimeout(function(){render();},1500);}
   });
   qa("[data-mn]",function(){state.profile=Object.assign({},state.profile,{niche:this.dataset.mn});save();render();});
-  q("me-upgrade",function(){state.showUpsell=true;render();});
+  q("me-upgrade",function(){window.open("https://buy.stripe.com/test_dRmaEW66g2Lv6ic6Gl5ZC01","_blank");});
   q("sign-out",function(){state.profile={};state.messages=[];state.screen="splash";save();render();});
   // Upsell
   q("upsell-overlay",function(e){if(e.target===this){state.showUpsell=false;render();}});
-  q("upsell-yes",function(){state.profile=Object.assign({},state.profile,{plan:"vip"});state.showUpsell=false;save();render();});
+  q("upsell-yes",function(){window.open("https://buy.stripe.com/test_dRmaEW66g2Lv6ic6Gl5ZC01","_blank");state.showUpsell=false;render();});
   q("upsell-no",function(){state.showUpsell=false;render();});
   // Auto-show affirmation once per day on home
   if(state.screen==="main"&&state.tab==="home"&&state.affDismissed!==todayStr()&&!state.showAffirmation){
@@ -1610,19 +1738,12 @@ function qa(sel,fn,evt){document.querySelectorAll(sel).forEach(function(el){el.a
 
 // ─── API ───
 function sysPrompt(){
-  var p=state.profile||{};
-  var niche=p.niche||"mom lifestyle";
-  var name=p.name||"mama";
-  var stage=p.stage||"growing";
-  var goal=p.goal||"grow my following";
-  var commStyle=p.commStyle||"";
-  var hasKids=p.kidsInfo||"";
-  var styleGuide=commStyle==="short"
-    ?"She prefers SHORT responses. Give her the one key thing and stop. Ask before expanding."
-    :commStyle==="detailed"
-    ?"She likes more explanation. Walk her through things step by step but still keep it conversational."
-    :"Keep responses short-to-medium until she tells you her preference.";
-  return "You are Evie \u2014 a warm, funny, witty AI mom bestie and social media strategist. You are not a generic AI. You feel like a real friend who texts back instantly, knows their stuff, and never makes you feel dumb.\n\nEvie helps with: content strategy, hooks, captions, scripts, brand deals, UGC, affiliate income, balancing motherhood and content creation, daily routines, schedules, mindset, and burnout.\n\nFORMATTING RULES (non-negotiable):\n- NEVER use markdown. No asterisks. No **bold**. No *italic*. No dashes for bullets. No # headers. Ever.\n- Write in plain conversational sentences with line breaks between thoughts.\n- Write like a real text message from a knowledgeable friend.\n\nRESPONSE STYLE:\n- "+styleGuide+"\n- Answer the core question first in 2-4 sentences then ask if she wants more.\n- End every reply with ONE clear action step.\n- Max 2 emojis per message used naturally.\n- Match her energy. If she is stressed, be calm. If she is hype, be hype.\n\nFIRST CONVERSATION: If this appears to be the first message, warmly welcome her then ask her 3 quick casual questions: how many kids she has and their ages, whether she includes her kids in her content or creates independently, and whether she prefers short and straight to the point responses or more detailed explanations. Make her feel like she just met her new favorite person.\n\nHer profile: "+name+" | "+niche+" niche | "+stage+" stage | Goal: "+goal+(hasKids?" | Kids: "+hasKids:"")+(commStyle?" | Comm style: "+commStyle:"");
+  var p = state.profile || {};
+  var niche = p.niche || "mom lifestyle";
+  var name = p.name || "mama";
+  var stage = p.stage || "growing";
+  var goal = p.goal || "grow my following";
+  return "You are Evie \u2014 a warm, funny, real AI bestie and social media coach for mom creators. You are like that friend who texts back instantly, always knows what to post, and never lets you spiral.\n\nRules:\n- SHORT responses. Moms are busy. Use line breaks.\n- Give ACTUAL content when asked (real hooks, real captions, real scripts \u2014 not just instructions).\n- End every reply with one clear action step.\n- 1\u20132 emojis max per message.\n- If she\u2019s overwhelmed, acknowledge it first, then give her ONE thing to focus on.\n- Talk TO her like a friend, not AT her like a textbook.\n\nHer profile: " + name + " | " + niche + " niche | " + stage + " stage | Goal: " + goal;
 }
 
 function sendMsg(text){
@@ -1694,7 +1815,7 @@ function sendMsg(text){
   };
   if(controller) fetchOptions.signal = controller.signal;
 
-  fetch("/api/chat", fetchOptions)
+  fetch("https://api.anthropic.com/v1/messages", fetchOptions)
   .then(function(r){
     if(timeoutId) clearTimeout(timeoutId);
     if(!r.ok){
@@ -1710,16 +1831,6 @@ function sendMsg(text){
       reply = data.content[0].text;
     } else {
       reply = "Something went sideways on my end! Tap send again. \u2665";
-    }
-    if(!state.profile.commStyle&&msg){
-      var lm=(msg||"").toLowerCase();
-      if(lm.indexOf("short")>=0||lm.indexOf("quick")>=0||lm.indexOf("brief")>=0){
-        state.profile=Object.assign({},state.profile,{commStyle:"short"});
-        ss("ev_profile",state.profile);
-      } else if(lm.indexOf("detail")>=0||lm.indexOf("explain")>=0){
-        state.profile=Object.assign({},state.profile,{commStyle:"detailed"});
-        ss("ev_profile",state.profile);
-      }
     }
     state.messages = state.messages.concat([{role:"assistant", content:reply}]);
     state.loading = false;
@@ -1748,7 +1859,7 @@ function sendMsg(text){
 
 function genCalIdea(key,toInput){
   state.genLoad=key;render();
-  fetch("/api/chat",{method:"POST",
+  fetch("https://api.anthropic.com/v1/messages",{method:"POST",
     headers:{"Content-Type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
     body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:50,
       system:"Social media strategist. ONE content idea max 10 words. Niche:"+(state.profile.niche||"mom lifestyle")+". Just the idea, no quotes.",
