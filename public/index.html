@@ -1803,8 +1803,7 @@ function sendMsg(text){
   var fetchOptions = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "anthropic-dangerous-direct-browser-access": "true"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
@@ -1815,7 +1814,7 @@ function sendMsg(text){
   };
   if(controller) fetchOptions.signal = controller.signal;
 
-  fetch("https://api.anthropic.com/v1/messages", fetchOptions)
+  fetch("/api/chat", fetchOptions)
   .then(function(r){
     if(timeoutId) clearTimeout(timeoutId);
     if(!r.ok){
@@ -1859,8 +1858,8 @@ function sendMsg(text){
 
 function genCalIdea(key,toInput){
   state.genLoad=key;render();
-  fetch("https://api.anthropic.com/v1/messages",{method:"POST",
-    headers:{"Content-Type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
+  fetch("/api/chat",{method:"POST",
+    headers:{"Content-Type":"application/json"},
     body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:50,
       system:"Social media strategist. ONE content idea max 10 words. Niche:"+(state.profile.niche||"mom lifestyle")+". Just the idea, no quotes.",
       messages:[{role:"user",content:"One content idea"}]}),
