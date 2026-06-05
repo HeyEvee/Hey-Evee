@@ -566,6 +566,8 @@ var state={
   loginMode:"create",loginErr:"",
   onbStep:0,
   circleTab:"mama",
+  chatOnboarded:ls("ev_chat_ob",false),
+  chatStyle:ls("ev_chat_style",""),
   replies:ls("ev_replies",{}),
   replyOpen:{},replyText:{},
   communityPosts:ls("ev_cposts",[]),vipPosts:ls("ev_vposts",[]),newPostText:"",
@@ -583,6 +585,8 @@ function save(){
   ss("ev_likes",state.likes);ss("ev_deals",state.deals);ss("ev_cal",state.calPosts);
   ss("ev_cposts",state.communityPosts);ss("ev_vposts",state.vipPosts);
   ss("ev_replies",state.replies);
+  ss("ev_chat_ob",state.chatOnboarded);
+  ss("ev_chat_style",state.chatStyle);
   ss("ev_lp",state.learnProgress);ss("ev_mc",state.moduleContent);
   ss("ev_notes",state.moduleNotes);ss("ev_ws",state.workshopAnswers);
 }
@@ -787,13 +791,31 @@ function buildChat(){
   var bubs = "";
 
   if(!msgs.length){
-    bubs = '<div style="margin-bottom:12px">'
-      + '<p style="font-size:12px;color:#9a7060;font-weight:700;margin-bottom:10px;text-align:center">What can I help you with today?</p>'
-      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
-      + QUICK.map(function(q){
-          return '<button data-qp="'+esc(q.text)+'" style="background:#fff;border:1.5px solid rgba(196,97,74,0.15);border-radius:12px;padding:10px;cursor:pointer;font-size:12px;font-weight:700;color:#3a1e14;text-align:left;font-family:\'Nunito\',sans-serif;line-height:1.4">'+q.text+'</button>';
-        }).join('')
-      + '</div></div>';
+    var p2=state.profile||{};
+    if(!state.chatOnboarded){
+      // First ever chat — Evie introduces herself and asks questions
+      bubs = '<div style="margin-bottom:12px">'
+        + '<div style="background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 2px 8px rgba(196,97,74,.08);margin-bottom:10px">'
+        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Hey '+(p2.name||'mama')+'! I am Evie — your personal content coach and biggest hype girl. I am so glad you are here. ♥</p>'
+        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Before we dive in, let me ask you a couple things so I can actually be useful to you — not just give you generic advice.</p>'
+        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:14px">First — how do you like your coaching? Short and sweet, or do you love when someone really breaks it down for you?</p>'
+        + '<div style="display:flex;gap:8px;margin-bottom:14px">'
+        + '<button id="style-short" style="flex:1;padding:10px;background:#fff;border:1.5px solid rgba(196,97,74,.2);border-radius:12px;font-size:13px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Short and sweet</button>'
+        + '<button id="style-detail" style="flex:1;padding:10px;background:#fff;border:1.5px solid rgba(196,97,74,.2);border-radius:12px;font-size:13px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Break it down</button>'
+        + '</div>'
+        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Now tell me — what is the number one thing you want to figure out right now? Is it what to post, how to grow, how to make money, or something else?</p>'
+        + '<p style="font-size:13px;color:#9a7060;font-style:italic">Just type it below like you are texting a friend. There is no wrong answer.</p>'
+        + '</div></div>';
+    } else {
+      // Returning user — show quick prompts
+      bubs = '<div style="margin-bottom:12px">'
+        + '<p style="font-size:12px;color:#9a7060;font-weight:700;margin-bottom:10px;text-align:center">What can I help you with today?</p>'
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+        + QUICK.map(function(q){
+            return '<button data-qp="'+esc(q.text)+'" style="background:#fff;border:1.5px solid rgba(196,97,74,0.15);border-radius:12px;padding:10px;cursor:pointer;font-size:12px;font-weight:700;color:#3a1e14;text-align:left;font-family:\'Nunito\',sans-serif;line-height:1.4">'+q.text+'</button>';
+          }).join('')
+        + '</div></div>';
+    }
   }
 
   msgs.forEach(function(m, idx){
@@ -809,7 +831,7 @@ function buildChat(){
               ? 'background:#fff5f5;color:#1a0d08;border-bottom-left-radius:3px;border:1px solid rgba(196,97,74,0.2)'
               : 'background:#fff;color:#1a0d08;border-bottom-left-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,0.06)'))
       + '">'
-      + m.content.split("\n").join("<br/>")
+      + m.content.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/\*([^*\n]+)\*/g,"$1").replace(/^[•\-\*]\s/gm,"").split("\n").join("<br/>")
       + (isError ? '<br/><button data-retry="1" style="margin-top:8px;background:#c4614a;color:#fff;border:none;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:\'Nunito\',sans-serif">Tap to retry</button>' : '')
       + '</div></div>';
   });
@@ -1531,6 +1553,16 @@ function bindAll(){
   }
   q("send-btn", function(){ if(!state.loading) sendMsg(); });
   q("clear-chat", function(){ state.messages=[]; state.input=""; ss("ev_msgs",[]); render(); });
+  q("style-short", function(){
+    state.chatStyle="short"; state.chatOnboarded=true;
+    ss("ev_chat_style","short"); ss("ev_chat_ob",true);
+    sendMsg("I prefer short and sweet replies. Here is what I most want to figure out right now:");
+  });
+  q("style-detail", function(){
+    state.chatStyle="detailed"; state.chatOnboarded=true;
+    ss("ev_chat_style","detailed"); ss("ev_chat_ob",true);
+    sendMsg("I love when things are really broken down for me. Here is what I most want to figure out right now:");
+  });
   qa("[data-qp]", function(){ sendMsg(this.dataset.qp); });
   qa("[data-retry]", function(){ 
     // Remove the last error message and retry last user message
@@ -1743,13 +1775,49 @@ function sysPrompt(){
   var name = p.name || "mama";
   var stage = p.stage || "growing";
   var goal = p.goal || "grow my following";
-  return "You are Evie \u2014 a warm, funny, real AI bestie and social media coach for mom creators. You are like that friend who texts back instantly, always knows what to post, and never lets you spiral.\n\nRules:\n- SHORT responses. Moms are busy. Use line breaks.\n- Give ACTUAL content when asked (real hooks, real captions, real scripts \u2014 not just instructions).\n- End every reply with one clear action step.\n- 1\u20132 emojis max per message.\n- If she\u2019s overwhelmed, acknowledge it first, then give her ONE thing to focus on.\n- Talk TO her like a friend, not AT her like a textbook.\n\nHer profile: " + name + " | " + niche + " niche | " + stage + " stage | Goal: " + goal;
+  // Pull workshop answers into context so Evie knows what she has worked on
+  var wsContext = "";
+  var ws = state.workshopAnswers || {};
+  var wsKeys = Object.keys(ws);
+  if(wsKeys.length > 0){
+    wsContext = "\n\nHer completed workshop answers (reference these to personalise your coaching):\n";
+    wsKeys.slice(-6).forEach(function(k){
+      var answers = ws[k];
+      var flat = Object.values(answers).filter(function(v){return v&&v.trim();}).join(' | ');
+      if(flat) wsContext += k + ": " + flat.substring(0,200) + "\n";
+    });
+  }
+  // Chat style preference
+  var styleNote = p.chatStyle === 'detailed'
+    ? "She prefers detailed, thorough explanations."
+    : p.chatStyle === 'short'
+    ? "She prefers short, punchy replies — get to the point fast."
+    : "Match her energy — if she writes a lot, give more; if she writes short, keep it tight.";
+  return "You are Evie — a warm, funny, real AI bestie and business coach built specifically for mom content creators. You are that friend who texts back instantly, hypes her up when she needs it, keeps it real when she needs that too, and never ever lets her spiral.\n\n"
+    + "CRITICAL FORMATTING RULES — never break these:\n"
+    + "- NEVER use asterisks (*) for anything. No bold markdown, no bullet asterisks, nothing.\n"
+    + "- NEVER use hashtags unless she specifically asks for caption hashtags.\n"
+    + "- Use plain line breaks to separate thoughts. Use dashes (-) for lists if needed.\n"
+    + "- 1-2 emojis max per message. Only when it feels natural.\n\n"
+    + "ENERGY RULES:\n"
+    + "- Match her energy. She texts short? Keep it tight. She writes a paragraph? Meet her there.\n"
+    + "- If she sounds tired or overwhelmed, acknowledge it first with one warm sentence before coaching.\n"
+    + "- If she sounds hyped, match that energy and build on it.\n"
+    + "- Talk TO her like a real friend, not AT her like a coach giving a lecture.\n\n"
+    + "COACHING RULES:\n"
+    + "- Give ACTUAL content when asked — real hooks, real captions, real scripts, not just instructions.\n"
+    + "- End every reply with ONE clear action step. Not two. One.\n"
+    + "- When she shares a workshop answer or something personal, reference it specifically — show you were listening.\n"
+    + "- " + styleNote + "\n\n"
+    + "Her profile: " + name + " | " + niche + " niche | " + stage + " stage | Goal: " + goal
+    + wsContext;
 }
 
 function sendMsg(text){
   var msg = (typeof text === "string" ? text : (state.input||"")).trim();
   if(!msg || state.loading) return;
   state.input = "";
+  if(!state.chatOnboarded){ state.chatOnboarded=true; ss("ev_chat_ob",true); }
   var inputEl = document.getElementById("chat-input");
   if(inputEl){ inputEl.value = ""; inputEl.blur(); }
 
