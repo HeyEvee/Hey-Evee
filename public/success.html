@@ -257,11 +257,11 @@
       <circle class="track" cx="22" cy="22" r="18"/>
       <circle class="progress" id="ring" cx="22" cy="22" r="18"/>
     </svg>
-    <div class="countdown-num" id="countNum">7</div>
+    <div class="countdown-num" id="countNum">30</div>
   </div>
 
   <a href="https://app.tryheyevie.com" class="btn" id="enterBtn">Enter Hey Evie ✦</a>
-  <p class="footnote">Redirecting you automatically in <span id="secLabel">7</span> seconds</p>
+  <p class="footnote">Redirecting you automatically in <span id="secLabel">30</span> seconds</p>
 </div>
 
 <script>
@@ -282,7 +282,7 @@ for(var i = 0; i < 80; i++){
 }
 
 // ── Countdown + redirect ──────────────────────────────────────
-var secs = 7;
+var secs = 30;
 var circumference = 2 * Math.PI * 18; // ~113
 var ring = document.getElementById('ring');
 var countNum = document.getElementById('countNum');
@@ -295,7 +295,7 @@ var interval = setInterval(function(){
   secs--;
   countNum.textContent = secs;
   secLabel.textContent = secs;
-  var offset = circumference * (1 - secs/7);
+  var offset = circumference * (1 - secs/30);
   ring.style.strokeDashoffset = offset;
   if(secs <= 0){
     clearInterval(interval);
