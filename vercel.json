@@ -9,4 +9,4 @@
 }
 { "source": "/api/password-reset", "destination": "/api/password-reset.js" },
 { "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" },
-{ "source": "/reset", "destination": "/public/reset.html" },
+{ "source": "/reset(.*)", "destination": "/public/reset.html" }
