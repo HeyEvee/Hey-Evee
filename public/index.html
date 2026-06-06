@@ -2838,6 +2838,10 @@ function genCalIdea(key,toInput){
 (function(){
   try {
     var params = new URLSearchParams(window.location.search);
+    if(params.get('signin')==='1'){
+      window.history.replaceState({},'',window.location.pathname);
+      state.loginMode='signin';
+    }
     if(params.get('upgraded')==='1'){
       // Clean URL immediately
       window.history.replaceState({},'',window.location.pathname);
