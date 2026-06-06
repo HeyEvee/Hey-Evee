@@ -1,8 +1,9 @@
 {
   "rewrites": [
-    { "source": "/api/chat",      "destination": "/api/chat.js" },
-    { "source": "/api/airtable",  "destination": "/api/airtable.js" },
-    { "source": "/api/webhook",   "destination": "/api/webhook.js" },
-    { "source": "/(.*)",          "destination": "/public/index.html" }
+    { "source": "/api/chat", "destination": "/api/chat.js" },
+    { "source": "/api/airtable", "destination": "/api/airtable.js" },
+    { "source": "/api/webhook", "destination": "/api/webhook.js" },
+    { "source": "/success", "destination": "/success.html" },
+    { "source": "/(.*)", "destination": "/public/index.html" }
   ]
 }
