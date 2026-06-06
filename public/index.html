@@ -2114,7 +2114,7 @@ function rPosts(posts){
       +'</div>'
       +(replyList.length
         ?'<div style="border-left:2px solid rgba(196,97,74,.15);padding-left:10px;margin-bottom:8px">'
-          +replyList.map(function(r){return '<div style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">'+r.ini+'</div><span style="font-size:11px;font-weight:800;color:#1a0d08">'+esc(r.name)+'</span><span style="font-size:10px;color:#b09080">'+r.time+'</span></div><p style="font-size:13px;color:#3a1e14;line-height:1.55;padding-left:28px">'+esc(r.text)+'</p></div>';}).join('')
+          +replyList.map(function(r,ri){var canDelReply=isFounder||(r.email&&myEmail&&r.email.toLowerCase()===myEmail.toLowerCase());return '<div style="margin-bottom:8px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px"><div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">'+r.ini+'</div><span style="font-size:11px;font-weight:800;color:#1a0d08">'+esc(r.name)+'</span><span style="font-size:10px;color:#b09080">'+r.time+'</span>'+(canDelReply?'<button data-del-reply="'+post.id+'-'+ri+'" style="background:none;border:none;cursor:pointer;font-size:11px;color:#d09080;margin-left:auto">✕</button>':'')+' </div><p style="font-size:13px;color:#3a1e14;line-height:1.55;padding-left:28px">'+esc(r.text)+'</p></div>';}).join('')
           +'</div>'
         :'')
       +(replyOpen
@@ -2229,7 +2229,7 @@ function buildMe(p){
     +'<p style="font-size:11px;color:#9a7060;margin-bottom:10px">'+pd+'</p>'
     +(!isVip?'<button id="me-upgrade" style="'+btnP()+'">Upgrade to Lifetime VIP — $197</button>':'<p style="font-size:12px;color:#4caf85;font-weight:700">✓ Lifetime access — you are all set</p>')
     +'</div>'
-    +'<div style="text-align:center;padding-top:16px;margin-bottom:10px">'+'<a href="https://tryheyevee.com/privacy" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Privacy Policy</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="https://tryheyevee.com/terms" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Terms</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="mailto:hello@heyevee.com" style="font-size:11px;color:#b09080;margin:0 8px">Contact</a>'+'</div>'
+    +'<div style="text-align:center;padding-top:16px;margin-bottom:10px">'+'<a href="https://tryheyevee.com/privacy.html" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Privacy Policy</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="https://tryheyevee.com/terms.html" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Terms</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="mailto:hello@heyevee.com" style="font-size:11px;color:#b09080;margin:0 8px">Contact</a>'+'</div>'
     +'<button id="sign-out" style="width:100%;padding:12px;background:transparent;border:1.5px solid rgba(196,97,74,.2);border-radius:20px;font-size:13px;color:#b09080;cursor:pointer;font-family:\'Nunito\',sans-serif">Sign Out</button>'
     +'</div>';
 }
@@ -2583,6 +2583,16 @@ function bindAll(){
     ss("ev_vposts",state.vipPosts);state.newPostText="";render();
   });
   q("vip-upsell-btn",function(){state.showUpsell=true;render();});
+  qa("[data-del-reply]",function(){
+    var parts=this.dataset.delReply.split('-');
+    var postId=parseInt(parts[0]);
+    var ri=parseInt(parts[1]);
+    var rv=Object.assign({},state.replies);
+    if(rv[postId]){rv[postId]=rv[postId].filter(function(_,i){return i!==ri;});}
+    state.replies=rv;
+    ss('ev_replies',state.replies);
+    render();
+  });
   qa("[data-del]",function(){var id=parseInt(this.dataset.del);var myEmail=(state.profile&&state.profile.email)||"";var isFounder=myEmail.toLowerCase()==="livingwithsimone@gmail.com";state.communityPosts=state.communityPosts.filter(function(p){if(p.id!==id)return true;var isOwn=p.email&&p.email.toLowerCase()===myEmail.toLowerCase();return !(isFounder||isOwn);});ss("ev_circle",state.communityPosts);render();});
   qa("[data-profile]",function(){
     var id=parseInt(this.dataset.profile);
@@ -2617,7 +2627,7 @@ function bindAll(){
     var txt=ta?ta.value.trim():(state.replyText&&state.replyText[id]||'').trim();
     if(!txt)return;
     var pr=state.profile;
-    var rep={ini:(pr.name||'M')[0].toUpperCase(),name:pr.name||'Mama',text:txt,time:'just now'};
+    var rep={ini:(pr.name||'M')[0].toUpperCase(),name:pr.name||'Mama',email:pr.email||'',text:txt,time:'just now'};
     var rv=Object.assign({},state.replies);
     rv[id]=(rv[id]||[]).concat([rep]);
     state.replies=rv;
