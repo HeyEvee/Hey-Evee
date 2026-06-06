@@ -2335,7 +2335,7 @@ function bindAll(){
     if(n)state.loginName=n.value;if(e)state.loginEmail=e.value;
     if(p1)state.loginPass=p1.value;if(p2)state.loginPass2=p2.value;
     if(cd)state.loginCode=cd.value;
-    if(c&&!state.loginName.trim()){state.loginErr="Please enter your name";render();return;}
+    if(state.loginMode==="create"&&!state.loginName.trim()){state.loginErr="Please enter your name";render();return;}
     if(state.loginMode==="create"){
       if(!state.loginPass||state.loginPass.length<8){state.loginErr="Password must be at least 8 characters";render();return;}
       if(!/[0-9]/.test(state.loginPass)){state.loginErr="Password must include a number";render();return;}
