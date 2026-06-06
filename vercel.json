@@ -12,3 +12,6 @@
     { "source": "/(.*)", "destination": "/public/index.html" }
   ]
 }
+{ "source": "/manifest.json", "destination": "/manifest.json" },
+{ "source": "/sw.js", "destination": "/sw.js" },
+{ "source": "/icons/:path*", "destination": "/public/icons/:path*" }
