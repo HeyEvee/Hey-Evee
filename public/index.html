@@ -1353,6 +1353,7 @@ var state={
   circleTab:"mama",
   chatOnboarded:ls("ev_chat_ob",false),
   chatStyle:ls("ev_chat_style",""),
+  hookPage:0,
   replies:ls("ev_replies",{}),
   replyOpen:{},replyText:{},
   communityPosts:ls("ev_cposts",[]),vipPosts:ls("ev_vposts",[]),newPostText:"",
@@ -1916,22 +1917,36 @@ function buildCreate(p){
     +'</div>'
     +'<div style="padding:10px 14px">'
     +(activeTab==='hooks'
-      ?catHooks.map(function(h,i){
-          return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
-            +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
-            +'<button data-hcopy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
-            +'</div>';
-        }).join('')
-        +(freshHooks.length?'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px">Fresh Hooks</p>'
-          +freshHooks.map(function(h,i){
-            return '<div style="background:linear-gradient(135deg,rgba(196,97,74,.06),rgba(212,80,122,.04));border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.12);display:flex;align-items:flex-start;gap:10px">'
+      ?(function(){
+          var page=state.hookPage||0;
+          var perPage=10;
+          var start=page*perPage;
+          var pageHooks=catHooks.slice(start,start+perPage);
+          var totalPages=Math.ceil(catHooks.length/perPage);
+          var isLast=page>=totalPages-1;
+          return pageHooks.map(function(h,i){
+            return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
               +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
-              +'<button data-fcopy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
+              +'<button data-hcopy="'+(start+i)+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
               +'</div>';
           }).join('')
-        :'')
-        +'<button id="gen-hooks" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#1a0d08,#2e1208);color:#fff;border:none;border-radius:18px;padding:13px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">'
-        +(state.hooksLoading?'Generating…':'&#9825; Fresh Hooks — Generate New Ones')+'</button>'
+          +'<div style="display:flex;gap:8px;margin-top:4px">'
+          +(isLast
+            ?'<button id="hook-page-reset" style="flex:1;padding:11px;background:#fff;border:1.5px solid rgba(196,97,74,.2);border-radius:18px;color:#c4614a;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">↩ Start Over</button>'
+            :'<button id="hook-page-next" style="flex:1;padding:11px;background:linear-gradient(135deg,#c4614a,#d4507a);border:none;border-radius:18px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Next 10 Hooks →</button>')
+          +'</div>'
+          +'<p style="font-size:10px;color:#b8a090;text-align:center;margin-top:6px">'+( page+1)+' of '+totalPages+' pages · '+catHooks.length+' hooks total</p>'
+          +(freshHooks.length?'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px">AI Generated Hooks</p>'
+            +freshHooks.map(function(h,i){
+              return '<div style="background:linear-gradient(135deg,rgba(196,97,74,.06),rgba(212,80,122,.04));border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.12);display:flex;align-items:flex-start;gap:10px">'
+                +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
+                +'<button data-fcopy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
+                +'</div>';
+            }).join('')
+          :'')
+          +'<button id="gen-hooks" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#1a0d08,#2e1208);color:#fff;border:none;border-radius:18px;padding:13px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">'
+          +(state.hooksLoading?'Generating…':'&#9825; Generate Fresh AI Hooks')+'</button>';
+        })()
       :activeTab==='captions'
         ?buildCaptionVault(niche)
         :CTA_VAULT.map(function(c,i){
@@ -2514,9 +2529,11 @@ function bindAll(){
   });
   qa("[data-ap]",function(){var i=parseInt(this.dataset.ap);state.expandedPlatform=state.expandedPlatform===i?null:i;render();});
   // Circle
-  qa("[data-hcat]",function(){state.hookCategory=this.dataset.hcat;render();});
+  qa("[data-hcat]",function(){state.hookCategory=this.dataset.hcat;state.hookPage=0;render();});
   qa("[data-hcopy]",function(){var niche=state.profile.niche||"Mom Lifestyle";var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];var cat=state.hookCategory||Object.keys(hooks)[0];var h=(hooks[cat]||[])[parseInt(this.dataset.hcopy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
   qa("[data-fcopy]",function(){var h=(state.freshHooks||[])[parseInt(this.dataset.fcopy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
+  q("hook-page-next",function(){state.hookPage=(state.hookPage||0)+1;render();});
+  q("hook-page-reset",function(){state.hookPage=0;render();});
   q("gen-hooks",function(){if(state.hooksLoading)return;state.hooksLoading=true;render();
     var niche=state.profile.niche||"Mom Lifestyle";
     callEvee("Generate 5 fresh scroll-stopping hooks for a "+niche+" content creator. Each under 15 words, conversational. Return ONLY a numbered list 1-5, no intro.",function(resp){
