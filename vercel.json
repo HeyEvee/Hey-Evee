@@ -5,6 +5,10 @@
     { "source": "/api/webhook", "destination": "/api/webhook.js" },
     { "source": "/api/password-reset", "destination": "/api/password-reset.js" },
     { "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" },
+    { "source": "/manifest.json", "destination": "/manifest.json" },
+    { "source": "/sw.js", "destination": "/sw.js" },
+    { "source": "/icons/:path*", "destination": "/public/icons/:path*" },
+    { "source": "/favicon.ico", "destination": "/public/favicon.ico" },
     { "source": "/success.html", "destination": "/public/success.html" },
     { "source": "/reset.html", "destination": "/public/reset.html" },
     { "source": "/privacy.html", "destination": "/public/privacy.html" },
@@ -12,6 +16,3 @@
     { "source": "/(.*)", "destination": "/public/index.html" }
   ]
 }
-{ "source": "/manifest.json", "destination": "/manifest.json" },
-{ "source": "/sw.js", "destination": "/sw.js" },
-{ "source": "/icons/:path*", "destination": "/public/icons/:path*" }
