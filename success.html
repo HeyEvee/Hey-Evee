@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>You're In, Mama! — Hey Evie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --brand:#c4614a;
+    --pink:#d4507a;
+    --gold:#c9963a;
+    --dark:#1a0d08;
+    --bg:#fdf8f5;
+  }
+  body{
+    background:var(--bg);
+    font-family:'Nunito',sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* Confetti */
+  .confetti-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .confetti-piece{
+    position:absolute;
+    top:-20px;
+    width:8px;
+    height:8px;
+    border-radius:2px;
+    opacity:0;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    0%{opacity:1;transform:translateY(0) rotate(0deg);}
+    100%{opacity:0;transform:translateY(110vh) rotate(720deg);}
+  }
+
+  /* Radial glow */
+  .glow{
+    position:fixed;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:600px;height:600px;
+    background:radial-gradient(ellipse,rgba(196,97,74,0.12),transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .card{
+    position:relative;
+    z-index:1;
+    max-width:400px;
+    width:90%;
+    background:#fff;
+    border-radius:28px;
+    padding:40px 32px 36px;
+    text-align:center;
+    box-shadow:0 24px 80px rgba(196,97,74,0.15);
+    animation:popIn .6s cubic-bezier(.17,.67,.35,1.3) both;
+  }
+  @keyframes popIn{
+    from{opacity:0;transform:scale(.85) translateY(20px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+
+  .avatar{
+    width:72px;height:72px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--brand),var(--pink));
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+    box-shadow:0 8px 24px rgba(196,97,74,0.3);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 8px 24px rgba(196,97,74,0.3);}
+    50%{box-shadow:0 8px 36px rgba(196,97,74,0.5);}
+  }
+  .avatar span{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+  }
+
+  .badge{
+    display:inline-block;
+    background:linear-gradient(135deg,var(--gold),#e8b84a);
+    color:var(--dark);
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border-radius:20px;
+    padding:4px 14px;
+    margin-bottom:16px;
+    animation:fadeUp .5s .2s ease both;
+  }
+
+  h1{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    color:var(--dark);
+    line-height:1.3;
+    margin-bottom:10px;
+    animation:fadeUp .5s .3s ease both;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--brand);
+  }
+
+  .sub{
+    font-size:14px;
+    color:#7a4a3a;
+    line-height:1.7;
+    margin-bottom:24px;
+    animation:fadeUp .5s .4s ease both;
+  }
+
+  .steps{
+    background:linear-gradient(135deg,rgba(196,97,74,0.06),rgba(212,80,122,0.04));
+    border-radius:16px;
+    padding:16px 18px;
+    margin-bottom:24px;
+    text-align:left;
+    animation:fadeUp .5s .5s ease both;
+  }
+  .steps p{
+    font-size:11px;
+    font-weight:900;
+    color:var(--brand);
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .step{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .step:last-child{margin-bottom:0;}
+  .step-num{
+    width:22px;height:22px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--brand),var(--pink));
+    color:#fff;
+    font-size:10px;
+    font-weight:900;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .step span{font-size:13px;color:var(--dark);font-weight:600;}
+
+  .btn{
+    display:block;
+    width:100%;
+    padding:15px;
+    background:linear-gradient(135deg,var(--brand),var(--pink));
+    color:#fff;
+    border:none;
+    border-radius:22px;
+    font-size:15px;
+    font-weight:900;
+    font-family:'Nunito',sans-serif;
+    cursor:pointer;
+    text-decoration:none;
+    transition:transform .15s,box-shadow .15s;
+    animation:fadeUp .5s .6s ease both;
+    position:relative;
+    overflow:hidden;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,97,74,0.35);}
+  .btn:active{transform:scale(.97);}
+
+  /* shimmer on button */
+  .btn::after{
+    content:'';
+    position:absolute;
+    top:0;left:-100%;
+    width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+    animation:shimmer 2.5s 1s ease-in-out infinite;
+  }
+  @keyframes shimmer{
+    0%{left:-100%;}
+    100%{left:200%;}
+  }
+
+  .footnote{
+    font-size:11px;
+    color:#b09080;
+    margin-top:14px;
+    animation:fadeUp .5s .7s ease both;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* countdown ring */
+  .countdown{
+    position:relative;
+    width:44px;height:44px;
+    margin:0 auto 20px;
+    animation:fadeUp .5s .65s ease both;
+  }
+  .countdown svg{transform:rotate(-90deg);}
+  .countdown circle{
+    fill:none;
+    stroke-width:3;
+    stroke-linecap:round;
+  }
+  .countdown .track{stroke:rgba(196,97,74,0.15);}
+  .countdown .progress{
+    stroke:var(--brand);
+    stroke-dasharray:113;
+    stroke-dashoffset:0;
+    transition:stroke-dashoffset 1s linear;
+  }
+  .countdown-num{
+    position:absolute;
+    inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:900;color:var(--brand);
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+<div class="confetti-wrap" id="confetti"></div>
+
+<div class="card">
+  <div class="avatar"><span>E</span></div>
+  <div class="badge">✦ You're officially in</div>
+  <h1>Yay, Mama! <em>Welcome to Hey Evie.</em></h1>
+  <p class="sub">Your membership is confirmed and your journey starts right now. Everything you need to grow your content, land brand deals, and build real income is waiting for you inside.</p>
+
+  <div class="steps">
+    <p>What happens next</p>
+    <div class="step"><div class="step-num">1</div><span>Create your Hey Evie account</span></div>
+    <div class="step"><div class="step-num">2</div><span>Complete your creator profile</span></div>
+    <div class="step"><div class="step-num">3</div><span>Meet Evie — your AI coach</span></div>
+  </div>
+
+  <div class="countdown" id="countdownWrap">
+    <svg width="44" height="44" viewBox="0 0 44 44">
+      <circle class="track" cx="22" cy="22" r="18"/>
+      <circle class="progress" id="ring" cx="22" cy="22" r="18"/>
+    </svg>
+    <div class="countdown-num" id="countNum">7</div>
+  </div>
+
+  <a href="https://app.tryheyevie.com" class="btn" id="enterBtn">Enter Hey Evie ✦</a>
+  <p class="footnote">Redirecting you automatically in <span id="secLabel">7</span> seconds</p>
+</div>
+
+<script>
+// ── Confetti ──────────────────────────────────────────────────
+var colors = ['#c4614a','#d4507a','#c9963a','#f5c0b0','#fde8f0','#fff'];
+var wrap = document.getElementById('confetti');
+for(var i = 0; i < 80; i++){
+  var el = document.createElement('div');
+  el.className = 'confetti-piece';
+  el.style.left = Math.random()*100 + 'vw';
+  el.style.background = colors[Math.floor(Math.random()*colors.length)];
+  el.style.width = (6 + Math.random()*8) + 'px';
+  el.style.height = (6 + Math.random()*8) + 'px';
+  el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+  el.style.animationDuration = (2 + Math.random()*3) + 's';
+  el.style.animationDelay = (Math.random()*2) + 's';
+  wrap.appendChild(el);
+}
+
+// ── Countdown + redirect ──────────────────────────────────────
+var secs = 7;
+var circumference = 2 * Math.PI * 18; // ~113
+var ring = document.getElementById('ring');
+var countNum = document.getElementById('countNum');
+var secLabel = document.getElementById('secLabel');
+
+ring.style.strokeDasharray = circumference;
+ring.style.strokeDashoffset = 0;
+
+var interval = setInterval(function(){
+  secs--;
+  countNum.textContent = secs;
+  secLabel.textContent = secs;
+  var offset = circumference * (1 - secs/7);
+  ring.style.strokeDashoffset = offset;
+  if(secs <= 0){
+    clearInterval(interval);
+    window.location.href = 'https://app.tryheyevie.com';
+  }
+}, 1000);
+</script>
+</body>
+</html>
