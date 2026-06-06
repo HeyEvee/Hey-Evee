@@ -4,9 +4,11 @@
     { "source": "/api/airtable", "destination": "/api/airtable.js" },
     { "source": "/api/webhook", "destination": "/api/webhook.js" },
     { "source": "/api/password-reset", "destination": "/api/password-reset.js" },
-    { "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" },
-    { "source": "/success", "destination": "/public/success.html" },
-    { "source": "/reset(.*)", "destination": "/public/reset.html" },
-    { "source": "/(.*)", "destination": "/public/index.html" }
+    { "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" }
+  ],
+  "routes": [
+    { "src": "/success", "dest": "/public/success.html" },
+    { "src": "/reset(.*)", "dest": "/public/reset.html" },
+    { "src": "/(.*)", "dest": "/public/index.html" }
   ]
 }
