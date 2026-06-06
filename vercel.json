@@ -3,10 +3,10 @@
     { "source": "/api/chat", "destination": "/api/chat.js" },
     { "source": "/api/airtable", "destination": "/api/airtable.js" },
     { "source": "/api/webhook", "destination": "/api/webhook.js" },
-    { "source": "/success", "destination": "/success.html" },
+    { "source": "/api/password-reset", "destination": "/api/password-reset.js" },
+    { "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" },
+    { "source": "/success", "destination": "/public/success.html" },
+    { "source": "/reset(.*)", "destination": "/public/reset.html" },
     { "source": "/(.*)", "destination": "/public/index.html" }
   ]
 }
-{ "source": "/api/password-reset", "destination": "/api/password-reset.js" },
-{ "source": "/api/reset-confirm", "destination": "/api/reset-confirm.js" },
-{ "source": "/reset(.*)", "destination": "/public/reset.html" }
