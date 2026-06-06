@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-<title>Hey Evie</title>
+<title>Hey Evee</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -530,12 +530,10 @@ var AFFIRMATIONS=[
 ];
 
 var COMMUNITY=[
-  {id:1,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the Mama Circle, mama. \u2665\n\nThis is your space. No perfection required, no follower count needed, no gatekeeping. Whether you just posted your first video or you're working toward your first brand deal — you belong here.\n\nShare your wins (big and small). Ask your questions. Drop your honest thoughts. This community grows when we show up for each other, so don't be a stranger.\n\nI read every single post. I am cheering for every single one of you. Now introduce yourself below — I want to know who is in this room. \uD83C\uDF38",comments:0,likes:0,replies:[]},
+  {id:1,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyeveeapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the Mama Circle, mama. \u2665\n\nThis is your space. No perfection required, no follower count needed, no gatekeeping. Whether you just posted your first video or you're working toward your first brand deal — you belong here.\n\nShare your wins (big and small). Ask your questions. Drop your honest thoughts. This community grows when we show up for each other, so don't be a stranger.\n\nI read every single post. I am cheering for every single one of you. Now introduce yourself below — I want to know who is in this room. \uD83C\uDF38",comments:0,likes:0,replies:[]},
 ];
 var VIP_POSTS=[
-  {id:100,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the VIP Inner Circle. \u2665\n\nThis is the room inside the room. You made it here because you are serious — and I take that seriously.\n\nThis is where I drop brand opportunities before anywhere else, answer questions directly, host hot seats, and share what is actually working right now in the creator economy.\n\nThe rules are simple: show up, be real, support each other. There is no competition in here — only collaboration.\n\nDrop your intro below. Tell me your niche, where you are right now, and the one thing you most want to build in the next 90 days. Let's get to work. \u2728",comments:0,likes:0,replies:[]},
-  {id:101,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"1h ago",tag:"Tip",content:"Brand opportunity this week — Bloom Nutrition is looking for mom wellness creators with 3K+ followers. Send me your media kit and I will connect you directly. VIP mamas first.",comments:4,likes:19,isSimone:true},
-  {id:102,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyevieapp",time:"3d ago",tag:"Coaching",content:"Hot seat answer for @brookefit: Yes, you can pitch brands at 800 followers. Your engagement rate matters more than your count. Here is exactly what to say in your email...",comments:7,likes:23,isSimone:true},
+  {id:100,ini:"S",color:"#c4614a",name:"Simone",handle:"@heyeveeapp",time:"📌 Pinned",tag:"Welcome",isSimone:true,email:"livingwithsimone@gmail.com",content:"Welcome to the VIP Inner Circle. \u2665\n\nThis is the room inside the room. You made it here because you are serious — and I take that seriously.\n\nThis is where I drop brand opportunities before anywhere else, answer questions directly, host hot seats, and share what is actually working right now in the creator economy.\n\nThe rules are simple: show up, be real, support each other. There is no competition in here — only collaboration.\n\nDrop your intro below. Tell me your niche, where you are right now, and the one thing you most want to build in the next 90 days. Let's get to work. \u2728",comments:0,likes:0,replies:[]},
 ];
 
 function checkMembership(email,callback){
@@ -557,10 +555,11 @@ var state={
   messages:ls("ev_msgs",[]),
   tab:"home",input:"",loading:false,
   likes:ls("ev_likes",{}),
-  deals:ls("ev_deals",[{id:1,brand:"Bloom Nutrition",status:"active",value:500,date:"2026-05-01"},{id:2,brand:"Amazon Storefront",status:"active",value:280,date:"2026-05-10"}]),
+  deals:ls("ev_deals",[]),
   calPosts:ls("ev_cal",{}),calWeek:0,calEditDay:null,
   activeCourse:null,activeModule:null,activeModuleIdx:null,
   newDeal:{brand:"",value:"",status:"pitched"},showAdd:false,genLoad:null,
+  moneyGoal:ls("ev_money_goal",5000),showGoalEdit:false,
   showUpsell:false,showAffirmation:false,
   affDismissed:ls("ev_aff_d",""),
   loginName:"",loginEmail:"",loginPass:"",loginPass2:"",loginCode:"",
@@ -586,6 +585,7 @@ var state={
 function save(){
   ss("ev_screen",state.screen);ss("ev_profile",state.profile);ss("ev_msgs",state.messages);
   ss("ev_likes",state.likes);ss("ev_deals",state.deals);ss("ev_cal",state.calPosts);
+  ss("ev_money_goal",state.moneyGoal);
   ss("ev_cposts",state.communityPosts);ss("ev_vposts",state.vipPosts);
   ss("ev_replies",state.replies);
   ss("ev_chat_ob",state.chatOnboarded);
@@ -606,7 +606,7 @@ function nBtn(on){return "padding:8px 14px;background:"+(on?"#c4614a":"#fff")+";
 function gBtn(on){return "padding:12px 16px;background:"+(on?"linear-gradient(135deg,#c4614a,#d4507a)":"#fff")+";color:"+(on?"#fff":"#1a0d08")+";border:1.5px solid "+(on?"#c4614a":"rgba(196,97,74,0.15)")+";border-radius:14px;cursor:pointer;text-align:left;width:100%;font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;";}
 function avC(size,extra){var fs=Math.round(size*.38);return '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;'+(extra||'')+'">'+'<span style="font-size:'+fs+'px;color:#fff;font-family:\'Playfair Display\',serif;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center">E</span>'+'</div>';}
 
-function logo(){return '<span style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:700;color:#1a0d08;letter-spacing:-.5px">Hey Evie</span>';}
+function logo(){return '<span style="font-family:\'Playfair Display\',serif;font-size:22px;font-weight:700;color:#1a0d08;letter-spacing:-.5px">Hey Evee</span>';}
 function getAff(){var d=new Date();return AFFIRMATIONS[(d.getDate()+d.getMonth())%AFFIRMATIONS.length];}
 function getMods(c,niche){return (c.niched&&(c.niched[niche]||c.niched["default"]))||[];}
 
@@ -627,7 +627,7 @@ function buildSplash(){
     +'<div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:380px;height:280px;background:radial-gradient(ellipse,rgba(196,97,74,0.1),transparent 70%);pointer-events:none"></div>'
     +'<div style="position:relative;margin-bottom:20px" class="fu">'+avC(120,'box-shadow:0 12px 40px rgba(196,97,74,0.25)')+'<span style="position:absolute;top:-6px;right:-10px;font-size:16px;color:#c4614a">✦</span></div>'
     +'<div style="text-align:center;z-index:2;margin-bottom:32px" class="fu2">'
-    +'<div style="font-family:\'Playfair Display\',serif;font-size:40px;font-weight:700;color:#1a0d08;letter-spacing:-.5px">Hey Evie</div>'
+    +'<div style="font-family:\'Playfair Display\',serif;font-size:40px;font-weight:700;color:#1a0d08;letter-spacing:-.5px">Hey Evee</div>'
     +'<p style="font-size:15px;color:#6a3a28;line-height:1.7;margin-top:8px">Your content bestie.<br/>Built for moms who mean business.</p>'
     +'</div>'
     +'<div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;z-index:2">'
@@ -648,7 +648,7 @@ function buildLogin(){
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column;overflow-y:auto">'
     +'<div style="flex:1;padding:44px 24px 40px;display:flex;flex-direction:column;align-items:center">'
     +avC(72,'margin-bottom:12px')
-    +'<div style="font-family:\'Playfair Display\',serif;font-size:32px;font-weight:700;color:#1a0d08;margin-bottom:2px;text-align:center">Hey Evie</div>'
+    +'<div style="font-family:\'Playfair Display\',serif;font-size:32px;font-weight:700;color:#1a0d08;margin-bottom:2px;text-align:center">Hey Evee</div>'
     +'<h2 style="font-family:\'Playfair Display\',serif;font-size:18px;color:#7a4a3a;margin:8px 0 4px;text-align:center">'+(c?"Welcome, Mama":"Welcome back")+'</h2>'
     +'<p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:20px">'+(c?"Create your account to get started":"Sign in to continue your journey")+'</p>'
     +'<input id="li-name" style="'+inp()+'" placeholder="Your first name" value="'+esc(state.loginName)+'"/>'
@@ -685,7 +685,7 @@ function buildOnboard(){
     content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:6px">How many followers do you currently have?</h2><p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:18px">Across all platforms combined</p><div style="display:flex;flex-direction:column;gap:8px;width:100%;margin-bottom:18px">'+followerOptions.map(function(f){var sel=p.followers===f;return '<button data-followers="'+f+'" style="'+sBtn(sel)+'"><div style="font-size:14px;font-weight:800;color:#1a0d08">'+f+'</div></button>';}).join('')+'</div>'+(p.followers?'<button id="onb-next2" style="'+btnP()+'">Continue</button>':'')+' </div>';
   }
   else{
-    content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">What is your biggest goal?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+GOALS.map(function(g){return '<button data-goal="'+g+'" style="'+gBtn(p.goal===g)+'">'+g+'</button>';}).join('')+'</div>'+(p.goal?'<button id="onb-finish" style="'+btnP()+'margin-top:18px">Enter Hey Evie</button>':'')+' </div>';
+    content='<div class="fu"><h2 style="font-family:\'Playfair Display\',serif;font-size:21px;color:#1a0d08;text-align:center;margin-bottom:18px">What is your biggest goal?</h2><div style="display:flex;flex-direction:column;gap:8px;width:100%">'+GOALS.map(function(g){return '<button data-goal="'+g+'" style="'+gBtn(p.goal===g)+'">'+g+'</button>';}).join('')+'</div>'+(p.goal?'<button id="onb-finish" style="'+btnP()+'margin-top:18px">Enter Hey Evee</button>':'')+' </div>';
   }
 
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column"><div style="flex:1;padding:50px 20px 40px;display:flex;flex-direction:column;align-items:center">'+dots+content+'</div></div>';
@@ -756,11 +756,11 @@ function buildHome(p,income,aff){
     +'<div style="flex:1"><p style="font-size:10px;font-weight:800;color:#c4614a;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Welcome back</p>'
     +'<h1 style="font-family:\'Playfair Display\',serif;font-size:26px;color:#1a0d08;margin-bottom:3px">'+esc(p.name||"Mama")+'</h1>'
     +'<p style="font-size:12px;color:#7a4a3a;margin-bottom:14px">'+esc(p.niche||"Content Creator")+'</p>'
-    +'<button id="home-chat-btn" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:18px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Chat with Evie</button>'
+    +'<button id="home-chat-btn" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:18px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Chat with Evee</button>'
     +'</div>'+avC(80,'flex-shrink:0;border:2px solid rgba(255,255,255,0.5);box-shadow:0 6px 20px rgba(196,97,74,0.2)')+'</div>'
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Quick Actions</p>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">'
-    +'<button data-qa="evie" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Ask Evie</span></button>'
+    +'<button data-qa="evie" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Ask Evee</span></button>'
     +'<button data-qa="planner" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Plan Content</span></button>'
     +'<button data-qa="money" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Monetize</span></button>'
     +'<button data-qa="learn" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">My Courses</span></button>'
@@ -768,19 +768,19 @@ function buildHome(p,income,aff){
     +(p.plan==="starter"?'<div id="upsell-banner" style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:16px"><div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:2px">Upgrade to Lifetime VIP — $197</p><p style="font-size:11px;color:rgba(255,255,255,0.5)">Courses · VIP community · brand deals · forever</p></div><span style="font-size:18px;color:#c4614a;font-weight:700">→</span></div>':'')
     +'<div style="background:#fff;border-radius:16px;padding:14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:12px">'+avC(40)
     +'<div style="flex:1"><p style="font-size:13px;color:#3a1e14;line-height:1.7;margin-bottom:8px">'+tip+'</p>'
-    +'<button id="tip-chat-btn" style="font-size:12px;font-weight:800;color:#c4614a;background:rgba(196,97,74,0.07);border:none;border-radius:10px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">Talk to Evie</button>'
+    +'<button id="tip-chat-btn" style="font-size:12px;font-weight:800;color:#c4614a;background:rgba(196,97,74,0.07);border:none;border-radius:10px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">Talk to Evee</button>'
     +'</div></div>'
     +'<div style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(196,97,74,.08)">'
     +'<div id="tutorial-toggle" style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer">'
     +'<div style="display:flex;align-items:center;gap:10px">'
     +'<div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#c4614a,#d4507a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0">&#9654;</div>'
-    +'<div><p style="font-size:13px;font-weight:800;color:#1a0d08;margin:0">How to Navigate Hey Evie</p>'
+    +'<div><p style="font-size:13px;font-weight:800;color:#1a0d08;margin:0">How to Navigate Hey Evee</p>'
     +'<p style="font-size:11px;color:#9a7060;margin:2px 0 0">Tutorial videos from Simone</p></div>'
     +'</div>'
     +'<span style="font-size:12px;color:#b8a090">'+(state.showTutorials?'&#9650;':'&#9660;')+'</span>'
     +'</div>'
     +(state.showTutorials
-      ?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'+[{title:'Welcome to Hey Evie',desc:'Your first 5 minutes in the app',id:'YOUR_WELCOME_ID'},{title:'How to Navigate',desc:'A quick tour of every tab',id:'YOUR_TOUR_ID'},{title:'Using the Academy',desc:'Courses, notes and workshops',id:'YOUR_ACADEMY_ID'},{title:'Chatting with Evie',desc:'Getting the most from AI coaching',id:'YOUR_CHAT_ID'}].map(function(vid){return '<div style="margin-top:14px">'+'<p style="font-size:12px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+vid.title+'</p>'+'<p style="font-size:11px;color:#9a7060;margin-bottom:8px">'+vid.desc+'</p>'+(vid.id&&vid.id!=='YOUR_WELCOME_ID'&&vid.id!=='YOUR_TOUR_ID'&&vid.id!=='YOUR_ACADEMY_ID'&&vid.id!=='YOUR_CHAT_ID'?'<iframe width="100%" style="border-radius:12px;aspect-ratio:16/9;border:none" src="https://www.youtube.com/embed/'+vid.id+'" allowfullscreen></iframe>':'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:14px;text-align:center;border:1.5px dashed rgba(196,97,74,.2)">'+'<p style="font-size:18px;margin-bottom:4px">&#127916;</p>'+'<p style="font-size:11px;color:#c4614a;font-weight:700">Video coming soon</p>'+'</div>')+'</div>';}).join('')+'</div>'
+      ?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'+[{title:'Welcome to Hey Evee',desc:'Your first 5 minutes in the app',id:'YOUR_WELCOME_ID'},{title:'How to Navigate',desc:'A quick tour of every tab',id:'YOUR_TOUR_ID'},{title:'Using the Academy',desc:'Courses, notes and workshops',id:'YOUR_ACADEMY_ID'},{title:'Chatting with Evie',desc:'Getting the most from AI coaching',id:'YOUR_CHAT_ID'}].map(function(vid){return '<div style="margin-top:14px">'+'<p style="font-size:12px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+vid.title+'</p>'+'<p style="font-size:11px;color:#9a7060;margin-bottom:8px">'+vid.desc+'</p>'+(vid.id&&vid.id!=='YOUR_WELCOME_ID'&&vid.id!=='YOUR_TOUR_ID'&&vid.id!=='YOUR_ACADEMY_ID'&&vid.id!=='YOUR_CHAT_ID'?'<iframe width="100%" style="border-radius:12px;aspect-ratio:16/9;border:none" src="https://www.youtube.com/embed/'+vid.id+'" allowfullscreen></iframe>':'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:14px;text-align:center;border:1.5px dashed rgba(196,97,74,.2)">'+'<p style="font-size:18px;margin-bottom:4px">&#127916;</p>'+'<p style="font-size:11px;color:#c4614a;font-weight:700">Video coming soon</p>'+'</div>')+'</div>';}).join('')+'</div>'
       :'')
     +'</div>'
     +'<div id="daily-aff-card" style="background:'+aff.bg+';border-radius:14px;padding:16px;cursor:pointer">'
@@ -801,7 +801,7 @@ function buildChat(){
       // First ever chat — Evie introduces herself and asks questions
       bubs = '<div style="margin-bottom:12px">'
         + '<div style="background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 2px 8px rgba(196,97,74,.08);margin-bottom:10px">'
-        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Hey '+(p2.name||'mama')+'! I am Evie — your personal content coach and biggest hype girl. I am so glad you are here. ♥</p>'
+        + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Hey '+(p2.name||'mama')+'! I am Evee — your personal content coach and biggest hype girl. I am so glad you are here. ♥</p>'
         + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:10px">Before we dive in, let me ask you a couple things so I can actually be useful to you — not just give you generic advice.</p>'
         + '<p style="font-size:14px;color:#1a0d08;line-height:1.75;margin-bottom:14px">First — how do you like your coaching? Short and sweet, or do you love when someone really breaks it down for you?</p>'
         + '<div style="display:flex;gap:8px;margin-bottom:14px">'
@@ -855,7 +855,7 @@ function buildChat(){
     + '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:linear-gradient(135deg,rgba(249,236,230,.9),rgba(253,232,240,.9));border-bottom:1px solid rgba(196,97,74,.1)">'
     + '<div style="display:flex;align-items:center;gap:10px">'
     + avC(38)
-    + '<div><div style="font-family:\'Playfair Display\',serif;font-size:15px;color:#1a0d08">Hey Evie</div>'
+    + '<div><div style="font-family:\'Playfair Display\',serif;font-size:15px;color:#1a0d08">Hey Evee</div>'
     + '<div style="font-size:10px;color:#7a4a3a;display:flex;align-items:center;gap:4px">'
     + (state.loading
         ? '<span style="width:5px;height:5px;background:#f0a030;border-radius:50%;display:inline-block"></span>Thinking…'
@@ -867,7 +867,7 @@ function buildChat(){
     + bubs
     + '<div id="chat-bottom"></div></div>'
     + '<div style="display:flex;gap:7px;padding:9px 12px;background:'+BG+';border-top:1px solid rgba(196,97,74,.08)">'
-    + '<input id="chat-input" style="flex:1;padding:11px 14px;background:#fff;border:1.5px solid rgba(196,97,74,.18);border-radius:20px;font-size:14px;color:#1a0d08;outline:none;font-family:\'Nunito\',sans-serif" placeholder="Ask Evie anything\u2026" value="'+esc(state.input||'')+'"/>'
+    + '<input id="chat-input" style="flex:1;padding:11px 14px;background:#fff;border:1.5px solid rgba(196,97,74,.18);border-radius:20px;font-size:14px;color:#1a0d08;outline:none;font-family:\'Nunito\',sans-serif" placeholder="Ask Evee anything\u2026" value="'+esc(state.input||'')+'"/>'
     + '<button id="send-btn" style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#c4614a,#d4507a);border:none;cursor:pointer;font-size:16px;color:#fff;flex-shrink:0;'+sendDisabled+'">&#10140;</button>'
     + '</div></div>';
 }
@@ -883,7 +883,7 @@ function buildLearn(p){
   var done=Object.keys(state.learnProgress).filter(function(k){return state.learnProgress[k];}).length;
   var pct=total?Math.round(done/total*100):0;
   return '<div style="flex:1;overflow-y:auto;padding:14px 14px 100px">'
-    +'<div style="margin-bottom:14px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">Hey Evie Academy</h2>'
+    +'<div style="margin-bottom:14px"><h2 style="font-family:\'Playfair Display\',serif;font-size:23px;color:#1a0d08">Hey Evee Academy</h2>'
     +'<p style="font-size:12px;color:#9a7060;margin-top:3px">Your step-by-step path from creator to CEO</p></div>'
     +'<div style="background:linear-gradient(145deg,#f9ece6,#fde8f0);border-radius:14px;padding:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px">'
     +'<div style="flex:1">'
@@ -950,7 +950,7 @@ function buildCourseDetail(p){
         +(hasNote?'<span style="font-size:10px;color:#c9963a">📝</span>':'')
         +'<span style="color:'+(done2?"#4caf85":"#c4614a")+';font-weight:700;font-size:13px">'+(done2?"✓":"→")+'</span></button>';
     }).join('')
-    +'<button id="discuss-course" style="'+btnP()+'margin-top:12px">Discuss with Evie</button>'
+    +'<button id="discuss-course" style="'+btnP()+'margin-top:12px">Discuss with Evee</button>'
     +'</div>';
 }
 
@@ -1008,7 +1008,7 @@ function buildLessonSlide(slides,si,total,key){
       +'<p style="font-size:14px;color:#3a1e14;line-height:1.75">'+esc(s.data.body)+'</p></div></div>';
   } else if(s.type==="tip"){
     html='<div style="padding:14px"><div class="slide-tip">'
-      +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Evie\'s Tip ✦</p>'
+      +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Evee\'s Tip ✦</p>'
       +'<p style="font-family:\'Playfair Display\',serif;font-size:17px;color:#1a0d08;line-height:1.7;font-style:italic">"'+esc(s.data.tip)+'"</p></div></div>';
   } else if(s.type==="workshop"){
     html='<div style="padding:14px"><div class="slide-action">'
@@ -1067,7 +1067,7 @@ function buildWorkshopTab(data,key,answers){
     +'<p style="font-size:13px;color:#1a0d08;line-height:1.7;margin:0">'+esc(actionStep)+'</p>'
     +'</div>'
     +'<button id="save-workshop" style="'+btnP()+'">Save Workshop</button>'
-    +'<button id="ws-ask-evie" style="'+btnG()+'margin-top:8px">Ask Evie About This</button>'
+    +'<button id="ws-ask-evie" style="'+btnG()+'margin-top:8px">Ask Evee About This</button>'
     +'</div>';
 }
 
@@ -1135,7 +1135,7 @@ function buildCreate(p){
     +catHooks.map(function(h,i){
       return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
         +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+h+'</p>'
-        +'<button data-copy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
+        +'<button data-hcopy="'+i+'" style="flex-shrink:0;background:rgba(196,97,74,.08);border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;color:#c4614a;cursor:pointer;font-family:\'Nunito\',sans-serif">Copy</button>'
         +'</div>';
     }).join('')
     +(freshHooks.length?'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px">Fresh Hooks</p>'
@@ -1190,19 +1190,11 @@ function buildPlanner(p,wStart,today){
     +'<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px">'+cal+'</div>'
     +(editDay
       ?'<div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1.5px solid #c4614a">'
-        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:10px">'+editDay+'</p>'
-        +'<p style="font-size:11px;font-weight:800;color:#1a0d08;margin-bottom:6px">Pick a content idea:</p>'
-        +'<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px;max-height:200px;overflow-y:auto">'
-        +ideas.map(function(idea,ii){
-          var sel=state.calPosts[editDay]===idea;
-          return '<button data-idea="'+ii+'" style="text-align:left;padding:9px 12px;border-radius:10px;border:1.5px solid '+(sel?'#c4614a':'rgba(196,97,74,.12)')+';background:'+(sel?'rgba(196,97,74,.08)':'#fff')+';cursor:pointer;font-size:12px;color:#1a0d08;font-family:\'Nunito\',sans-serif;font-weight:'+(sel?'800':'600')+'">'+esc(idea)+'</button>';
-        }).join('')
-        +'</div>'
-        +'<p style="font-size:11px;font-weight:800;color:#1a0d08;margin-bottom:6px">Or write your own:</p>'
-        +'<textarea id="cal-text" style="'+inp()+'height:56px;resize:none;margin-bottom:8px" placeholder="Custom content idea, hook, caption...">'+esc(state.calPosts[editDay]||"")+'</textarea>'
+        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:10px">'+new Date(editDay+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})+'</p>'
+        +'<textarea id="cal-text" style="'+inp()+'height:72px;resize:none;margin-bottom:8px" placeholder="What are you posting? Type your idea, hook or caption...">'+esc(state.calPosts[editDay]||"")+'</textarea>'
         +'<div style="display:flex;gap:7px">'
         +'<button id="save-cal" style="'+btnP()+'flex:1;font-size:12px;padding:9px 0">Save</button>'
-        +'<button id="gen-cal" style="background:#fff;border:1.5px solid rgba(196,97,74,.2);color:#c4614a;border-radius:18px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Evie Idea</button>'
+        +'<button id="gen-cal" style="background:#fff;border:1.5px solid rgba(196,97,74,.2);color:#c4614a;border-radius:18px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Evee Idea</button>'
         +'<button id="cancel-cal" style="background:none;border:none;color:#b0a0a0;cursor:pointer;font-size:12px;font-family:\'Nunito\',sans-serif">Cancel</button>'
         +'</div></div>'
       :'')
@@ -1253,7 +1245,9 @@ function buildMoney(p,income){
     +'<div style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:18px;padding:18px;margin-bottom:12px">'
     +'<p style="font-size:9px;color:rgba(255,255,255,.5);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Active Monthly Income</p>'
     +'<p style="font-family:\'Playfair Display\',serif;font-size:34px;color:#fff;margin:3px 0">$'+income.toLocaleString()+'</p>'
-    +'<p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:7px">Goal: $5,000/month</p>'
+    +(state.showGoalEdit
+      ?'<div style="display:flex;gap:6px;align-items:center;margin-bottom:7px"><span style="font-size:11px;color:rgba(255,255,255,.5)">Goal: $</span><input id="goal-input" type="number" style="width:80px;padding:4px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:12px;font-weight:700;font-family:\'Nunito\',sans-serif" value="'+state.moneyGoal+'"/><button id="save-goal" style="background:#c4614a;color:#fff;border:none;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Save</button></div>'
+      :'<p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:7px;cursor:pointer" id="edit-goal">Goal: $'+state.moneyGoal.toLocaleString()+'/month ✎</p>')
     +'<div style="height:4px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;width:130px"><div style="height:100%;background:linear-gradient(90deg,#c4614a,#d4507a);border-radius:10px;width:'+pct+'%"></div></div>'
     +'</div>'
     +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
@@ -1280,7 +1274,7 @@ function buildMoney(p,income){
           +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">How to Sign Up:</p>'
           +af.steps.map(function(s,si){return '<div style="display:flex;gap:8px;margin-bottom:7px"><div style="width:20px;height:20px;border-radius:50%;background:rgba(196,97,74,.12);color:#c4614a;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+(si+1)+'</div><p style="font-size:13px;color:#3a1e14;line-height:1.55">'+s+'</p></div>';}).join('')
           +'<div style="background:linear-gradient(135deg,rgba(196,97,74,.06),rgba(212,80,122,.04));border-radius:10px;padding:10px 12px;margin:10px 0">'
-          +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px">Evie\'s Tip</p>'
+          +'<p style="font-size:10px;font-weight:900;color:#c4614a;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px">Evee\'s Tip</p>'
           +'<p style="font-size:12px;color:#1a0d08;line-height:1.55">'+af.tip+'</p></div>'
           +'<a href="https://'+af.url+'" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border-radius:20px;padding:11px;font-size:13px;font-weight:800;text-decoration:none">Sign Up → '+af.url+'</a>'
           +'</div>':'')
@@ -1427,7 +1421,7 @@ function buildMe(p){
     +'<p style="font-size:11px;color:#9a7060;margin-bottom:10px">'+pd+'</p>'
     +(!isVip?'<button id="me-upgrade" style="'+btnP()+'">Upgrade to Lifetime VIP — $197</button>':'<p style="font-size:12px;color:#4caf85;font-weight:700">✓ Lifetime access — you are all set</p>')
     +'</div>'
-    +'<div style="text-align:center;padding-top:16px;margin-bottom:10px">'+'<a href="https://tryheyevie.com/privacy" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Privacy Policy</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="https://tryheyevie.com/terms" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Terms</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="mailto:heyevie@tryheyevie.com" style="font-size:11px;color:#b09080;margin:0 8px">Contact</a>'+'</div>'
+    +'<div style="text-align:center;padding-top:16px;margin-bottom:10px">'+'<a href="https://tryheyevee.com/privacy" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Privacy Policy</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="https://tryheyevee.com/terms" target="_blank" style="font-size:11px;color:#b09080;margin:0 8px">Terms</a>'+'<span style="color:#d4c0b0;font-size:10px">&middot;</span>'+'<a href="mailto:hello@heyevee.com" style="font-size:11px;color:#b09080;margin:0 8px">Contact</a>'+'</div>'
     +'<button id="sign-out" style="width:100%;padding:12px;background:transparent;border:1.5px solid rgba(196,97,74,.2);border-radius:20px;font-size:13px;color:#b09080;cursor:pointer;font-family:\'Nunito\',sans-serif">Sign Out</button>'
     +'</div>';
 }
@@ -1440,7 +1434,7 @@ function buildUpsell(){
     +'<div style="width:32px;height:4px;background:#e0d0c8;border-radius:10px;margin:0 auto 18px"></div>'
     +avC(60,'margin:0 auto 14px;display:flex')
     +'<p style="font-size:9px;font-weight:900;color:#c4614a;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:6px">Founding Member Offer</p>'
-    +'<h2 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#1a0d08;text-align:center;margin-bottom:10px;line-height:1.3">Own Hey Evie forever — one-time $197</h2>'
+    +'<h2 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#1a0d08;text-align:center;margin-bottom:10px;line-height:1.3">Own Hey Evee forever — one-time $197</h2>'
     +'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">'+feats.map(function(f){return '<div style="display:flex;align-items:center;gap:9px"><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);flex-shrink:0"></div><span style="font-size:13px;color:#3a1e14">'+f+'</span></div>';}).join('')+'</div>'
     +'<div style="text-align:center;margin-bottom:16px"><p style="font-family:\'Playfair Display\',serif;font-size:38px;font-weight:700;color:#c9963a">$197</p><p style="font-size:11px;color:#b09080">one-time · lifetime access</p></div>'
     +'<button id="upsell-yes" style="'+btnP()+'">Claim Lifetime VIP — $197</button>'
@@ -1450,7 +1444,7 @@ function buildUpsell(){
 
 // ─── Bind All ───
 function buildCelebration(){
-  var msgs=['Look at you, mama! You are actually doing it.', 'Yes! Another module down. Evie is proud of you.', 'You showed up today and that is everything.', 'That is your CEO energy right there.', 'One step closer, mama. Keep going.', 'You are building something real. Do not stop.', 'Progress over perfection — and you just made progress.', 'That just happened! Look at you go.'];
+  var msgs=['Look at you, mama! You are actually doing it.', 'Yes! Another module down. Evee is proud of you.', 'You showed up today and that is everything.', 'That is your CEO energy right there.', 'One step closer, mama. Keep going.', 'You are building something real. Do not stop.', 'Progress over perfection — and you just made progress.', 'That just happened! Look at you go.'];
   var msg=msgs[Math.floor(Math.random()*msgs.length)];
   return '<div style="position:fixed;inset:0;background:rgba(10,5,2,.6);z-index:600;display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none">'
     +'<div style="background:#fff;border-radius:24px;padding:28px 24px;max-width:320px;width:100%;text-align:center;pointer-events:auto;animation:celebPop .35s cubic-bezier(.17,.67,.35,1.3)">'
@@ -1521,7 +1515,7 @@ function bindAll(){
       checkMembership(state.loginEmail.trim().toLowerCase(), function(membership){
         state.loginLoading=false;
         if(membership.status === "cancelled"){
-          state.loginErr="Your subscription has been cancelled. Email heyevie@tryheyevie.com to reactivate.";
+          state.loginErr="Your subscription has been cancelled. Email hello@heyevee.com to reactivate.";
           render();return;
         }
         state.profile=Object.assign({},state.profile,{
@@ -1541,7 +1535,7 @@ function bindAll(){
       checkMembership(state.loginEmail.trim().toLowerCase(), function(membership){
         state.loginLoading=false;
         if(membership.status==="cancelled"){
-          state.loginErr="Your subscription has been cancelled. Email heyevie@tryheyevie.com to reactivate.";
+          state.loginErr="Your subscription has been cancelled. Email hello@heyevee.com to reactivate.";
           render();return;
         }
         // Check password: Airtable password takes priority, fall back to localStorage
@@ -1697,7 +1691,7 @@ function bindAll(){
     var niche=state.profile.niche||"Mom Lifestyle";
     var ideas=PLANNER_IDEAS[niche]||PLANNER_IDEAS["Mom Lifestyle"];
     var dt=new Date(k);var day=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dt.getDay()];
-    callEvie("Give me ONE specific content idea for a "+niche+" creator to post on "+day+". Under 12 words. Just the idea, no explanation.",function(resp){
+    callEvee("Give me ONE specific content idea for a "+niche+" creator to post on "+day+". Under 12 words. Just the idea, no explanation.",function(resp){
       var idea=resp.trim().replace(/^["']/,"").replace(/["']$/,"");
       var cp=Object.assign({},state.calPosts);cp[k]=idea;
       state.calPosts=cp;state.genLoad=null;ss("ev_cal",state.calPosts);render();
@@ -1714,6 +1708,8 @@ function bindAll(){
   q("tutorial-toggle",function(){state.showTutorials=!state.showTutorials;render();});
   q("money-upsell-btn",function(){window.location.href="https://buy.stripe.com/eVqcN71mB55d3qleMh0co00";});
   q("toggle-add",function(){state.showAdd=!state.showAdd;render();});
+  q("edit-goal",function(){state.showGoalEdit=true;render();setTimeout(function(){var gi=document.getElementById('goal-input');if(gi)gi.focus();},50);});
+  q("save-goal",function(){var gi=document.getElementById('goal-input');if(gi&&gi.value){state.moneyGoal=parseInt(gi.value)||5000;ss('ev_money_goal',state.moneyGoal);}state.showGoalEdit=false;render();});
   var ab=document.getElementById("add-brand");if(ab)ab.onchange=function(){state.newDeal=Object.assign({},state.newDeal,{brand:this.value});};
   var av2=document.getElementById("add-value");if(av2)av2.onchange=function(){state.newDeal=Object.assign({},state.newDeal,{value:this.value});};
   qa("[data-ds]",function(){state.newDeal=Object.assign({},state.newDeal,{status:this.dataset.ds});render();});
@@ -1727,11 +1723,11 @@ function bindAll(){
   qa("[data-ap]",function(){var i=parseInt(this.dataset.ap);state.expandedPlatform=state.expandedPlatform===i?null:i;render();});
   // Circle
   qa("[data-hcat]",function(){state.hookCategory=this.dataset.hcat;render();});
-  qa("[data-copy]",function(){var niche=state.profile.niche||"Mom Lifestyle";var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];var cat=state.hookCategory||Object.keys(hooks)[0];var h=(hooks[cat]||[])[parseInt(this.dataset.copy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
+  qa("[data-hcopy]",function(){var niche=state.profile.niche||"Mom Lifestyle";var hooks=HOOK_VAULT[niche]||HOOK_VAULT["Mom Lifestyle"];var cat=state.hookCategory||Object.keys(hooks)[0];var h=(hooks[cat]||[])[parseInt(this.dataset.hcopy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
   qa("[data-fcopy]",function(){var h=(state.freshHooks||[])[parseInt(this.dataset.fcopy)];if(h&&navigator.clipboard)navigator.clipboard.writeText(h);});
   q("gen-hooks",function(){if(state.hooksLoading)return;state.hooksLoading=true;render();
     var niche=state.profile.niche||"Mom Lifestyle";
-    callEvie("Generate 5 fresh scroll-stopping hooks for a "+niche+" content creator. Each under 15 words, conversational. Return ONLY a numbered list 1-5, no intro.",function(resp){
+    callEvee("Generate 5 fresh scroll-stopping hooks for a "+niche+" content creator. Each under 15 words, conversational. Return ONLY a numbered list 1-5, no intro.",function(resp){
       var lines=resp.split("\n").filter(function(l){return /^\d+\./.test(l.trim());}).map(function(l){return l.replace(/^\d+\.\s*/,"").trim();});
       state.freshHooks=lines.length?lines:["Could not generate — try again!"];
       state.hooksLoading=false;render();
@@ -1835,7 +1831,7 @@ function sysPrompt(){
     : p.chatStyle === 'short'
     ? "She prefers short, punchy replies — get to the point fast."
     : "Match her energy — if she writes a lot, give more; if she writes short, keep it tight.";
-  return "You are Evie — a warm, funny, real AI bestie and business coach built specifically for mom content creators. You are that friend who texts back instantly, hypes her up when she needs it, keeps it real when she needs that too, and never ever lets her spiral.\n\n"
+  return "You are Evee — a warm, funny, real AI bestie and business coach built specifically for mom content creators. You are that friend who texts back instantly, hypes her up when she needs it, keeps it real when she needs that too, and never ever lets her spiral.\n\n"
     + "CRITICAL FORMATTING RULES — never break these:\n"
     + "- NEVER use asterisks (*) for anything. No bold markdown, no bullet asterisks, nothing.\n"
     + "- NEVER use hashtags unless she specifically asks for caption hashtags.\n"
