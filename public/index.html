@@ -1436,7 +1436,7 @@ function buildLogin(){
     +'<div style="font-family:\'Playfair Display\',serif;font-size:32px;font-weight:700;color:#1a0d08;margin-bottom:2px;text-align:center">Hey Evee</div>'
     +'<h2 style="font-family:\'Playfair Display\',serif;font-size:18px;color:#7a4a3a;margin:8px 0 4px;text-align:center">'+(c?"Welcome, Mama":"Welcome back")+'</h2>'
     +'<p style="font-size:12px;color:#9a7060;text-align:center;margin-bottom:20px">'+(c?"Create your account to get started":"Sign in to continue your journey")+'</p>'
-    +'<input id="li-name" style="'+inp()+'" placeholder="Your first name" value="'+esc(state.loginName)+'"/>'
+    +(c?'<input id="li-name" style="'+inp()+'" placeholder="Your first name" value="'+esc(state.loginName)+'"/>':'')
     +'<input id="li-email" style="'+inp()+'" placeholder="Email address" value="'+esc(state.loginEmail)+'"/>'
     +'<input id="li-pass" type="password" style="'+inp()+'border-color:'+(passErr&&state.loginPass?"#e05050":"rgba(196,97,74,0.2)")+'" placeholder="'+(c?"Create a password (8+ chars, number, symbol)":"Password")+'" value="'+esc(state.loginPass)+'"/>'
     +(c?'<input id="li-pass2" type="password" style="'+inp()+'border-color:'+(state.loginPass2&&state.loginPass!==state.loginPass2?"#e05050":"rgba(196,97,74,0.2)")+'" placeholder="Confirm your password" value="'+esc(state.loginPass2)+'"/>':'')
