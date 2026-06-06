@@ -1564,7 +1564,7 @@ function buildHome(p,income,aff){
     +'<button data-qa="money" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Monetize</span></button>'
     +'<button data-qa="learn" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">My Courses</span></button>'
     +'</div>'
-    +(p.plan==="starter"?'<div id="upsell-banner" style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:16px"><div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:2px">Upgrade to Lifetime VIP — $197</p><p style="font-size:11px;color:rgba(255,255,255,0.5)">Courses · VIP community · brand deals · forever</p></div><span style="font-size:18px;color:#c4614a;font-weight:700">→</span></div>':'')
+    +(p.plan==="starter"?'<div id="upsell-banner" style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:16px"><div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:2px">Upgrade to Lifetime VIP — $497</p><p style="font-size:11px;color:rgba(255,255,255,0.5)">Courses · VIP community · brand deals · forever</p></div><span style="font-size:18px;color:#c4614a;font-weight:700">→</span></div>':'')
     +'<div style="background:#fff;border-radius:16px;padding:14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:12px">'+avC(40)
     +'<div style="flex:1"><p style="font-size:13px;color:#3a1e14;line-height:1.7;margin-bottom:8px">'+tip+'</p>'
     +'<button id="tip-chat-btn" style="font-size:12px;font-weight:800;color:#c4614a;background:rgba(196,97,74,0.07);border:none;border-radius:10px;padding:5px 10px;cursor:pointer;font-family:\'Nunito\',sans-serif">Talk to Evee</button>'
@@ -1697,7 +1697,7 @@ function buildLearn(p){
     +(p.goal?'<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:12px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:center;gap:10px">'
       +'<span style="font-size:18px">🎯</span>'
       +'<div><p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">My 90-Day Goal</p>'
-      +'<p style="font-size:13px;font-weight:700;color:#1a0d08">'+esc(p.goal)+'</p></div></div>':'')+(isS?'<div id="upsell-banner" style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:12px"><div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:1px">Unlock all 8 courses — $197</p><p style="font-size:10px;color:rgba(255,255,255,0.5)">Lifetime access · one-time payment</p></div><span style="font-size:16px;color:#c4614a">→</span></div>':'')
+      +'<p style="font-size:13px;font-weight:700;color:#1a0d08">'+esc(p.goal)+'</p></div></div>':'')+(isS?'<div id="upsell-banner" style="background:linear-gradient(135deg,#1a0d08,#2e1208);border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-bottom:12px"><div><p style="font-size:13px;font-weight:800;color:#fff;margin-bottom:1px">Unlock all 8 courses — $497</p><p style="font-size:10px;color:rgba(255,255,255,0.5)">Lifetime access · one-time payment</p></div><span style="font-size:16px;color:#c4614a">→</span></div>':'')
     +'<div style="display:flex;flex-direction:column;gap:8px">'
     +COURSES.map(function(c){
       var locked=c.locked&&isS;
@@ -2240,7 +2240,7 @@ function buildMe(p){
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">My Plan</p>'
     +'<p style="font-size:13px;font-weight:800;color:#1a0d08;margin-bottom:3px">'+pl+'</p>'
     +'<p style="font-size:11px;color:#9a7060;margin-bottom:10px">'+pd+'</p>'
-    +(!isVip?'<button id="me-upgrade" style="'+btnP()+'">Upgrade to Lifetime VIP — $197</button>':'<p style="font-size:12px;color:#4caf85;font-weight:700">✓ Lifetime access — you are all set</p>')
+    +(!isVip?'<button id="me-upgrade" style="'+btnP()+'">Upgrade to Lifetime VIP — $497</button>':'<p style="font-size:12px;color:#4caf85;font-weight:700">✓ Lifetime access — you are all set</p>')
     +'</div>'
     +'<div style="background:linear-gradient(135deg,rgba(196,97,74,.06),rgba(212,80,122,.04));border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid rgba(196,97,74,.12)">'
     +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'
@@ -2269,10 +2269,10 @@ function buildUpsell(){
     +'<div style="width:32px;height:4px;background:#e0d0c8;border-radius:10px;margin:0 auto 18px"></div>'
     +avC(60,'margin:0 auto 14px;display:flex')
     +'<p style="font-size:9px;font-weight:900;color:#c4614a;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:6px">Founding Member Offer</p>'
-    +'<h2 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#1a0d08;text-align:center;margin-bottom:10px;line-height:1.3">Own Hey Evee forever — one-time $197</h2>'
+    +'<h2 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#1a0d08;text-align:center;margin-bottom:10px;line-height:1.3">Own Hey Evee forever — one-time $497</h2>'
     +'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">'+feats.map(function(f){return '<div style="display:flex;align-items:center;gap:9px"><div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#c4614a,#d4507a);flex-shrink:0"></div><span style="font-size:13px;color:#3a1e14">'+f+'</span></div>';}).join('')+'</div>'
-    +'<div style="text-align:center;margin-bottom:16px"><p style="font-family:\'Playfair Display\',serif;font-size:38px;font-weight:700;color:#c9963a">$197</p><p style="font-size:11px;color:#b09080">one-time · lifetime access</p></div>'
-    +'<button id="upsell-yes" style="'+btnP()+'">Claim Lifetime VIP — $197</button>'
+    +'<div style="text-align:center;margin-bottom:16px"><p style="font-family:\'Playfair Display\',serif;font-size:38px;font-weight:700;color:#c9963a">$497</p><p style="font-size:11px;color:#b09080">one-time · lifetime access</p></div>'
+    +'<button id="upsell-yes" style="'+btnP()+'">Claim Lifetime VIP — $497</button>'
     +'<button id="upsell-no" style="width:100%;padding:10px;background:transparent;color:#b09080;border:none;cursor:pointer;font-size:12px;font-family:\'Nunito\',sans-serif;margin-top:4px">Maybe later</button>'
     +'</div></div>';
 }
@@ -2563,7 +2563,7 @@ function bindAll(){
   qa("[data-pillar]",function(){var pl=this.dataset.pillar;state.tab="evie";render();setTimeout(function(){sendMsg('Give me 5 "'+pl+'" content ideas for a '+(state.profile.niche||"mom lifestyle")+' creator');},100);});
   // Money
   q("tutorial-toggle",function(){state.showTutorials=!state.showTutorials;render();});
-  q("money-upsell-btn",function(){window.location.href="https://buy.stripe.com/eVqcN71mB55d3qleMh0co00";});
+  q("money-upsell-btn",function(){window.location.href="https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03";});
   q("toggle-add",function(){state.showAdd=!state.showAdd;render();});
   q("edit-goal",function(){state.showGoalEdit=true;render();setTimeout(function(){var gi=document.getElementById('goal-input');if(gi)gi.focus();},50);});
   q("save-goal",function(){var gi=document.getElementById('goal-input');if(gi&&gi.value){state.moneyGoal=parseInt(gi.value)||5000;ss('ev_money_goal',state.moneyGoal);}state.showGoalEdit=false;render();});
@@ -2675,11 +2675,11 @@ function bindAll(){
     save();var btn=document.getElementById("save-profile");if(btn){btn.textContent="Saved ✓";setTimeout(function(){render();},1500);}
   });
   qa("[data-mn]",function(){state.profile=Object.assign({},state.profile,{niche:this.dataset.mn});save();render();});
-  q("me-upgrade",function(){window.location.href="https://buy.stripe.com/eVqcN71mB55d3qleMh0co00";});
+  q("me-upgrade",function(){window.location.href="https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03";});
   q("sign-out",function(){state.profile={};state.messages=[];state.screen="splash";save();render();});
   // Upsell
   q("upsell-overlay",function(e){if(e.target===this){state.showUpsell=false;render();}});
-  q("upsell-yes",function(){state.showUpsell=false;render();window.location.href="https://buy.stripe.com/eVqcN71mB55d3qleMh0co00";});
+  q("upsell-yes",function(){state.showUpsell=false;render();window.location.href="https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03";});
   q("upsell-no",function(){state.showUpsell=false;render();});
   // Auto-show affirmation once per day on home
   if(state.screen==="main"&&state.tab==="home"&&state.affDismissed!==todayStr()&&!state.showAffirmation){
