@@ -1492,7 +1492,7 @@ function buildOnboard(){
 // ─── Main ───
 function buildMain(){
   var p=state.profile;
-  var income=state.deals.filter(function(d){return d.status==="active";}).reduce(function(a,d){return a+Number(d.value);},0);
+  var income=state.deals.filter(function(d){return d.status==="active"||d.status==="completed";}).reduce(function(a,d){return a+Number(d.value);},0);
   var today=new Date();var wStart=new Date(today);wStart.setDate(today.getDate()-today.getDay()+state.calWeek*7);
   var aff=getAff();
   return '<div style="min-height:100vh;background:'+BG+';display:flex;flex-direction:column">'
@@ -1557,6 +1557,13 @@ function buildHome(p,income,aff){
     +'<p style="font-size:12px;color:#7a4a3a;margin-bottom:14px">'+esc(p.niche||"Content Creator")+'</p>'
     +'<button id="home-chat-btn" style="background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:18px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Chat with Evee</button>'
     +'</div>'+avC(80,'flex-shrink:0;border:2px solid rgba(255,255,255,0.5);box-shadow:0 6px 20px rgba(196,97,74,0.2)')+'</div>'
+    +'<div id="daily-aff-card" style="background:'+aff.bg+';border-radius:14px;padding:16px;cursor:pointer">'
+    +'<p style="font-size:9px;font-weight:900;color:'+aff.accent+';letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;opacity:.8">Today\'s Affirmation ✦</p>'
+    +'<p style="font-family:\'Playfair Display\',serif;font-size:14px;color:'+aff.tc+';line-height:1.6;font-style:italic">"'+aff.text.substring(0,70)+'…"</p>'
+    +'<p style="font-size:11px;font-weight:700;color:'+aff.accent+';margin-top:8px;opacity:.8">Tap to read in full</p>'
+    +'</div>'
+    +'<div style="background:linear-gradient(145deg,#f9ece6,#fde8f0);border-radius:14px;padding:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px">'
+    +'<div style="flex:1">'
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Quick Actions</p>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">'
     +'<button data-qa="evie" style="background:#fff;border:1.5px solid rgba(196,97,74,0.1);border-radius:12px;padding:12px;cursor:pointer;text-align:left"><span style="font-size:13px;font-weight:700;color:#1a0d08">Ask Evee</span></button>'
@@ -1582,11 +1589,8 @@ function buildHome(p,income,aff){
       ?'<div style="padding:0 14px 14px;border-top:1px solid rgba(196,97,74,.06)">'+[{title:'Welcome to Hey Evee',desc:'Your first 5 minutes in the app',id:'YOUR_WELCOME_ID'},{title:'How to Navigate',desc:'A quick tour of every tab',id:'YOUR_TOUR_ID'},{title:'Using the Academy',desc:'Courses, notes and workshops',id:'YOUR_ACADEMY_ID'},{title:'Chatting with Evee',desc:'Getting the most from AI coaching',id:'YOUR_CHAT_ID'}].map(function(vid){return '<div style="margin-top:14px">'+'<p style="font-size:12px;font-weight:800;color:#1a0d08;margin-bottom:2px">'+vid.title+'</p>'+'<p style="font-size:11px;color:#9a7060;margin-bottom:8px">'+vid.desc+'</p>'+(vid.id&&vid.id!=='YOUR_WELCOME_ID'&&vid.id!=='YOUR_TOUR_ID'&&vid.id!=='YOUR_ACADEMY_ID'&&vid.id!=='YOUR_CHAT_ID'?'<iframe width="100%" style="border-radius:12px;aspect-ratio:16/9;border:none" src="https://www.youtube.com/embed/'+vid.id+'" allowfullscreen></iframe>':'<div style="background:rgba(196,97,74,.05);border-radius:12px;padding:14px;text-align:center;border:1.5px dashed rgba(196,97,74,.2)">'+'<p style="font-size:18px;margin-bottom:4px">&#127916;</p>'+'<p style="font-size:11px;color:#c4614a;font-weight:700">Video coming soon</p>'+'</div>')+'</div>';}).join('')+'</div>'
       :'')
     +'</div>'
-    +'<div id="daily-aff-card" style="background:'+aff.bg+';border-radius:14px;padding:16px;cursor:pointer">'
-    +'<p style="font-size:9px;font-weight:900;color:'+aff.accent+';letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;opacity:.8">Today\'s Affirmation ✦</p>'
-    +'<p style="font-family:\'Playfair Display\',serif;font-size:14px;color:'+aff.tc+';line-height:1.6;font-style:italic">"'+aff.text.substring(0,70)+'…"</p>'
-    +'<p style="font-size:11px;font-weight:700;color:'+aff.accent+';margin-top:8px;opacity:.8">Tap to read in full</p>'
-    +'</div></div>';
+    
+    +'</div>';
 }
 
 // ─── Chat ───
@@ -1866,6 +1870,7 @@ function buildWorkshopTab(data,key,answers){
     +'<p style="font-size:13px;color:#1a0d08;line-height:1.7;margin:0">'+esc(actionStep)+'</p>'
     +'</div>'
     +'<button id="save-workshop" style="'+btnP()+'">Save Workshop</button>'
+    +'<button id="ws-evee-btn" style="background:#fff;border:1.5px solid rgba(196,97,74,.2);color:#c4614a;border-radius:18px;padding:10px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif;width:100%;margin-top:6px">💬 Discuss with Evee</button>'
     +'<button id="ws-ask-evie" style="'+btnG()+'margin-top:8px">Ask Evee About This</button>'
     +'</div>';
 }
@@ -1892,7 +1897,7 @@ function buildCaptionVault(niche){
       return '<div style="background:#fff;border:1px solid rgba(196,97,74,0.1);border-radius:12px;padding:13px;margin-bottom:8px">'
         +'<p style="font-size:11px;font-weight:900;color:#c4614a;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">'+cap.label+'</p>'
         +'<pre style="font-size:12px;color:#3a1e14;line-height:1.65;white-space:pre-wrap;font-family:\'Nunito\',sans-serif;margin-bottom:8px">'+esc(cap.template)+'</pre>'
-        +'<div data-copy="'+esc(cap.template)+'" data-ci="'+idx+'" style="font-size:10px;font-weight:700;color:'+(isCopied?"#4caf85":"#c4614a")+';cursor:pointer;padding:6px 10px;background:'+(isCopied?"rgba(76,175,133,.1)":"rgba(196,97,74,.06)")+';border-radius:8px;display:inline-block">'+(isCopied?"✓ Copied!":"Tap to copy template")+'</div>'
+        +'<div onclick="if(navigator.clipboard)navigator.clipboard.writeText(this.dataset.text)" data-text="'+esc(cap.template)+'" style="font-size:10px;font-weight:700;color:'+(isCopied?"#4caf85":"#c4614a")+';cursor:pointer;padding:6px 10px;background:'+(isCopied?"rgba(76,175,133,.1)":"rgba(196,97,74,.06)")+';border-radius:8px;display:inline-block">'+(isCopied?"✓ Copied!":"Tap to copy template")+'</div>'
         +'</div>';
     }).join('');
 }
@@ -1966,7 +1971,7 @@ function buildCreate(p){
         :CTA_VAULT.map(function(c,i){
             return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
               +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+c+'</p>'
-              +'<div data-copy="'+esc(c)+'" data-ci="'+(800+i)+'" style="font-size:10px;font-weight:700;color:#c4614a;cursor:pointer;padding:6px 10px;background:rgba(196,97,74,.06);border-radius:8px;display:inline-block;flex-shrink:0">Copy</div>'
+              +'<button onclick="if(navigator.clipboard)navigator.clipboard.writeText('+JSON.stringify(c)+')" style="font-size:10px;font-weight:700;color:#c4614a;cursor:pointer;padding:6px 10px;background:rgba(196,97,74,.06);border-radius:8px;border:none;font-family:\'Nunito\',sans-serif;flex-shrink:0">Copy</button>'
               +'</div>';
           }).join(''))
     +'</div></div>';
@@ -1974,12 +1979,12 @@ function buildCreate(p){
 
 var PLANNER_IDEAS={"Mom Lifestyle":["Day in my life with my kids","Morning routine that actually works","Nobody warned me about this stage","The thing I stopped doing that changed everything","What I wish I knew before having kids","Real talk: the hardest part of motherhood","How I balance content creation and kids","The 10-minute routine that saves my day","My honest take on mom culture today","Things moms do that nobody talks about"],"Fitness & Wellness":["10-minute workout you can do with kids home","What I eat in a day as a mom","My honest fitness journey no filters","The mindset shift that changed my health","Easy meal prep for busy moms","How I stay consistent when life is chaotic","Real postpartum body talk","Workout modifications for every level","My morning wellness routine","The supplement I cant live without"],"Beauty & Fashion":["Get ready with me school run edition","Affordable Amazon fashion haul","5-minute makeup for busy moms","My everyday mom outfit formula","Honest review of a favorite product","Style tips for real moms","Whats in my makeup bag","Seasonal capsule wardrobe for moms","Drugstore dupes that actually work","Before and after outfit transformation"],"Food & Recipes":["Easy weeknight dinner the whole family loves","5-ingredient meal for busy moms","What I meal prep every Sunday","Kid-approved recipe they will actually eat","Healthy snack ideas for toddlers","The recipe I make on repeat","Crockpot meal for chaotic days","Grocery haul and meal plan this week","Lunch ideas beyond sandwiches","Dessert that takes under 20 minutes"],"Faith & Motherhood":["The verse that got me through this week","Raising kids with faith in todays world","Morning devotional routine as a mom","How faith shapes my parenting","Honest talk when faith feels hard","Bible story activity for little ones","Grateful for the messy middle","What surrender looks like as a mom","Praying over my kids what I say","Faith and self-care go together"],"Finance & Business":["How I make money from home as a mom","Side income streams that actually work","Honest talk about money and motherhood","How I budgeted for a big goal","The business mistake that taught me everything","My first brand deal what I earned","Passive income ideas for stay-at-home moms","How I started with zero experience","Money mindset shift that changed everything","What I would do differently starting over"],"Travel & Adventure":["Traveling with kids honest review","Best family-friendly destinations under $2000","Packing list for a trip with toddlers","How we afford family travel","The trip that almost went wrong","Hidden gem destination you need to visit","What it really costs to travel with kids","Travel hacks for moms","Our favorite road trip snacks","Why we prioritize experiences over things"],"DIY & Home":["Weekend project that transformed my space","Budget room makeover under $100","Amazon home finds I use every day","How I organize a specific room","DIY project for beginners","Before and after home transformation","My favorite cleaning routine","Thrift flip that cost almost nothing","How I keep my home clean with kids","Home decor trend I am loving right now"],"Clean & Organize":["Clean with me whole house reset","My decluttering method that actually sticks","How I keep my home organized with kids","10-minute tidy routine every night","What I got rid of and never missed","Organizing hack that changed my life","Cleaning products I swear by","How I do laundry without it taking all day","The one organizing system that works","Before and after declutter transformation"],"Daily Routines":["My morning routine as a mom","Evening routine that sets up tomorrow","How I structure my week as a creator","The routine that changed everything","Realistic daily routine for stay-at-home moms","What a productive day looks like for me","My Sunday reset routine","How I batch my content in one day","Nighttime routine with small kids","The habit that made me 10x more consistent"]};
 function buildPlanner(p,wStart,today){
-  var tKey=today.toISOString().split("T")[0];
+  var tKey=today.getFullYear()+'-'+(String(today.getMonth()+1).padStart(2,'0'))+'-'+(String(today.getDate()).padStart(2,'0'));
   var wEnd=new Date(wStart);wEnd.setDate(wStart.getDate()+6);
   var range=wStart.toLocaleDateString("en-US",{month:"short",day:"numeric"})+" \u2013 "+wEnd.toLocaleDateString("en-US",{month:"short",day:"numeric"});
   var cal=DAYLETTERS.map(function(d,i){
-    var dt=new Date(wStart);dt.setDate(wStart.getDate()+i);
-    var k=dt.toISOString().split("T")[0];var isT=k===tKey;var idea=state.calPosts[k];
+    var dt=new Date(wStart.getTime());dt.setDate(dt.getDate()+i);
+    var k=dt.getFullYear()+'-'+(String(dt.getMonth()+1).padStart(2,'0'))+'-'+(String(dt.getDate()).padStart(2,'0'));var isT=k===tKey;var idea=state.calPosts[k];
     return '<div style="background:#fff;border-radius:9px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;border:'+(isT?"1.5px solid #c4614a":"1px solid rgba(196,97,74,.08")+')\">'
       +'<span style="font-size:8px;font-weight:800;color:#b8a090">'+d+'</span>'
       +'<span style="font-size:12px;font-weight:800;color:#1a0d08">'+dt.getDate()+'</span>'
@@ -2002,7 +2007,7 @@ function buildPlanner(p,wStart,today){
     +'<p style="font-size:11px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Quick Fill a Day</p>'
     +'<select id="day-select" style="width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(196,97,74,.2);background:#fff;font-size:13px;font-weight:700;color:#1a0d08;font-family:\'Nunito\',sans-serif;margin-bottom:8px;cursor:pointer">'
     +'<option value="">— Select a day —</option>'
-    +['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'].map(function(day,i){var dt=new Date(wStart);dt.setDate(wStart.getDate()+i);var k=dt.toISOString().split('T')[0];var filled=!!state.calPosts[k];return '<option value="'+k+'">'+(filled?'\u2713 ':'')+day+' \u2014 '+dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})+(filled?' (filled)':'')+'</option>';}).join('')
+    +['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'].map(function(day,i){var dt=new Date(wStart.getTime());dt.setDate(dt.getDate()+i);var k=dt.getFullYear()+'-'+(String(dt.getMonth()+1).padStart(2,'0'))+'-'+(String(dt.getDate()).padStart(2,'0'));var filled=!!state.calPosts[k];return '<option value="'+k+'">'+(filled?'\u2713 ':'')+day+' \u2014 '+dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})+(filled?' (filled)':'')+'</option>';}).join('')
     +'</select>'
     +(state.daySelectKey
       ?'<select id="idea-select" style="width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid #c4614a;background:#fff;font-size:13px;font-weight:600;color:#1a0d08;font-family:\'Nunito\',sans-serif;margin-bottom:8px;cursor:pointer">'+'<option value="">— Pick a content idea —</option>'+(PLANNER_IDEAS[p.niche||'Mom Lifestyle']||PLANNER_IDEAS['Mom Lifestyle']).map(function(idea,ii){var sel=state.calPosts[state.daySelectKey]===idea;return '<option value="'+ii+'"'+(sel?' selected':'')+'>'+idea+'</option>';}).join('')+'</select>'+'<button id="fill-day-btn" style="'+btnP()+'font-size:12px;padding:9px 0;margin-bottom:0">Add to Calendar</button>'
@@ -2011,7 +2016,7 @@ function buildPlanner(p,wStart,today){
     +'<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px">'+cal+'</div>'
     +(editDay
       ?'<div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1.5px solid #c4614a">'
-        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:10px">'+new Date(editDay+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})+'</p>'
+        +'<p style="font-size:11px;font-weight:700;color:#c4614a;margin-bottom:10px">'+(function(){var p=editDay.split('-');return new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2])).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});})()+'</p>'
         +'<textarea id="cal-text" style="'+inp()+'height:72px;resize:none;margin-bottom:8px" placeholder="What are you posting? Type your idea, hook or caption...">'+esc(state.calPosts[editDay]||"")+'</textarea>'
         +'<div style="display:flex;gap:7px">'
         +'<button id="save-cal" style="'+btnP()+'flex:1;font-size:12px;padding:9px 0">Save</button>'
@@ -2080,7 +2085,12 @@ function buildMoney(p,income){
       +'<input id="add-value" style="'+inp()+'" type="number" placeholder="Value ($)" value="'+esc(state.newDeal.value)+'"/>'
       +'<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px">'+["pitched","negotiating","active","completed"].map(function(st){return '<button data-ds="'+st+'" style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:16px;background:'+(state.newDeal.status===st?"#c4614a":"rgba(196,97,74,.08)")+';color:'+(state.newDeal.status===st?"#fff":"#c4614a")+';border:1px solid '+(state.newDeal.status===st?"#c4614a":"rgba(196,97,74,.2)")+';cursor:pointer;font-family:\'Nunito\',sans-serif">'+st+'</button>';}).join('')+'</div>'
       +'<button id="save-deal" style="'+btnP()+'">Save Deal</button></div>':'')
-    +state.deals.map(function(d){var sc=dealMap[d.status]||dealMap.pitched;return '<div style="display:flex;align-items:center;gap:10px;background:#fff;border-radius:11px;padding:10px 12px;margin-bottom:7px"><div style="font-size:10px;font-weight:700;border-radius:16px;padding:2px 8px;text-transform:capitalize;background:'+sc.bg+';color:'+sc.c+'">'+d.status+'</div><div style="flex:1"><div style="font-size:13px;font-weight:700;color:#1a0d08">'+esc(d.brand)+'</div><div style="font-size:10px;color:#b09080">'+d.date+'</div></div><div style="font-size:14px;font-weight:900;color:#1a0d08">$'+Number(d.value).toLocaleString()+'</div></div>';}).join('')
+    +state.deals.map(function(d,di){var sc=dealMap[d.status]||dealMap.pitched;return '<div style="background:#fff;border-radius:11px;padding:10px 12px;margin-bottom:7px">'
+      +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="font-size:10px;font-weight:700;border-radius:16px;padding:2px 8px;text-transform:capitalize;background:'+sc.bg+';color:'+sc.c+'">'+d.status+'</div><div style="flex:1"><div style="font-size:13px;font-weight:700;color:#1a0d08">'+esc(d.brand)+'</div><div style="font-size:10px;color:#b09080">'+d.date+'</div></div><div style="font-size:14px;font-weight:900;color:#1a0d08">$'+Number(d.value).toLocaleString()+'</div></div>'
+      +'<div style="display:flex;gap:4px;flex-wrap:wrap">'
+      +['pitched','negotiating','active','completed'].map(function(s){var active=d.status===s;return '<button data-deal-status="'+di+'-'+s+'" style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;border:1.5px solid '+(active?'#c4614a':'rgba(196,97,74,.2)')+';background:'+(active?'rgba(196,97,74,.1)':'#fff')+';color:'+(active?'#c4614a':'#9a7060')+';cursor:pointer;font-family:\'Nunito\',sans-serif">'+s+'</button>';}).join('')
+      +'<button data-del-deal="'+di+'" style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;border:1.5px solid rgba(220,80,80,.3);background:#fff;color:#d05050;cursor:pointer;font-family:\'Nunito\',sans-serif">✕</button>'
+      +'</div></div>';}).join('')
     +'<p style="font-size:10px;font-weight:900;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-top:14px;margin-bottom:10px">Affiliate Platforms — How to Sign Up</p>'
     +AFFILIATE_PLATFORMS.map(function(af,i){
       var open=state.expandedPlatform===i;
@@ -2412,10 +2422,15 @@ function bindAll(){
           render();return;
         }
         state.profile=Object.assign({},saved2,{
-          name:membership.name||saved2.name||state.loginName,
+          name:membership.name||saved2.name||state.loginName||'',
           email:state.loginEmail.trim().toLowerCase(),
           password:state.loginPass,
-          plan:membership.plan
+          plan:membership.plan,
+          niche:saved2.niche||state.profile.niche||'',
+          bio:saved2.bio||state.profile.bio||'',
+          instagram:saved2.instagram||state.profile.instagram||'',
+          tiktok:saved2.tiktok||state.profile.tiktok||'',
+          stage:saved2.stage||state.profile.stage||''
         });
         state.screen="main";save();render();
       });
@@ -2514,11 +2529,22 @@ function bindAll(){
     var btn=document.getElementById("save-notes");if(btn){btn.textContent="Saved ✓";setTimeout(function(){if(document.getElementById("save-notes"))document.getElementById("save-notes").textContent="Save Notes";},1500);}
   });
   // Workshop
+  q("ws-evee-btn",function(){
+    var key="c"+state.activeCourse.id+"m"+state.activeModule;
+    var answers=state.workshopAnswers[key]||{};
+    var wsLines=Object.entries(answers).filter(function(e){return e[1];}).map(function(e){return e[0]+': '+e[1];}).join('\n');
+    if(!wsLines){alert('Save your workshop answers first!');return;}
+    var msg='Here are my workshop answers:\n'+wsLines+'\n\nCan you give me personalized feedback and next steps based on these?';
+    state.chatMessages=(state.chatMessages||[]).concat([{role:'user',content:msg}]);
+    state.tab='evie';
+    render();
+    setTimeout(function(){callEvee(msg);},100);
+  });
   q("save-workshop",function(){
     var key="c"+state.activeCourse.id+"m"+state.activeModuleIdx;
     var answers={};
     document.querySelectorAll("[data-ws]").forEach(function(el){answers[el.dataset.ws]=el.value;});
-    state.workshopAnswers[key]=answers;ss("ev_ws",state.workshopAnswers);
+    state.workshopAnswers[key]=answers;ss("ev_ws",state.workshopAnswers);state.wsJustSaved=key;setTimeout(function(){state.wsJustSaved=null;render();},3000);render();
     var btn=document.getElementById("save-workshop");if(btn){btn.textContent="Saved ✓";setTimeout(function(){if(document.getElementById("save-workshop"))document.getElementById("save-workshop").textContent="Save Workshop";},1500);}
   });
   q("ws-ask-evie",function(){
@@ -2570,6 +2596,18 @@ function bindAll(){
   q("tutorial-toggle",function(){state.showTutorials=!state.showTutorials;render();});
   q("money-upsell-btn",function(){window.location.href="https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03";});
   q("toggle-add",function(){state.showAdd=!state.showAdd;render();});
+  qa("[data-deal-status]",function(){
+    var parts=this.dataset.dealStatus.split('-');
+    var di=parseInt(parts[0]);var newStatus=parts[1];
+    var deals=state.deals.slice();
+    deals[di]=Object.assign({},deals[di],{status:newStatus});
+    state.deals=deals;ss('ev_deals',state.deals);render();
+  });
+  qa("[data-del-deal]",function(){
+    var di=parseInt(this.dataset.delDeal);
+    state.deals=state.deals.filter(function(_,i){return i!==di;});
+    ss('ev_deals',state.deals);render();
+  });
   q("edit-goal",function(){state.showGoalEdit=true;render();setTimeout(function(){var gi=document.getElementById('goal-input');if(gi)gi.focus();},50);});
   q("save-goal",function(){var gi=document.getElementById('goal-input');if(gi&&gi.value){state.moneyGoal=parseInt(gi.value)||5000;ss('ev_money_goal',state.moneyGoal);}state.showGoalEdit=false;render();});
   var ab=document.getElementById("add-brand");if(ab)ab.onchange=function(){state.newDeal=Object.assign({},state.newDeal,{brand:this.value});};
@@ -2667,7 +2705,7 @@ function bindAll(){
     rt[id]='';
     state.replyText=rt;
     var ro=Object.assign({},state.replyOpen);
-    ro[id]=false;
+    ro[id]=true;
     state.replyOpen=ro;
     ss('ev_replies',state.replies);
     render();
