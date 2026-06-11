@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     );
 
     // 4. Send reset email via Resend
-    const resetUrl  = 'https://tryheyevee.com/reset.html?token=' + token;
+    const resetUrl  = 'https://app.heyevee.com/reset.html?token=' + token;
     const firstName = (record.fields && record.fields.name) ? record.fields.name.split(' ')[0] : 'Mama';
 
     const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"/></head><body style="margin:0;padding:0;background:#f5ede8;font-family:Helvetica,Arial,sans-serif">'
