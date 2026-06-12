@@ -2313,8 +2313,8 @@ function buildProfileModal(post){
     +'</div></div>'
     +(post.bio?'<p style="font-size:13px;color:#3a1e14;line-height:1.65;margin-bottom:14px;padding:10px 12px;background:#fdf8f5;border-radius:12px">'+esc(post.bio)+'</p>':'')
     +'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">'
-    +(post.instagram?'<a href="https://instagram.com/'+esc(post.instagram.replace('@',''))+' target="_blank" style="display:flex;align-items:center;gap:10px;background:#fdf8f5;border-radius:12px;padding:10px 14px;text-decoration:none"><span style="font-size:18px">📷</span><span style="font-size:13px;font-weight:700;color:#c4614a">'+esc(post.instagram)+'</span></a>':'')
-    +(post.tiktok?'<a href="https://tiktok.com/@'+esc(post.tiktok.replace('@',''))+' target="_blank" style="display:flex;align-items:center;gap:10px;background:#fdf8f5;border-radius:12px;padding:10px 14px;text-decoration:none"><span style="font-size:18px">🎵</span><span style="font-size:13px;font-weight:700;color:#c4614a">'+esc(post.tiktok)+'</span></a>':'')
+    +(post.instagram?'<a href="https://instagram.com/'+esc(post.instagram.replace('@',''))+' target="_blank" style="display:flex;align-items:center;gap:10px;background:#fdf8f5;border-radius:12px;padding:10px 14px;text-decoration:none"><span style="color:#c4614a;display:inline-flex;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></span><span style="font-size:12px;font-weight:700;color:#c4614a">Instagram &nbsp;'+esc(post.instagram)+'</span></a>':'')
+    +(post.tiktok?'<a href="https://tiktok.com/@'+esc(post.tiktok.replace('@',''))+' target="_blank" style="display:flex;align-items:center;gap:10px;background:#fdf8f5;border-radius:12px;padding:10px 14px;text-decoration:none"><span style="color:#c4614a;display:inline-flex;align-items:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></span><span style="font-size:12px;font-weight:700;color:#c4614a">TikTok &nbsp;'+esc(post.tiktok)+'</span></a>':'')
     +'</div>'
     +'<button id="profile-close" style="width:100%;padding:12px;background:linear-gradient(135deg,#c4614a,#d4507a);color:#fff;border:none;border-radius:20px;font-size:14px;font-weight:800;cursor:pointer;font-family:\'Nunito\',sans-serif">Close</button>'
     +'</div></div>';
@@ -2456,11 +2456,15 @@ function bindAll(){
           email:state.loginEmail.trim().toLowerCase(),
           password:state.loginPass,
           plan:membership.plan,
-          niche:saved2.niche||state.profile.niche||'',
-          bio:saved2.bio||state.profile.bio||'',
-          instagram:saved2.instagram||state.profile.instagram||'',
-          tiktok:saved2.tiktok||state.profile.tiktok||'',
-          stage:saved2.stage||state.profile.stage||''
+          niche:saved2.niche||membership.niche||state.profile.niche||'',
+          bio:saved2.bio||membership.bio||state.profile.bio||'',
+          instagram:saved2.instagram||membership.instagram||state.profile.instagram||'',
+          tiktok:saved2.tiktok||membership.tiktok||state.profile.tiktok||'',
+          youtube:saved2.youtube||membership.youtube||state.profile.youtube||'',
+          username:saved2.username||membership.username||state.profile.username||'',
+          followers:saved2.followers||membership.followers||state.profile.followers||'',
+          stage:saved2.stage||membership.stage||state.profile.stage||'',
+          goal:saved2.goal||membership.goal||state.profile.goal||''
         });
         state.screen="main";save();render();
       });
@@ -2596,9 +2600,12 @@ function bindAll(){
   // Create
   qa("[data-ctab]",function(){state.createTab=this.dataset.ctab;state.copiedIdx=null;render();});
   qa("[data-copy]",function(){
-    var text=this.dataset.copy;var idx=parseInt(this.dataset.ci);
-    if(navigator.clipboard){navigator.clipboard.writeText(text);}
-    state.copiedIdx=idx;render();setTimeout(function(){state.copiedIdx=null;render();},2000);
+    var text=this.dataset.text||this.dataset.copy;var idx=parseInt(this.dataset.ci);
+    var btn=this;var orig=btn.textContent;
+    var showCopied=function(){btn.textContent='Copied!';btn.style.background='rgba(42,122,80,0.12)';btn.style.color='#2a7a50';setTimeout(function(){btn.textContent=orig;btn.style.background='rgba(196,97,74,.08)';btn.style.color='#c4614a';},1800);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(showCopied).catch(function(){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);showCopied();});}
+    else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);showCopied();}
+    state.copiedIdx=idx;setTimeout(function(){state.copiedIdx=null;},1500);
   });
   // Planner
   q("cal-prev",function(){state.calWeek--;render();});
@@ -2762,7 +2769,25 @@ function bindAll(){
     var n=document.getElementById("me-name");var b=document.getElementById("me-bio");
     var un=document.getElementById("me-username");var ig=document.getElementById("me-ig");var tt=document.getElementById("me-tiktok");var yt=document.getElementById("me-yt");
     state.profile=Object.assign({},state.profile,{name:n?n.value:state.profile.name,bio:b?b.value:"",username:un?un.value:"",instagram:ig?ig.value:"",tiktok:tt?tt.value:"",youtube:yt?yt.value:"",followers:state.profile.followers||""});
-    save();var btn=document.getElementById("save-profile");if(btn){btn.textContent="Saved ✓";setTimeout(function(){render();},1500);}
+    save();
+    // Sync profile fields to Airtable so they restore on next sign-in
+    var pr=state.profile;
+    if(pr.email){
+      fetch('/api/airtable',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        email:pr.email,
+        fields:{
+          name:pr.name||'',
+          niche:pr.niche||'',
+          bio:pr.bio||'',
+          instagram:pr.instagram||'',
+          tiktok:pr.tiktok||'',
+          youtube:pr.youtube||'',
+          username:pr.username||'',
+          followers:pr.followers||''
+        }
+      })}).catch(function(){});
+    }
+    var btn=document.getElementById("save-profile");if(btn){btn.textContent="Saved ✓";setTimeout(function(){render();},1500);}
   });
   qa("[data-mn]",function(){state.profile=Object.assign({},state.profile,{niche:this.dataset.mn});save();render();});
   q("me-upgrade",function(){window.location.href="https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03";});
