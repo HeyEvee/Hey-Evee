@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" sizes="144x144" href="/icon-192.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-512.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"/>
 <title>Hey Evee</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
@@ -1542,7 +1542,7 @@ function buildNav(){
 
 function buildBottomNav(){
   var tabs=[{id:"home",l:"HOME"},{id:"evie",l:"EVEE"},{id:"learn",l:"LEARN"},{id:"create",l:"HOOKS"},{id:"planner",l:"PLAN"},{id:"money",l:"MONEY"},{id:"circle",l:"CIRCLE"},{id:"me",l:"ME"}];
-  return '<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:'+BG+';border-top:1px solid rgba(196,97,74,0.1);display:flex;z-index:100;padding:2px 0 10px;overflow-x:auto">'
+  return '<div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:'+BG+';border-top:1px solid rgba(196,97,74,0.1);display:flex;z-index:100;padding:2px 0 env(safe-area-inset-bottom, 12px);overflow-x:auto">'
     +tabs.map(function(t){return '<button data-tab="'+t.id+'" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 9px 0;background:none;border:none;cursor:pointer">'
       +'<div style="height:2px;width:18px;border-radius:2px;background:#c4614a;opacity:'+(state.tab===t.id?1:0)+';margin-bottom:3px"></div>'
       +'<span style="font-size:8px;font-weight:900;letter-spacing:.4px;color:'+(state.tab===t.id?"#c4614a":"#b0a0a0")+'">'+t.l+'</span></button>';}).join('')+'</div>';
@@ -1920,7 +1920,7 @@ function buildCreate(p){
       +'<p style="font-size:9px;font-weight:900;color:rgba(196,97,74,.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">VIP Feature</p>'
       +'<h3 style="font-family:\'Playfair Display\',serif;font-size:20px;color:#fff;margin-bottom:10px;line-height:1.4">Hook Vault unlocks with Lifetime VIP</h3>'
       +'<p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:20px">100+ niche-specific hooks, caption templates, CTAs, and AI-powered fresh hook generation.</p>'
-      +'<button onclick="window.location.href=&quot;https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03&quot;" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:22px;padding:13px 28px;font-size:14px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif">Upgrade to Lifetime VIP</button>'
+      +'<button onclick="window.location.href=\'https://buy.stripe.com/3cI7sNe9n69h7GBcE90co03\'" style="background:linear-gradient(135deg,#c9963a,#e8b84a);color:#1a0d08;border:none;border-radius:22px;padding:13px 28px;font-size:14px;font-weight:900;cursor:pointer;font-family:\'Nunito\',sans-serif">Upgrade to Lifetime VIP</button>'
       +'</div></div>';
   }
 
