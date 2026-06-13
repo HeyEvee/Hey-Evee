@@ -72,10 +72,19 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({
-      plan:     fields.plan     || 'starter',
-      status:   fields.status   || 'active',
-      name:     fields.name     || '',
-      password: fields.password || ''
+      plan:      fields.plan      || 'starter',
+      status:    fields.status    || 'active',
+      name:      fields.name      || '',
+      password:  fields.password  || '',
+      niche:     fields.niche     || '',
+      bio:       fields.bio       || '',
+      instagram: fields.instagram || '',
+      tiktok:    fields.tiktok    || '',
+      youtube:   fields.youtube   || '',
+      username:  fields.username  || '',
+      followers: fields.followers || '',
+      stage:     fields.stage     || '',
+      goal:      fields.goal      || ''
     });
 
   } catch (err) {
