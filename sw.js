@@ -1,5 +1,5 @@
 // Hey Evee Service Worker
-const CACHE = 'heyevee-v2';
+const CACHE = 'heyevee-v5';
 const STATIC = ['/'];
 
 self.addEventListener('install', function(e) {
@@ -24,21 +24,18 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  // Always go network-first for API calls
-  if (e.request.url.includes('/api/')) {
-    e.respondWith(fetch(e.request));
-    return;
-  }
-  // Cache-first for everything else
+  // Always network-first — never serve stale cached content
   e.respondWith(
-    caches.match(e.request).then(function(cached) {
-      return cached || fetch(e.request).then(function(response) {
-        var clone = response.clone();
-        caches.open(CACHE).then(function(cache) {
-          cache.put(e.request, clone);
-        });
-        return response;
+    fetch(e.request).then(function(response) {
+      // Cache a fresh copy in the background
+      var clone = response.clone();
+      caches.open(CACHE).then(function(cache) {
+        cache.put(e.request, clone);
       });
+      return response;
+    }).catch(function() {
+      // Only fall back to cache if completely offline
+      return caches.match(e.request);
     })
   );
 });
