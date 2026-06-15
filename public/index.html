@@ -3133,10 +3133,17 @@ function genCalIdea(key,toInput){
 render();
 
 // Register service worker
+// Unregister all service workers so updates always load instantly
 if('serviceWorker' in navigator){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    regs.forEach(function(r){ r.unregister(); });
   });
+  // Clear all caches
+  if(window.caches){
+    caches.keys().then(function(keys){
+      keys.forEach(function(k){ caches.delete(k); });
+    });
+  }
 }
 </script>
 </body>
