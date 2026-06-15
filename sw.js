@@ -1,40 +1,23 @@
-// Hey Evee Service Worker
-const CACHE = 'heyevee-v5';
-const STATIC = ['/'];
+// Hey Evee Service Worker — Network First, Always Fresh
+const CACHE = 'heyevee-v6';
 
 self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(CACHE).then(function(cache) {
-      return cache.addAll(STATIC);
-    })
-  );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', function(e) {
+  // Delete ALL old caches immediately
   e.waitUntil(
     caches.keys().then(function(keys) {
-      return Promise.all(
-        keys.filter(function(k) { return k !== CACHE; })
-            .map(function(k) { return caches.delete(k); })
-      );
-    })
+      return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+    }).then(function() { return self.clients.claim(); })
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', function(e) {
-  // Always network-first — never serve stale cached content
+  // Always fetch fresh from network — never serve from cache
   e.respondWith(
-    fetch(e.request).then(function(response) {
-      // Cache a fresh copy in the background
-      var clone = response.clone();
-      caches.open(CACHE).then(function(cache) {
-        cache.put(e.request, clone);
-      });
-      return response;
-    }).catch(function() {
-      // Only fall back to cache if completely offline
+    fetch(e.request).catch(function() {
       return caches.match(e.request);
     })
   );
