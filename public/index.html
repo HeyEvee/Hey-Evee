@@ -2,15 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="Hey Evee"/>
 <meta name="theme-color" content="#c4614a"/>
-<link rel="manifest" href="/manifest.json"/>
-<link rel="apple-touch-icon" href="/icon-192.png"/>
-<link rel="apple-touch-icon" sizes="152x152" href="/icon-192.png"/>
-<link rel="apple-touch-icon" sizes="144x144" href="/icon-192.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-512.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"/>
@@ -3133,18 +3125,7 @@ function genCalIdea(key,toInput){
 render();
 
 // Register service worker
-// Unregister all service workers so updates always load instantly
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.getRegistrations().then(function(regs){
-    regs.forEach(function(r){ r.unregister(); });
-  });
-  // Clear all caches
-  if(window.caches){
-    caches.keys().then(function(keys){
-      keys.forEach(function(k){ caches.delete(k); });
-    });
-  }
-}
+// No service worker — always load fresh from network
 </script>
 </body>
 </html>
