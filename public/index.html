@@ -1996,7 +1996,7 @@ function buildCreate(p){
         :CTA_VAULT.map(function(c,i){
             return '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid rgba(196,97,74,.08);display:flex;align-items:flex-start;gap:10px">'
               +'<p style="flex:1;font-size:13px;color:#1a0d08;line-height:1.65;margin:0">'+c+'</p>'
-              +'<button onclick="if(navigator.clipboard)navigator.clipboard.writeText('+JSON.stringify(c)+')" style="font-size:10px;font-weight:700;color:#c4614a;cursor:pointer;padding:6px 10px;background:rgba(196,97,74,.06);border-radius:8px;border:none;font-family:\'Nunito\',sans-serif;flex-shrink:0">Copy</button>'
+              +'<div onclick="heyeveeCopy(this)" data-text="'+esc(c)+'" style="font-size:10px;font-weight:700;color:#c4614a;cursor:pointer;padding:6px 10px;background:rgba(196,97,74,.06);border-radius:8px;display:inline-block">Copy</div>'
               +'</div>';
           }).join(''))
     +'</div></div>';
@@ -2299,10 +2299,7 @@ function buildMe(p){
     +'<input id="me-username" style="'+inp()+'" placeholder="Your @username (shown in Circle)" value="'+esc(p.username||'')+'"/>'
     +'<input id="me-ig" style="'+inp()+'" placeholder="Instagram @handle" value="'+esc(p.instagram||'')+'"/>'
     +'<input id="me-tiktok" style="'+inp()+'" placeholder="TikTok @handle" value="'+esc(p.tiktok||'')+'"/>'
-    +'<div style="position:relative">'
-    +'<input id="me-yt" style="'+inp()+'padding-left:36px" placeholder="YouTube channel" value="'+esc(p.youtube||'')+'"/>'
-    +'<span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#c4614a"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></span>'
-    +'</div>'
+    
     +'<button id="save-profile" style="'+btnP()+'margin-top:2px">Save Profile</button>'
     +'</div>'
     +'<div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid rgba(196,97,74,.08)">'
@@ -2528,15 +2525,14 @@ function bindAll(){
           email:state.loginEmail.trim().toLowerCase(),
           password:state.loginPass,
           plan:membership.plan,
-          niche:saved2.niche||membership.niche||state.profile.niche||'',
-          bio:saved2.bio||membership.bio||state.profile.bio||'',
-          instagram:saved2.instagram||membership.instagram||state.profile.instagram||'',
-          tiktok:saved2.tiktok||membership.tiktok||state.profile.tiktok||'',
-          youtube:saved2.youtube||membership.youtube||state.profile.youtube||'',
-          username:saved2.username||membership.username||state.profile.username||'',
-          followers:saved2.followers||membership.followers||state.profile.followers||'',
-          stage:saved2.stage||membership.stage||state.profile.stage||'',
-          goal:saved2.goal||membership.goal||state.profile.goal||''
+          niche:membership.niche||saved2.niche||state.profile.niche||'',
+          bio:membership.bio||saved2.bio||state.profile.bio||'',
+          instagram:membership.instagram||saved2.instagram||state.profile.instagram||'',
+          tiktok:membership.tiktok||saved2.tiktok||state.profile.tiktok||'',
+          username:membership.username||saved2.username||state.profile.username||'',
+          followers:membership.followers||saved2.followers||state.profile.followers||'',
+          stage:membership.stage||saved2.stage||state.profile.stage||'',
+          goal:membership.goal||saved2.goal||state.profile.goal||''
         });
         state.screen="main";save();render();
       });
@@ -2892,8 +2888,8 @@ function bindAll(){
   // Me
   q("save-profile",function(){
     var n=document.getElementById("me-name");var b=document.getElementById("me-bio");
-    var un=document.getElementById("me-username");var ig=document.getElementById("me-ig");var tt=document.getElementById("me-tiktok");var yt=document.getElementById("me-yt");
-    state.profile=Object.assign({},state.profile,{name:n?n.value:state.profile.name,bio:b?b.value:"",username:un?un.value:"",instagram:ig?ig.value:"",tiktok:tt?tt.value:"",youtube:yt?yt.value:"",followers:state.profile.followers||""});
+    var un=document.getElementById("me-username");var ig=document.getElementById("me-ig");var tt=document.getElementById("me-tiktok");var yt=null;
+    state.profile=Object.assign({},state.profile,{name:n?n.value:state.profile.name,bio:b?b.value:"",username:un?un.value:"",instagram:ig?ig.value:"",tiktok:tt?tt.value:"",followers:state.profile.followers||""});
     save();
     // Sync profile fields to Airtable so they restore on next sign-in
     var pr=state.profile;
