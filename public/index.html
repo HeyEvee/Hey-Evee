@@ -2560,19 +2560,20 @@ function bindAll(){
           state.loginErr="Email or password is incorrect";
           render();return;
         }
+        // Always start with localStorage as base, then layer Airtable on top
         state.profile=Object.assign({},saved2,{
           name:membership.name||saved2.name||state.loginName||'',
           email:state.loginEmail.trim().toLowerCase(),
           password:state.loginPass,
-          plan:membership.plan,
-          niche:membership.niche||saved2.niche||state.profile.niche||'',
-          bio:membership.bio||saved2.bio||state.profile.bio||'',
-          instagram:membership.instagram||saved2.instagram||state.profile.instagram||'',
-          tiktok:membership.tiktok||saved2.tiktok||state.profile.tiktok||'',
-          username:membership.username||saved2.username||state.profile.username||'',
-          followers:membership.followers||saved2.followers||state.profile.followers||'',
-          stage:membership.stage||saved2.stage||state.profile.stage||'',
-          goal:membership.goal||saved2.goal||state.profile.goal||''
+          plan:membership.plan||saved2.plan||'starter',
+          niche:membership.niche||saved2.niche||'',
+          bio:membership.bio||saved2.bio||'',
+          instagram:membership.instagram||saved2.instagram||'',
+          tiktok:membership.tiktok||saved2.tiktok||'',
+          username:membership.username||saved2.username||'',
+          followers:membership.followers||saved2.followers||'',
+          stage:membership.stage||saved2.stage||'',
+          goal:membership.goal||saved2.goal||''
         });
         state.screen="main";save();render();
       });
@@ -2945,7 +2946,14 @@ function bindAll(){
   q("save-profile",function(){
     var n=document.getElementById("me-name");var b=document.getElementById("me-bio");
     var un=document.getElementById("me-username");var ig=document.getElementById("me-ig");var tt=document.getElementById("me-tiktok");var yt=null;
-    state.profile=Object.assign({},state.profile,{name:n?n.value:state.profile.name,bio:b?b.value:"",username:un?un.value:"",instagram:ig?ig.value:"",tiktok:tt?tt.value:"",followers:state.profile.followers||""});
+    state.profile=Object.assign({},state.profile,{
+      name:(n&&n.value.trim())?n.value.trim():state.profile.name,
+      bio:(b&&b.value.trim())?b.value.trim():state.profile.bio||'',
+      username:(un&&un.value.trim())?un.value.trim():state.profile.username||'',
+      instagram:(ig&&ig.value.trim())?ig.value.trim():state.profile.instagram||'',
+      tiktok:(tt&&tt.value.trim())?tt.value.trim():state.profile.tiktok||'',
+      followers:state.profile.followers||''
+    });
     save();
     // Sync profile fields to Airtable so they restore on next sign-in
     var pr=state.profile;
